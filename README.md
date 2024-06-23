@@ -1,1 +1,4 @@
-# seshavaraaj.github.io
+# Game Programmer
+
+### Education
+12
