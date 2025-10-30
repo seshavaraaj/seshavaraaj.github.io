@@ -1,3 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --header-color: #FFFFFF;
+    --content-color: #EAE0D9;
+    --button-text-color: #FFFFFF;
+    --section-header-color: #F0EBE3;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    background-color: #6a8a8b;
+    background-image: radial-gradient(at top right, #d8c4b8 0%, transparent 50%), 
+                      radial-gradient(at bottom left, #7b4c48 0%, transparent 50%);
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--content-color);
+}
+
+/* ------------------------- */
+/* --- Modular Components -- */
+/* ------------------------- */
+
+/* Component: A reusable panel with the glassmorphism effect */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Component: A reusable button */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--button-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* ------------------------- */
+/* --- Layout & Typography - */
+/* ------------------------- */
+
+/* Layout rules for specific page elements */
+header, section, footer {
+    margin: 20px;
+    padding: 1rem; /* Using 1rem for consistency */
+}
+
+header {
+    text-align: center;
+}
+
+section {
+    padding: 20px; /* Overriding the 1rem for sections that need more space */
+}
+
+footer {
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: auto; /* Overrides default block width */
+}
+
+/* Typography rules */
+header h1 {
+    color: var(--header-color);
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: var(--button-text-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section h2 {
+    color: var(--section-header-color);
+}
+
+.project {
+    margin-bottom: 15px;
+}
+
+.project h3 {
+    color: var(--section-header-color);
+}
+
+.project p {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#contact p {
+    color: var(--content-color);
+    font-weight: bold;
+}
+
 /* ------------------------- */
 /* --- Image Gallery ------- */
 /* ------------------------- */
@@ -14,6 +135,7 @@
     border-radius: 10px;
     object-fit: cover;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
 }
 
 .show-more-btn {
