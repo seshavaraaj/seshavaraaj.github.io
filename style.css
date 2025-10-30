@@ -217,3 +217,26 @@ section h2 {
 .next-btn {
     right: 20px;
 }
+
+/* ------------------------- */
+/* --- Typewriter Effect --- */
+/* ------------------------- */
+#typewriter-name {
+    display: inline-block; /* Ensures the cursor border is right next to the text */
+    border-right: 3px solid var(--header-color); /* The cursor */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Hides the text until it's typed */
+    animation: blink-caret .75s step-end infinite;
+}
+
+/* When typing is done, we stop the blinking */
+#typewriter-name.typing-done {
+    border-right: none;
+    animation: none;
+}
+
+/* The blinking cursor animation */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--header-color); }
+}
