@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 body {
-    font-family: 'JetBrains Mono', monospace; /* Changed font */
+    font-family: 'JetBrains Mono', monospace;
     margin: 0;
-    background-image: url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Example background image */
+    background-image: url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-attachment: fixed;
     color: #333;
 }
 
 header, section, footer {
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* The blur effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -42,14 +42,12 @@ header nav ul li a {
 }
 
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
+    /* The width constraint has been removed from here */
 }
 
 section {
-    margin-bottom: 20px;
     padding: 20px;
+    margin: 0 20px 20px 20px; /* Added margin to match header/footer */
 }
 
 .project {
@@ -60,8 +58,8 @@ footer {
     text-align: center;
     padding: 1rem 0;
     color: #fff;
-    position: relative; /* Changed from fixed */
+    position: relative;
     bottom: 0;
-    width: auto; /* Changed from 100% */
+    width: auto;
     margin: 20px;
 }
