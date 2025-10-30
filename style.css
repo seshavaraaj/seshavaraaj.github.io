@@ -22,7 +22,6 @@ body {
 /* --- Modular Components -- */
 /* ------------------------- */
 
-/* Component: A reusable panel with the glassmorphism effect */
 .glass-panel {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -32,7 +31,6 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Component: A reusable button */
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -55,10 +53,9 @@ body {
 /* --- Layout & Typography - */
 /* ------------------------- */
 
-/* Layout rules for specific page elements */
 header, section, footer {
     margin: 20px;
-    padding: 1rem; /* Using 1rem for consistency */
+    padding: 1rem;
 }
 
 header {
@@ -66,17 +63,16 @@ header {
 }
 
 section {
-    padding: 20px; /* Overriding the 1rem for sections that need more space */
+    padding: 20px;
 }
 
 footer {
     text-align: center;
     position: relative;
     bottom: 0;
-    width: auto; /* Overrides default block width */
+    width: auto;
 }
 
-/* Typography rules */
 header h1 {
     color: var(--header-color);
 }
@@ -222,17 +218,11 @@ section h2 {
 /* --- Typewriter Effect --- */
 /* ------------------------- */
 #typewriter-name {
-    display: inline-block; /* Ensures the cursor border is right next to the text */
-    border-right: 3px solid var(--header-color); /* The cursor */
-    white-space: nowrap; /* Prevents the text from wrapping */
-    overflow: hidden; /* Hides the text until it's typed */
+    display: inline-block;
+    border-right: 3px solid var(--header-color);
+    white-space: nowrap;
+    overflow: hidden;
     animation: blink-caret .75s step-end infinite;
-}
-
-/* When typing is done, we stop the blinking */
-#typewriter-name.typing-done {
-    border-right: none;
-    animation: none;
 }
 
 /* The blinking cursor animation */
