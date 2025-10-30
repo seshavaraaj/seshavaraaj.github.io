@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Typewriter Effect ---
+    const nameElement = document.getElementById('typewriter-name');
+    const nameToType = "Seshavaraaj Y";
+    let i = 0;
+
+    function typeWriter() {
+        if (i < nameToType.length) {
+            nameElement.innerHTML += nameToType.charAt(i);
+            i++;
+            setTimeout(typeWriter, 150); // Adjust typing speed here (in ms)
+        } else {
+            // Typing is done, remove the cursor
+            nameElement.classList.add('typing-done');
+        }
+    }
+    // Start the typing effect
+    typeWriter();
+
+
+    // --- Image Gallery and Modal Logic (existing code) ---
     const modal = document.getElementById('image-viewer-modal');
     const modalImage = document.getElementById('modal-image');
     const closeBtn = document.querySelector('.close-btn');
