@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-    --header-color: #FFFFFF;       /* Bright White for main headers */
-    --content-color: #EAE0D9;      /* Soft Off-White for body text */
-    --button-text-color: #FFFFFF;  /* Bright White for button text */
-    --section-header-color: #F0EBE3; /* Slightly muted white for section titles */
+    --header-color: #FFFFFF;
+    --content-color: #EAE0D9;
+    --button-text-color: #FFFFFF;
+    --section-header-color: #F0EBE3;
 }
 
 body {
@@ -15,10 +15,15 @@ body {
                       radial-gradient(at bottom left, #7b4c48 0%, transparent 50%);
     background-size: cover;
     background-attachment: fixed;
-    color: var(--content-color); /* Default text color changed */
+    color: var(--content-color);
 }
 
-header, section, footer {
+/* ------------------------- */
+/* --- Modular Components -- */
+/* ------------------------- */
+
+/* Component: A reusable panel with the glassmorphism effect */
+.glass-panel {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -27,14 +32,53 @@ header, section, footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header {
-    padding: 1rem 0;
-    text-align: center;
-    margin: 20px;
+/* Component: A reusable button */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--button-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
+.btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* ------------------------- */
+/* --- Layout & Typography - */
+/* ------------------------- */
+
+/* Layout rules for specific page elements */
+header, section, footer {
+    margin: 20px;
+    padding: 1rem; /* Using 1rem for consistency */
+}
+
+header {
+    text-align: center;
+}
+
+section {
+    padding: 20px; /* Overriding the 1rem for sections that need more space */
+}
+
+footer {
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: auto; /* Overrides default block width */
+}
+
+/* Typography rules */
 header h1 {
-    color: var(--header-color); /* Use header color */
+    color: var(--header-color);
 }
 
 header nav ul {
@@ -48,27 +92,13 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: var(--button-text-color); /* Use button text color for nav links */
+    color: var(--button-text-color);
     text-decoration: none;
     font-weight: bold;
 }
 
-main {
-    /* The width constraint has been removed from here */
-}
-
-section {
-    padding: 20px;
-    margin: 0 20px 20px 20px;
-}
-
 section h2 {
-    color: var(--section-header-color); /* Use section header color */
-}
-
-#contact p {
-    color: var(--content-color); /* Use content color */
-    font-weight: bold;
+    color: var(--section-header-color);
 }
 
 .project {
@@ -76,7 +106,7 @@ section h2 {
 }
 
 .project h3 {
-    color: var(--section-header-color); /* Use section header color for project titles */
+    color: var(--section-header-color);
 }
 
 .project p {
@@ -84,31 +114,7 @@ section h2 {
     margin-bottom: 10px;
 }
 
-.email-button,
-.project-link-button {
-    display: inline-block;
-    padding: 12px 24px;
-    margin-top: 10px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--button-text-color); /* Use button text color */
-    text-decoration: none;
+#contact p {
+    color: var(--content-color);
     font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.email-button:hover,
-.project-link-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    color: var(--content-color); /* Use content color */
-    position: relative;
-    bottom: 0;
-    width: auto;
-    margin: 20px;
 }
