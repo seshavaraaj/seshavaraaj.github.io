@@ -7,6 +7,10 @@
     --section-header-color: #F0EBE3;
 }
 
+html {
+    scroll-behavior: smooth; /* This enables smooth scrolling for the whole page */
+}
+
 body {
     font-family: 'JetBrains Mono', monospace;
     margin: 0;
@@ -126,8 +130,8 @@ section h2 {
 }
 
 .gallery-item {
-    width: 150px;  /* Increased from 100px */
-    height: 150px; /* Increased from 100px */
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
     object-fit: cover;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -135,8 +139,8 @@ section h2 {
 }
 
 .show-more-btn {
-    width: 150px;  /* Increased from 100px */
-    height: 150px; /* Increased from 100px */
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.3);
     color: var(--button-text-color);
