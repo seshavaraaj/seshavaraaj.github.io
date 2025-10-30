@@ -1,14 +1,26 @@
 body {
     font-family: sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
+    background-image: url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Example background image */
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+}
+
+header, section, footer {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* The blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header {
-    background-color: #333;
     color: #fff;
     padding: 1rem 0;
     text-align: center;
+    margin: 20px;
 }
 
 header nav ul {
@@ -24,6 +36,7 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
 }
 
 main {
@@ -34,9 +47,7 @@ main {
 
 section {
     margin-bottom: 20px;
-    background: #fff;
     padding: 20px;
-    border-radius: 5px;
 }
 
 .project {
@@ -46,9 +57,9 @@ section {
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: #333;
     color: #fff;
-    position: fixed;
+    position: relative; /* Changed from fixed */
     bottom: 0;
-    width: 100%;
+    width: auto; /* Changed from 100% */
+    margin: 20px;
 }
