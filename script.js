@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (i < nameToType.length) {
             nameElement.innerHTML += nameToType.charAt(i);
             i++;
-            setTimeout(typeWriter, 150); // Adjust typing speed here (in ms)
+            setTimeout(typeWriter, 100); // Adjust typing speed here (in ms)
         } else {
             // Typing is done, remove the cursor
             nameElement.classList.add('typing-done');
