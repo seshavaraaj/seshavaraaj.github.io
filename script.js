@@ -1,22 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Typewriter Effect ---
-    const nameElement = document.getElementById('typewriter-name');
-    const nameToType = "Seshavaraaj Y";
-    let i = 0;
+    // --- Dynamic Typewriter Effect ---
+    const titleElement = document.getElementById('dynamic-title');
+    const titles = ["Unity Developer", "Game Programmer"];
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-    function typeWriter() {
-        if (i < nameToType.length) {
-            nameElement.innerHTML += nameToType.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50); // Adjust typing speed here (in ms)
+    function typeEffect() {
+        const currentTitle = titles[titleIndex];
+        let speed = 150; // Typing speed
+
+        if (isDeleting) {
+            // Handle deleting
+            speed = 75; // Deleting speed
+            titleElement.textContent = currentTitle.substring(0, charIndex - 1);
+            charIndex--;
         } else {
-            // Typing is done, remove the cursor
-            nameElement.classList.add('typing-done');
+            // Handle typing
+            titleElement.textContent = currentTitle.substring(0, charIndex + 1);
+            charIndex++;
         }
+
+        // Check if word is complete
+        if (!isDeleting && charIndex === currentTitle.length) {
+            speed = 2000; // Pause after typing
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            titleIndex = (titleIndex + 1) % titles.length;
+            speed = 500; // Pause before typing next word
+        }
+
+        setTimeout(typeEffect, speed);
     }
-    // Start the typing effect
-    typeWriter();
+    // Start the effect
+    typeEffect();
 
 
     // --- Image Gallery and Modal Logic (existing code) ---
