@@ -8,7 +8,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* This enables smooth scrolling for the whole page */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -124,6 +124,7 @@ section h2 {
 /* ------------------------- */
 .image-gallery {
     display: flex;
+    flex-wrap: wrap; /* This is the fix! Allows items to wrap to the next line. */
     gap: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
