@@ -79,6 +79,11 @@ footer {
 
 header h1 {
     color: var(--header-color);
+    margin-bottom: 0; /* Adjust spacing */
+}
+
+header nav {
+    margin-top: 15px; /* Adjust spacing */
 }
 
 header nav ul {
@@ -124,7 +129,7 @@ section h2 {
 /* ------------------------- */
 .image-gallery {
     display: flex;
-    flex-wrap: wrap; /* This is the fix! Allows items to wrap to the next line. */
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -222,16 +227,20 @@ section h2 {
 /* ------------------------- */
 /* --- Typewriter Effect --- */
 /* ------------------------- */
-#typewriter-name {
+#dynamic-title {
+    color: var(--content-color);
+    font-size: 1.2rem;
+    height: 1.5rem; /* Give it a fixed height to prevent layout shifts */
     display: inline-block;
-    border-right: 3px solid var(--header-color);
+    border-right: 3px solid var(--content-color);
     white-space: nowrap;
     overflow: hidden;
     animation: blink-caret .75s step-end infinite;
+    margin: 10px 0;
 }
 
 /* The blinking cursor animation */
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: var(--header-color); }
+    50% { border-color: var(--content-color); }
 }
