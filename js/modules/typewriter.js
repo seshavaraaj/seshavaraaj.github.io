@@ -3,44 +3,65 @@
  * Handles animated text typing effect in the header
  */
 
+import { config } from '../config.js';
+
 export class TypewriterEffect {
     constructor(elementId, titles, typingSpeed = 150, deletingSpeed = 75) {
         this.element = document.getElementById(elementId);
+        if (!this.element) {
+            console.error(`Element with id '${elementId}' not found`);
+            return;
+        }
+        
         this.titles = titles;
         this.typingSpeed = typingSpeed;
         this.deletingSpeed = deletingSpeed;
+        this.pauseAfterTyping = config.typewriter.pauseAfterTyping;
+        this.pauseBeforeNextWord = config.typewriter.pauseBeforeNextWord;
+        
         this.titleIndex = 0;
         this.charIndex = 0;
         this.isDeleting = false;
     }
 
     start() {
+        if (!this.element) return;
         this.type();
     }
 
     type() {
         const currentTitle = this.titles[this.titleIndex];
-        let speed = this.typingSpeed;
+        let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
 
-        if (this.isDeleting) {
-            speed = this.deletingSpeed;
-            this.element.textContent = currentTitle.substring(0, this.charIndex - 1);
-            this.charIndex--;
-        } else {
-            this.element.textContent = currentTitle.substring(0, this.charIndex + 1);
-            this.charIndex++;
-        }
+        this.updateText(currentTitle);
 
-        // Check if word is complete
-        if (!this.isDeleting && this.charIndex === currentTitle.length) {
-            speed = 2000; // Pause after typing
+        if (this.shouldPauseAfterTyping(currentTitle)) {
+            speed = this.pauseAfterTyping;
             this.isDeleting = true;
-        } else if (this.isDeleting && this.charIndex === 0) {
+        } else if (this.shouldStartNextTitle()) {
             this.isDeleting = false;
             this.titleIndex = (this.titleIndex + 1) % this.titles.length;
-            speed = 500; // Pause before typing next word
+            speed = this.pauseBeforeNextWord;
         }
 
         setTimeout(() => this.type(), speed);
+    }
+
+    updateText(currentTitle) {
+        if (this.isDeleting) {
+            this.charIndex--;
+            this.element.textContent = currentTitle.substring(0, this.charIndex);
+        } else {
+            this.charIndex++;
+            this.element.textContent = currentTitle.substring(0, this.charIndex);
+        }
+    }
+
+    shouldPauseAfterTyping(currentTitle) {
+        return !this.isDeleting && this.charIndex === currentTitle.length;
+    }
+
+    shouldStartNextTitle() {
+        return this.isDeleting && this.charIndex === 0;
     }
 }

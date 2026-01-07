@@ -3,16 +3,19 @@
  * Handles full-screen image viewing with navigation
  */
 
+import { config, utils } from '../config.js';
+
 export class ImageViewer {
     constructor(modalId) {
         this.modal = document.getElementById(modalId);
         this.modalImage = document.getElementById('modal-image');
-        this.closeBtn = this.modal.querySelector('.close-btn');
-        this.prevBtn = this.modal.querySelector('.prev-btn');
-        this.nextBtn = this.modal.querySelector('.next-btn');
+        this.closeBtn = this.modal.querySelector(config.selectors.closeBtn);
+        this.prevBtn = this.modal.querySelector(config.selectors.prevBtn);
+        this.nextBtn = this.modal.querySelector(config.selectors.nextBtn);
         
         this.currentImages = [];
         this.currentIndex = 0;
+        this.boundKeyboardHandler = this.handleKeyboard.bind(this);
 
         this.setupEventListeners();
     }
@@ -22,11 +25,8 @@ export class ImageViewer {
         this.nextBtn.addEventListener('click', () => this.showNext());
         this.prevBtn.addEventListener('click', () => this.showPrevious());
 
-        // Close on background click
         this.modal.addEventListener('click', (e) => {
-            if (e.target === this.modal) {
-                this.close();
-            }
+            if (e.target === this.modal) this.close();
         });
     }
 
@@ -34,13 +34,21 @@ export class ImageViewer {
         this.currentImages = images;
         this.currentIndex = index;
         this.updateImage();
-        this.modal.style.display = 'flex';
-        document.addEventListener('keydown', this.handleKeyboard.bind(this));
+        this.showModal();
+        document.addEventListener('keydown', this.boundKeyboardHandler);
     }
 
     close() {
-        this.modal.style.display = 'none';
-        document.removeEventListener('keydown', this.handleKeyboard.bind(this));
+        this.hideModal();
+        document.removeEventListener('keydown', this.boundKeyboardHandler);
+    }
+
+    showModal() {
+        this.modal.style.display = config.display.flex;
+    }
+
+    hideModal() {
+        this.modal.style.display = config.display.none;
     }
 
     updateImage() {
@@ -58,10 +66,14 @@ export class ImageViewer {
     }
 
     handleKeyboard(e) {
-        if (this.modal.style.display === 'flex') {
-            if (e.key === 'ArrowRight') this.showNext();
-            else if (e.key === 'ArrowLeft') this.showPrevious();
-            else if (e.key === 'Escape') this.close();
-        }
+        if (this.modal.style.display !== config.display.flex) return;
+
+        const keyActions = {
+            [config.keys.arrowRight]: () => this.showNext(),
+            [config.keys.arrowLeft]: () => this.showPrevious(),
+            [config.keys.escape]: () => this.close()
+        };
+
+        keyActions[e.key]?.();
     }
 }

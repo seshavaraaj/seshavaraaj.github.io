@@ -3,33 +3,48 @@
  * Handles tab switching functionality
  */
 
+import { config } from '../config.js';
+
 export class TabManager {
     constructor() {
         this.setupGlobalFunction();
     }
 
     setupGlobalFunction() {
-        // Make openTab available globally for inline onclick handlers
-        window.openTab = (evt, tabName) => {
-            this.openTab(evt, tabName);
-        };
+        window.openTab = (evt, tabName) => this.openTab(evt, tabName);
     }
 
     openTab(evt, tabName) {
-        // Hide all tab contents
+        this.hideAllTabs();
+        this.removeActiveClasses();
+        this.showTab(tabName);
+        this.setActiveTab(evt.currentTarget);
+    }
+
+    hideAllTabs() {
         const tabContents = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < tabContents.length; i++) {
-            tabContents[i].style.display = "none";
-        }
+        Array.from(tabContents).forEach(tab => {
+            tab.style.display = config.display.none;
+        });
+    }
 
-        // Remove active class from all tabs
+    removeActiveClasses() {
         const tabButtons = document.getElementsByClassName("tab-btn");
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].className = tabButtons[i].className.replace(" active", "");
-        }
+        Array.from(tabButtons).forEach(btn => {
+            btn.classList.remove(config.classes.active);
+        });
+    }
 
-        // Show current tab and add active class
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+    showTab(tabName) {
+        const tab = document.getElementById(tabName);
+        if (tab) {
+            tab.style.display = config.display.block;
+        }
+    }
+
+    setActiveTab(button) {
+        if (button) {
+            button.classList.add(config.classes.active);
+        }
     }
 }
