@@ -1,0 +1,14 @@
+/* ========================================
+   Footer Component
+   ======================================== */
+
+footer {
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: auto;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.8s;
+    margin: var(--spacing-md);
+    padding: 1rem;
+}

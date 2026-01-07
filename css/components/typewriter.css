@@ -1,0 +1,28 @@
+/* ========================================
+   Typewriter Effect Component
+   ======================================== */
+
+#dynamic-title {
+    font-size: var(--font-size-lg);
+    color: var(--content-color);
+    margin-top: 0;
+    min-height: 1.5em;
+    height: 1.5rem;
+    display: inline-block;
+    border-right: 3px solid var(--content-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink-caret .75s step-end infinite;
+    margin: var(--spacing-sm) 0;
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--content-color);
+    }
+}

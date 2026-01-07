@@ -1,0 +1,22 @@
+/* ========================================
+   Main Stylesheet - Portfolio
+   Imports all modular CSS components
+   ======================================== */
+
+/* Variables & Base */
+@import './variables.css';
+@import './base.css';
+
+/* Components */
+@import './components/scrollbar.css';
+@import './components/glass-panel.css';
+@import './components/button.css';
+@import './components/header.css';
+@import './components/sections.css';
+@import './components/footer.css';
+@import './components/typewriter.css';
+@import './components/tabs.css';
+@import './components/projects.css';
+@import './components/modal.css';
+@import './components/project-modal.css';
+@import './components/gallery.css';

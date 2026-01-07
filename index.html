@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seshavaraaj Y</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -114,8 +114,7 @@
 
     <!-- Project Details Modal -->
     <div id="project-detail-modal" class="modal">
-        <span class="close-btn"
-            onclick="document.getElementById('project-detail-modal').style.display='none'">&times;</span>
+        <span class="close-btn">&times;</span>
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="project-modal-title">Project Title</h2>
@@ -142,14 +141,14 @@
     <!-- Image Viewer Modal (for zooming in on gallery images) -->
     <div id="image-viewer-modal" class="modal">
         <span class="close-btn">&times;</span>
-        <a class="prev-btn">&#10094;</a>
-        <a class="next-btn">&#10095;</a>
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
         <div class="modal-content">
             <img src="" id="modal-image">
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

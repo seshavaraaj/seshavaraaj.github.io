@@ -1,0 +1,12 @@
+/* ========================================
+   Glass Panel Component
+   ======================================== */
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

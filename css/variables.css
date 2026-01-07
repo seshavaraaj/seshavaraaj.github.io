@@ -1,0 +1,39 @@
+/* ========================================
+   CSS Variables - Theme Configuration
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    /* Color Variables */
+    --header-color: #FFFFFF;
+    --content-color: #EAE0D9;
+    --button-text-color: #FFFFFF;
+    --section-header-color: #F0EBE3;
+    
+    /* Background Colors */
+    --bg-primary: #6a8a8b;
+    --bg-gradient-1: #d8c4b8;
+    --bg-gradient-2: #7b4c48;
+    
+    /* Glass Effect */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    
+    /* Spacing */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-primary: 'JetBrains Mono', monospace;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.2rem;
+    --font-size-xl: 2rem;
+    --font-size-xxl: 2.5rem;
+}

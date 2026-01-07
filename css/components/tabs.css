@@ -1,0 +1,71 @@
+/* ========================================
+   Tabs Component
+   ======================================== */
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    background: var(--glass-bg);
+    border-radius: 50px;
+    padding: 5px;
+    margin: 0 auto var(--spacing-lg) auto;
+    width: fit-content;
+}
+
+.tab-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-primary);
+    border-radius: 40px;
+    font-weight: bold;
+}
+
+.tab-btn:hover {
+    color: #fff;
+}
+
+.tab-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--glass-border);
+}
+
+.tab-content {
+    display: none;
+    padding: var(--spacing-md) 0;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+.tab-content[style*="block"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+@-webkit-keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,71 @@
+/* ========================================
+   Header Component
+   ======================================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.1s;
+    flex-wrap: wrap;
+    margin: var(--spacing-md);
+    padding: 1rem;
+}
+
+.brand {
+    text-align: left;
+}
+
+header h1 {
+    color: var(--header-color);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-xxl);
+}
+
+header nav {
+    margin-top: 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    display: inline-block;
+    padding: 15px 30px;
+    background: rgba(234, 224, 217, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-sm);
+    color: var(--button-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .brand {
+        text-align: center;
+        width: 100%;
+    }
+}
