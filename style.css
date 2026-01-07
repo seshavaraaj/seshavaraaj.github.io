@@ -11,15 +11,48 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
 body {
     font-family: 'JetBrains Mono', monospace;
     margin: 0;
     background-color: #6a8a8b;
-    background-image: radial-gradient(at top right, #d8c4b8 0%, transparent 50%), 
-                      radial-gradient(at bottom left, #7b4c48 0%, transparent 50%);
-    background-size: cover;
+    background-image: radial-gradient(at top right, #d8c4b8 0%, transparent 50%),
+        radial-gradient(at bottom left, #7b4c48 0%, transparent 50%);
+    background-size: 400% 400%;
     background-attachment: fixed;
+    animation: gradientAnimation 15s ease infinite;
     color: var(--content-color);
+}
+
+#contact p {
+    color: var(--content-color);
+    font-weight: bold;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--section-header-color);
 }
 
 /* ------------------------- */
@@ -45,11 +78,13 @@ body {
     color: var(--button-text-color);
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
     background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -57,33 +92,122 @@ body {
 /* --- Layout & Typography - */
 /* ------------------------- */
 
-header, section, footer {
+header,
+section,
+footer {
     margin: 20px;
     padding: 1rem;
 }
 
 header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.1s;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+.brand {
+    text-align: left;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Mobile Responsiveness for Header */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .brand {
+        text-align: center;
+        width: 100%;
+    }
 }
 
 section {
     padding: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
 }
+
+section:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+
+/* About */
+section:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+
+/* Projects */
+section:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+
+/* Contact */
 
 footer {
     text-align: center;
     position: relative;
     bottom: 0;
     width: auto;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.8s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 header h1 {
     color: var(--header-color);
-    margin-bottom: 0; /* Adjust spacing */
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+/* Dynamic Title */
+#dynamic-title {
+    font-size: 1.2rem;
+    color: var(--content-color);
+    margin-top: 0;
+    min-height: 1.5em;
+    /* Ensure height doesn't collapse */
 }
 
 header nav {
-    margin-top: 15px; /* Adjust spacing */
+    margin-top: 0;
+    /* Removed margin for centering */
 }
 
 header nav ul {
@@ -97,81 +221,163 @@ header nav ul li {
 }
 
 header nav ul li a {
+    display: inline-block;
+    padding: 15px 30px;
+    background: rgba(234, 224, 217, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
     color: var(--button-text-color);
     text-decoration: none;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 section h2 {
     color: var(--section-header-color);
 }
 
+/* ------------------------- */
+/* --- Project Grid -------- */
+/* ------------------------- */
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/* Specific grid for games/projects */
+#Games,
+#Systems,
+#Mechanics {
+    display: none;
+    /* Default state handled by script */
+}
+
+/* When active, these IDs will also get display: block from script, but we want grid */
+/* We need a specific class or we can override the style attribute set by JS or change JS to use classes. */
+/* Let's assume script sets display: block. We can force grid on the content container if we change the script or wrapped them. */
+/* Simpler: Target the active tab content if it contains projects. */
+
+.tab-content[style*="block"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
 .project {
-    margin-bottom: 15px;
+    position: relative;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0;
+    /* Override previous margin */
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.project-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    /* Dark overlay */
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    /* Fix for blur leak */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.project:hover .project-details {
+    opacity: 1;
 }
 
 .project h3 {
-    color: var(--section-header-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .project p {
-    display: block;
-    margin-bottom: 10px;
-}
-
-#contact p {
-    color: var(--content-color);
-    font-weight: bold;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* Limit text lines */
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* ------------------------- */
-/* --- Image Gallery ------- */
-/* ------------------------- */
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
 
-.gallery-item {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-}
-
-.show-more-btn {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.3);
-    color: var(--button-text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: background-color 0.3s ease;
-}
 
 .show-more-btn:hover {
     background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
 /* ------------------------- */
 /* --- Modal Viewer -------- */
 /* ------------------------- */
+/* Loading State */
+.project.loading {
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
+    /* Higher than project modal */
     left: 0;
     top: 0;
     width: 100%;
@@ -192,7 +398,54 @@ section h2 {
     object-fit: contain;
 }
 
-.close-btn, .prev-btn, .next-btn {
+.steam-featured {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: zoom-in;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.steam-featured-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px) brightness(0.5);
+    /* Blur and darken */
+    z-index: 0;
+    transform: scale(1.1);
+    /* Remove blur edges */
+    transition: opacity 0.2s ease;
+}
+
+.steam-featured-fg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* Pop from background */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.close-btn,
+.prev-btn,
+.next-btn {
     cursor: pointer;
     position: absolute;
     color: white;
@@ -202,7 +455,9 @@ section h2 {
     user-select: none;
 }
 
-.close-btn:hover, .prev-btn:hover, .next-btn:hover {
+.close-btn:hover,
+.prev-btn:hover,
+.next-btn:hover {
     color: #bbb;
 }
 
@@ -211,7 +466,8 @@ section h2 {
     right: 35px;
 }
 
-.prev-btn, .next-btn {
+.prev-btn,
+.next-btn {
     top: 50%;
     transform: translateY(-50%);
 }
@@ -220,9 +476,264 @@ section h2 {
     left: 20px;
 }
 
-.next-btn {
-    right: 20px;
+
+/* ------------------------- */
+/* --- Project Modal ------- */
+/* ------------------------- */
+
+/* ------------------------- */
+/* --- Project Modal ------- */
+#project-detail-modal .modal-content {
+    width: 90%;
+    max-width: 1100px;
+    background: rgba(43, 43, 43, 0.95);
+    /* Semi-transparent dark base */
+    backdrop-filter: blur(15px);
+    /* Stronger blur for modal */
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    /* Consistent rounded corners */
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 85vh;
+    overflow: hidden;
+    position: relative;
+    color: var(--content-color);
 }
+
+/* Close button positioning adjustment */
+#project-detail-modal .close-btn {
+    top: 20px;
+    right: 25px;
+    z-index: 10;
+    color: var(--button-text-color);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#project-detail-modal .close-btn:hover {
+    opacity: 1;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+#project-modal-title {
+    margin: 0;
+    color: var(--header-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.modal-body-layout {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    gap: 40px;
+}
+
+.modal-gallery-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.modal-info-section {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Custom scrollbar for info section */
+.modal-info-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-info-section::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.modal-info-section::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal-info-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#project-modal-description {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: var(--content-color);
+    white-space: pre-line;
+    font-weight: 400;
+}
+
+/* Updated CTA Button to match site theme */
+#project-modal-link {
+    align-self: flex-start;
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--button-text-color);
+    padding: 15px 35px;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    display: inline-flex;
+    /* Changed to inline-flex */
+    align-items: center;
+    /* Center icon vertically */
+    justify-content: center;
+}
+
+#project-modal-link:hover {
+    background: rgba(250, 92, 92, 0.2);
+    /* Itch.io reddish hint */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(250, 92, 92, 0.1);
+    border-color: rgba(250, 92, 92, 0.4);
+    color: #ff5c5c;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    #project-detail-modal .modal-content {
+        height: auto;
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+
+    .modal-body-layout {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .modal-gallery-section,
+    .modal-info-section {
+        flex: none;
+        width: 100%;
+    }
+
+    .modal-info-section {
+        overflow-y: visible;
+    }
+}
+
+/* ------------------------- */
+/* --- Featured & Thumbs --- */
+/* ------------------------- */
+
+.steam-thumbs-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Explicitly prevent vertical scroll */
+    height: 90px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle container border */
+    border-radius: 8px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    /* Slightly darker thumb track */
+}
+
+.steam-thumb {
+    height: 100%;
+    /* Fill the scroll container height */
+    width: auto;
+    /* Let image define width */
+    flex-shrink: 0;
+    /* Prevent squishing */
+    border-radius: 4px;
+    overflow: hidden;
+    background: transparent;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    /* Reserve space for border to prevent jump */
+}
+
+.steam-thumb img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    /* OR cover, but 'auto width' + 'height 100%' usually works for thumbs */
+    display: block;
+}
+
+.steam-thumb:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.steam-thumb.active {
+    opacity: 1;
+    border-color: #fff;
+    /* White border for active */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    /* Glow */
+    transform: scale(1.05);
+    /* Pop out */
+    z-index: 1;
+}
+
+.steam-featured {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    /* Centers the image */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+/* Custom Scrollbar for Project Thumbs */
+.steam-thumbs-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
 
 /* ------------------------- */
 /* --- Typewriter Effect --- */
@@ -230,7 +741,8 @@ section h2 {
 #dynamic-title {
     color: var(--content-color);
     font-size: 1.2rem;
-    height: 1.5rem; /* Give it a fixed height to prevent layout shifts */
+    height: 1.5rem;
+    /* Give it a fixed height to prevent layout shifts */
     display: inline-block;
     border-right: 3px solid var(--content-color);
     white-space: nowrap;
@@ -241,6 +753,83 @@ section h2 {
 
 /* The blinking cursor animation */
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--content-color); }
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--content-color);
+    }
+}
+
+
+/* ------------------------- */
+/* --- Tabs ---------------- */
+/* ------------------------- */
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 5px;
+    margin: 0 auto 30px auto;
+    width: fit-content;
+}
+
+.tab-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'JetBrains Mono', monospace;
+    border-radius: 40px;
+    font-weight: bold;
+}
+
+.tab-btn:hover {
+    color: #fff;
+    /* Removed transform and background change for cleaner segmented look */
+}
+
+.tab-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+    /* Grid layout is applied when active via the selector above */
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seshavaraaj Y</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="glass-panel">
-        <h1>Seshavaraaj Y</h1>
-        <p id="dynamic-title"></p>
+        <div class="brand">
+            <h1>Seshavaraaj Y</h1>
+            <p id="dynamic-title"></p>
+        </div>
         <nav>
             <ul>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#projects-container">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -21,41 +25,86 @@
     <main>
         <section id="about" class="glass-panel">
             <h2>About Me</h2>
-            <p>Enthusiastic game programmer specializing in C# and Unity. I build core gameplay systems and intuitive UI, solve tricky bugs, and prioritize clean, efficient code and performance. I enjoy crafting player-focused experiences and collaborating to ship polished games.</p>
+            <p>Enthusiastic game programmer specializing in C# and Unity. I build core gameplay systems and intuitive
+                UI, solve tricky bugs, and prioritize clean, efficient code and performance. I enjoy crafting
+                player-focused experiences and collaborating to ship polished games.</p>
         </section>
 
-        <section id="projects" class="glass-panel">
-            <h2>My Projects</h2>
-
-            <!-- Project 1 -->
-            <div class="project" data-images='["https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OS5wbmc=/347x500/3lnedr.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OC5wbmc=/347x500/78ol2A.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ny5wbmc=/347x500/2YaFd8.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ni5wbmc=/347x500/TNeTy%2F.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA4MC5wbmc=/347x500/ht4GB6.png"]'>
-                <h3>Stone vs Lava</h3>
-                <div class="image-gallery"></div>
-                <p>Participated in my first game jam, focusing on understanding and adapting to time constraints in rapid game development. Designed and implemented physics-based gameplay mechanics inspired by titles like Angry Birds and Whirly Bird. Gained experience in iterative prototyping, feature prioritization, and delivering a functional, polished gameplay loop within a limited timeframe.</p>
-                <a href="https://hektphanthom.itch.io/stone-vs-lava" class="btn" target="_blank">Project Link</a>
+        <section id="projects-container" class="glass-panel">
+            <h2 class="section-title">Projects</h2>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'Games')">Games</button>
+                <button class="tab-btn" onclick="openTab(event, 'Systems')">Systems</button>
+                <button class="tab-btn" onclick="openTab(event, 'Mechanics')">Mechanics</button>
             </div>
 
-            <!-- Project 2 -->
-            <div class="project" data-images='["https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1MC5wbmc=/347x500/D7M%2Bmb.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1MS5wbmc=/347x500/kPwXSi.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0Ny5wbmc=/347x500/v86fhn.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1Mi5wbmc=/347x500/vrie9P.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0OC5wbmc=/347x500/rSpKmK.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY4NC5wbmc=/347x500/PWsbN7.png"]'>
-                <h3>A Cube</h3>
-                <div class="image-gallery"></div>
-                <p>Developed my first 3D game featuring a self-built physics system inspired by Edge. Focused on understanding and implementing physics principles, collision handling, and time complexity within a 3D environment. Experimented with custom movement logic and physics calculations to achieve smooth, responsive gameplay and a unique control feel.</p>
-                <a href="https://hektphanthom.itch.io/a-cube" class="btn" target="_blank">Project Link</a>
+            <div id="Games" class="tab-content" style="display: block;">
+                <!-- Project 1 -->
+                <div class="project" data-link="https://hektphanthom.itch.io/stone-vs-lava"
+                    data-images='["https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OS5wbmc=/original/5KFtd1.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OC5wbmc=/original/SWe%2Fty.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ny5wbmc=/original/jcioOT.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ni5wbmc=/original/rr8RbT.png", "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA4MC5wbmc=/original/ZO0PRV.png"]'>
+                    <div class="project-details">
+                        <h3>Stone vs Lava</h3>
+                        <p>Participated in my first game jam, focusing on understanding and adapting to time constraints
+                            in
+                            rapid game development. Designed and implemented physics-based gameplay mechanics inspired
+                            by
+                            titles like Angry Birds and Whirly Bird. Gained experience in iterative prototyping, feature
+                            prioritization, and delivering a functional, polished gameplay loop within a limited
+                            timeframe.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project" data-link="https://hektphanthom.itch.io/a-cube"
+                    data-images='["https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1MC5wbmc=/original/AYs45U.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1MS5wbmc=/original/4z7obs.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0Ny5wbmc=/original/whulrk.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1Mi5wbmc=/original/D1tj%2B8.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0OC5wbmc=/original/psmbI3.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0OS5wbmc=/original/rQgd4C.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY4NC5wbmc=/original/nTt7%2B7.png"]'>
+                    <div class="project-details">
+                        <h3>A Cube</h3>
+                        <p>Developed my first 3D game featuring a self-built physics system inspired by Edge. Focused on
+                            understanding and implementing physics principles, collision handling, and time complexity
+                            within a 3D environment. Experimented with custom movement logic and physics calculations to
+                            achieve smooth, responsive gameplay and a unique control feel.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project" data-link="https://hektphanthom.itch.io/bwoom"
+                    data-images='["https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0My5wbmc=/original/w5gR1G.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0MS5wbmc=/original/NRDAwT.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0Mi5wbmc=/original/xExwYW.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczMC5wbmc=/original/d%2Bqxzt.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOC5wbmc=/original/tisROB.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOS5wbmc=/original/tqUrv3.png"]'>
+                    <div class="project-details">
+                        <h3>Bwoom!!</h3>
+                        <p>Designed and implemented a unique approach to player input and movement systems, exploring
+                            alternative control schemes to enhance player engagement. Focused on analyzing which
+                            movement
+                            mechanics feel intuitive and appealing versus those that don’t. Concept and implementation
+                            fully
+                            based on my own original idea, emphasizing experimentation and player experience refinement.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Project 3 -->
-            <div class="project" data-images='["https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0My5wbmc=/347x500/6wDwUj.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0MS5wbmc=/347x500/zx3Q1q.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0Mi5wbmc=/347x500/lVrryK.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0MC5wbmc=/347x500/24uw1a.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOC5wbmc=/347x500/Mum8cj.png", "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOS5wbmc=/347x500/9smJnB.png"]'>
-                <h3>Bwoom!!</h3>
-                <div class="image-gallery"></div>
-                <p>Designed and implemented a unique approach to player input and movement systems, exploring alternative control schemes to enhance player engagement. Focused on analyzing which movement mechanics feel intuitive and appealing versus those that don’t. Concept and implementation fully based on my own original idea, emphasizing experimentation and player experience refinement.</p>
-                <a href="https://hektphanthom.itch.io/bwoom" class="btn" target="_blank">Project Link</a>
+            <div id="Systems" class="tab-content" style="display: none;">
+                <p>Coming soon...</p>
+            </div>
+
+            <div id="Mechanics" class="tab-content" style="display: none;">
+                <p>Coming soon...</p>
             </div>
         </section>
+
+
 
         <section id="contact" class="glass-panel">
             <h2>Contact Me</h2>
             <p>Email: seshav619@gmail.com</p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seshav619@gmail.com" class="btn" target="_blank">Open in Gmail</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seshav619@gmail.com" class="btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                    style="margin-right: 8px; vertical-align: middle;">
+                    <path
+                        d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+                </svg>
+                Open in Gmail
+            </a>
         </section>
     </main>
 
@@ -63,7 +112,34 @@
         <p>&copy; 2025 Seshavaraaj Y</p>
     </footer>
 
-    <!-- Image Viewer Modal -->
+    <!-- Project Details Modal -->
+    <div id="project-detail-modal" class="modal">
+        <span class="close-btn"
+            onclick="document.getElementById('project-detail-modal').style.display='none'">&times;</span>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="project-modal-title">Project Title</h2>
+            </div>
+            <div class="modal-body-layout">
+                <div class="modal-gallery-section" id="project-modal-gallery">
+                    <!-- Gallery Content Will Be Injected Here via JS -->
+                </div>
+                <div class="modal-info-section">
+                    <p id="project-modal-description">Description...</p>
+                    <a id="project-modal-link" href="#" class="btn" target="_blank">
+                        <!-- Itch.io Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 24 24" style="margin-right: 8px;">
+                            <path
+                                d="M2.992 3.116c-2.614 2.784-2.895 6.974-1.342 10.007 2.344 4.577 6.592 4.577 6.592 4.577l1.365-1.718s-2.312-.226-3.23-.973c3.886 1.112 9.658 1.112 13.543 0-.895.735-3.19.98-3.19.98l1.405 1.718s4.25-.02 6.592-4.577c1.553-3.033 1.266-7.223-1.352-10.007-3.822-4.07-7.75-3.373-7.75-3.373s-4.004-.7-7.728 3.366zm15.195 5.908c.95 0 1.722.773 1.722 1.722 0 .95-.772 1.722-1.722 1.722-.95 0-1.72-.773-1.72-1.722 0-.95.772-1.722 1.72-1.722zm-11.554 0c.948 0 1.72.773 1.72 1.722 0 .95-.773 1.722-1.72 1.722-.95 0-1.722-.773-1.722-1.722 0-.95.772-1.722 1.722-1.722z" />
+                        </svg>Itch.io
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal (for zooming in on gallery images) -->
     <div id="image-viewer-modal" class="modal">
         <span class="close-btn">&times;</span>
         <a class="prev-btn">&#10094;</a>
@@ -75,4 +151,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
