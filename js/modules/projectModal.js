@@ -95,6 +95,9 @@ export class ProjectModal {
         const featuredBg = featuredWrapper.querySelector(config.selectors.steamFeaturedBg);
         const featuredFg = featuredWrapper.querySelector(config.selectors.steamFeaturedFg);
 
+        // Enable horizontal scroll with mouse wheel
+        this.enableHorizontalScroll(thumbsContainer);
+
         images.forEach((imgSrc, index) => {
             const thumb = this.createThumbnail(imgSrc, index === 0);
             thumb.onclick = (e) => this.handleThumbnailClick(e, index, imgSrc, featuredBg, featuredFg, thumbsContainer);
@@ -102,6 +105,15 @@ export class ProjectModal {
         });
 
         return thumbsContainer;
+    }
+
+    enableHorizontalScroll(container) {
+        container.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
     }
 
     createThumbnail(imgSrc, isActive) {

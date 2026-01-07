@@ -66,6 +66,9 @@
     border-radius: var(--radius-sm);
     padding: 8px;
     background: rgba(0, 0, 0, 0.2);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 }
 
 .steam-thumb {
