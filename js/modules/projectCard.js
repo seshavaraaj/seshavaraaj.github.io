@@ -9,6 +9,7 @@ export class ProjectCard {
     constructor(projectElement) {
         this.element = projectElement;
         this.images = this.parseImages(projectElement.dataset.images);
+        this.thumbnail = projectElement.dataset.thumbnail || null;
         this.title = projectElement.querySelector('h3')?.innerText || '';
         this.description = projectElement.querySelector('p')?.innerText || '';
         this.link = projectElement.dataset.link || '#';
@@ -34,26 +35,27 @@ export class ProjectCard {
     }
 
     setupBackgroundImage() {
-        if (!this.images.length) return;
+        const imageUrl = this.thumbnail || (this.images.length > 0 ? this.images[0] : null);
+        if (!imageUrl) return;
 
         this.element.classList.add(config.classes.loading);
 
         utils.loadImage(
-            this.images[0],
-            () => this.onImageLoad(),
-            () => this.onImageError()
+            imageUrl,
+            () => this.onImageLoad(imageUrl),
+            () => this.onImageError(imageUrl)
         );
     }
 
-    onImageLoad() {
-        this.element.style.backgroundImage = `url('${this.images[0]}')`;
+    onImageLoad(imageUrl) {
+        this.element.style.backgroundImage = `url('${imageUrl}')`;
         this.element.classList.remove(config.classes.loading);
     }
 
-    onImageError() {
+    onImageError(imageUrl) {
         this.element.classList.remove(config.classes.loading);
         this.element.style.backgroundImage = 'none';
-        console.warn('Failed to load project card image:', this.images[0]);
+        console.warn('Failed to load project card image:', imageUrl);
     }
 
     setupPreloading() {

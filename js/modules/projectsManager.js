@@ -52,6 +52,9 @@ export class ProjectsManager {
         projectDiv.className = 'project';
         projectDiv.dataset.link = project.link || '#';
         projectDiv.dataset.images = JSON.stringify(project.images || []);
+        if (project.thumbnail) {
+            projectDiv.dataset.thumbnail = project.thumbnail;
+        }
 
         const detailsDiv = document.createElement('div');
         detailsDiv.className = 'project-details';
