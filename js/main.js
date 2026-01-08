@@ -15,7 +15,7 @@ class Portfolio {
         this.modules = {};
     }
 
-    initialize() {
+    async initialize() {
         // Initialize Typewriter Effect
         this.modules.typewriter = new TypewriterEffect(
             config.typewriter.elementId,
@@ -25,17 +25,15 @@ class Portfolio {
         );
         this.modules.typewriter.start();
 
-        // Initialize Projects Manager (no modal/gallery dependencies)
+        // Initialize Projects Manager (loads and renders projects from JSON)
         this.modules.projectsManager = new ProjectsManager();
-        this.modules.projectsManager.initialize();
+        await this.modules.projectsManager.initialize();
 
         // Initialize Tab Manager
         this.modules.tabManager = new TabManager();
 
         // Initialize Scroll Animations
         this.modules.scrollAnimations = new ScrollAnimations();
-
-        console.log('Portfolio initialized successfully');
     }
 }
 

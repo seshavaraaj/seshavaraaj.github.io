@@ -43,18 +43,19 @@ export class ScrollAnimations {
     }
 
     setupObserver() {
+        // Observe all elements with animate-on-scroll class
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        
         this.observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                    // Optionally unobserve after animation
+                    // Unobserve after animation to improve performance
                     this.observer.unobserve(entry.target);
                 }
             });
         }, this.observerOptions);
 
-        // Observe all elements with animate-on-scroll class
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
         animatedElements.forEach(el => this.observer.observe(el));
     }
 

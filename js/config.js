@@ -22,31 +22,13 @@ export const config = {
         active: 'active'
     },
 
-    // Animation settings
-    animations: {
-        fadeInDelay: 0.2,
-        transitionSpeed: 0.3,
-        imageTransitionMs: 150,
-        fadeOpacity: '0.5',
-        fullOpacity: '1'
-    },
-
     // Gallery settings
     gallery: {
-        preloadOnHover: true,
-        fadeTransitionSpeed: 150
+        preloadOnHover: true
     },
-
-    // Event names
-    events: {
-        // events removed
-    },
-
-    // Keyboard keys removed (unused)
 
     // Display values
     display: {
-        flex: 'flex',
         none: 'none',
         block: 'block'
     }
@@ -56,8 +38,6 @@ export const config = {
  * Utility functions
  */
 export const utils = {
-    // createElement removed (unused)
-
     /**
      * Preload images
      */
@@ -77,11 +57,5 @@ export const utils = {
         if (onError) img.onerror = onError;
         img.src = src;
         return img;
-    },
-
-    // dispatchEvent removed (unused)
-
-    // setOpacity removed (unused)
-
-    // toggleActiveClass removed (unused)
+    }
 };

@@ -22,15 +22,15 @@ export class TabManager {
     }
 
     hideAllTabs() {
-        const tabContents = document.getElementsByClassName("tab-content");
-        Array.from(tabContents).forEach(tab => {
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach(tab => {
             tab.style.display = config.display.none;
         });
     }
 
     removeActiveClasses() {
-        const tabButtons = document.getElementsByClassName("tab-btn");
-        Array.from(tabButtons).forEach(btn => {
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        tabButtons.forEach(btn => {
             btn.classList.remove(config.classes.active);
         });
     }
