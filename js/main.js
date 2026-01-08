@@ -9,7 +9,6 @@ import { ImageViewer } from './modules/imageViewer.js';
 import { ProjectModal } from './modules/projectModal.js';
 import { ProjectsManager } from './modules/projectsManager.js';
 import { TabManager } from './modules/tabs.js';
-import ScrollAnimations from './modules/scrollAnimations.js';
 
 class Portfolio {
     constructor() {
@@ -41,12 +40,6 @@ class Portfolio {
 
         // Initialize Tab Manager
         this.modules.tabManager = new TabManager();
-
-        // Initialize Scroll Animations
-        this.modules.scrollAnimations = new ScrollAnimations({
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
 
         console.log('Portfolio initialized successfully');
     }
