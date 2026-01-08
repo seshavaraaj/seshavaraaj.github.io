@@ -45,6 +45,20 @@
           "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOC5wbmc=/original/tisROB.png",
           "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOS5wbmc=/original/tqUrv3.png"
         ]
+      },
+      {
+        "id": "survive-the-waves",
+        "title": "Survive The Waves",
+        "description": "Completed as a one-hour personal challenge to test rapid development capabilities under extreme time constraints. Gained valuable insight into the realities of time-limited game development, learning that creating even simple games within short timeframes presents significant challenges. Helped establish a realistic understanding of my development capabilities and the importance of efficient scope management in rapid prototyping.",
+        "link": "https://hektphanthom.itch.io/survive-the-waves",
+        "thumbnail": "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk3My5wbmc=/original/sTwD7G.png",
+        "images": [
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MC5wbmc=/original/4YAROa.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1Mi5wbmc=/original/UFHgJo.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1My5wbmc=/original/dy7sx%2F.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk0OS5wbmc=/original/0UXO4g.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MS5wbmc=/original/ZciENk.png"
+        ]
       }
     ],
     "systems": [],
