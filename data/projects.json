@@ -2,18 +2,12 @@
   "projects": {
     "games": [
       {
-        "id": "stone-vs-lava",
-        "title": "Stone vs Lava",
-        "description": "Participated in my first game jam, focusing on understanding and adapting to time constraints in rapid game development. Designed and implemented physics-based gameplay mechanics inspired by titles like Angry Birds and Whirly Bird. Gained experience in iterative prototyping, feature prioritization, and delivering a functional, polished gameplay loop within a limited timeframe.",
-        "link": "https://hektphanthom.itch.io/stone-vs-lava",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8yNDkxNjY2Ni5wbmc=/original/1Ncuit.png",
-        "images": [
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OS5wbmc=/original/5KFtd1.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OC5wbmc=/original/SWe%2Fty.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ny5wbmc=/original/jcioOT.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ni5wbmc=/original/rr8RbT.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA4MC5wbmc=/original/ZO0PRV.png"
-        ]
+        "id": "fuse-gambit",
+        "title": "Fuse Gambit",
+        "description": "A high-tension, turn-based party strategy game where players weaponize ability cards, outsmart rivals, and hot-potato a ticking bomb until only one survives. Fast rounds, big mind-games, endless chaos.",
+        "link": "https://hektphanthom.itch.io/fuse-gambit/download/siMxi0tPe6RfheC_tC_siQOgZhcZtyXfIv2WPl0t",
+        "thumbnail": "https://img.itch.zone/aW1hZ2UvNDEwNjAwMi8yNDkxNzMxMy5wbmc=/original/%2FgWaeW.png",
+        "images": []
       },
       {
         "id": "a-cube",
@@ -32,6 +26,34 @@
         ]
       },
       {
+        "id": "survive-the-waves",
+        "title": "Survive The Waves",
+        "description": "Completed as a one-hour personal challenge to test rapid development capabilities under extreme time constraints. Gained valuable insight into the realities of time-limited game development, learning that creating even simple games within short timeframes presents significant challenges. Helped establish a realistic understanding of my development capabilities and the importance of efficient scope management in rapid prototyping.",
+        "link": "https://hektphanthom.itch.io/survive-the-waves",
+        "thumbnail": "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk3My5wbmc=/original/sTwD7G.png",
+        "images": [
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MC5wbmc=/original/4YAROa.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1Mi5wbmc=/original/UFHgJo.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1My5wbmc=/original/dy7sx%2F.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk0OS5wbmc=/original/0UXO4g.png",
+          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MS5wbmc=/original/ZciENk.png"
+        ]
+      },
+      {
+        "id": "stone-vs-lava",
+        "title": "Stone vs Lava",
+        "description": "Participated in my first game jam, focusing on understanding and adapting to time constraints in rapid game development. Designed and implemented physics-based gameplay mechanics inspired by titles like Angry Birds and Whirly Bird. Gained experience in iterative prototyping, feature prioritization, and delivering a functional, polished gameplay loop within a limited timeframe.",
+        "link": "https://hektphanthom.itch.io/stone-vs-lava",
+        "thumbnail": "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8yNDkxNjY2Ni5wbmc=/original/1Ncuit.png",
+        "images": [
+          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OS5wbmc=/original/5KFtd1.png",
+          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OC5wbmc=/original/SWe%2Fty.png",
+          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ny5wbmc=/original/jcioOT.png",
+          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ni5wbmc=/original/rr8RbT.png",
+          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA4MC5wbmc=/original/ZO0PRV.png"
+        ]
+      },
+      {
         "id": "bwoom",
         "title": "Bwoom!!",
         "description": "Designed and implemented a unique approach to player input and movement systems, exploring alternative control schemes to enhance player engagement. Focused on analyzing which movement mechanics feel intuitive and appealing versus those that don't. Concept and implementation fully based on my own original idea, emphasizing experimentation and player experience refinement.",
@@ -44,20 +66,6 @@
           "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczMC5wbmc=/original/d%2Bqxzt.png",
           "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOC5wbmc=/original/tisROB.png",
           "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOS5wbmc=/original/tqUrv3.png"
-        ]
-      },
-      {
-        "id": "survive-the-waves",
-        "title": "Survive The Waves",
-        "description": "Completed as a one-hour personal challenge to test rapid development capabilities under extreme time constraints. Gained valuable insight into the realities of time-limited game development, learning that creating even simple games within short timeframes presents significant challenges. Helped establish a realistic understanding of my development capabilities and the importance of efficient scope management in rapid prototyping.",
-        "link": "https://hektphanthom.itch.io/survive-the-waves",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk3My5wbmc=/original/sTwD7G.png",
-        "images": [
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MC5wbmc=/original/4YAROa.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1Mi5wbmc=/original/UFHgJo.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1My5wbmc=/original/dy7sx%2F.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk0OS5wbmc=/original/0UXO4g.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MS5wbmc=/original/ZciENk.png"
         ]
       }
     ],
