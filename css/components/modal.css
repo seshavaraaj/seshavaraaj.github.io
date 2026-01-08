@@ -13,11 +13,26 @@
     background-color: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.closing {
+    animation: fadeOut 0.3s ease;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .modal-content {
     max-width: 80%;
     max-height: 80%;
+    animation: scaleIn 0.4s ease;
 }
 
 #modal-image {
@@ -46,6 +61,7 @@
 .prev-btn:hover,
 .next-btn:hover {
     color: #bbb;
+    transform: scale(1.1);
 }
 
 .close-btn {

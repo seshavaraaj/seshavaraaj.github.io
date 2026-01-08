@@ -35,6 +35,7 @@
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--glass-border);
+    transform: scale(1.05);
 }
 
 .tab-content {
@@ -48,24 +49,4 @@
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--spacing-md);
-}
-
-@-webkit-keyframes fadeEffect {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeEffect {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }

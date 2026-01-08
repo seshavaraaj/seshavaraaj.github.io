@@ -54,6 +54,7 @@
     flex: 1;
     min-height: 0;
     gap: 40px;
+    animation: fadeInUp 0.5s ease;
 }
 
 .modal-gallery-section {

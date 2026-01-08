@@ -9,6 +9,7 @@ import { ImageViewer } from './modules/imageViewer.js';
 import { ProjectModal } from './modules/projectModal.js';
 import { ProjectsManager } from './modules/projectsManager.js';
 import { TabManager } from './modules/tabs.js';
+import { ScrollAnimations } from './modules/scrollAnimations.js';
 
 class Portfolio {
     constructor() {
@@ -40,6 +41,9 @@ class Portfolio {
 
         // Initialize Tab Manager
         this.modules.tabManager = new TabManager();
+
+        // Initialize Scroll Animations
+        this.modules.scrollAnimations = new ScrollAnimations();
 
         console.log('Portfolio initialized successfully');
     }

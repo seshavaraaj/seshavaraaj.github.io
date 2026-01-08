@@ -15,14 +15,3 @@
     animation: blink-caret .75s step-end infinite;
     margin: var(--spacing-sm) 0;
 }
-
-@keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: var(--content-color);
-    }
-}
