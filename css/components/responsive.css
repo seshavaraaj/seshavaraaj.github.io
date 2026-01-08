@@ -106,20 +106,39 @@
         line-height: 1.6;
     }
 
-    /* Tabs - Responsive */
+    /* Tabs - Maintain desktop aesthetic on mobile */
     .tabs {
-        flex-direction: column;
-        width: 100%;
-        border-radius: 12px;
-        padding: 8px;
-        gap: 8px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: calc(100% - 20px);
+        max-width: 100%;
+        border-radius: 40px;
+        padding: 6px;
+        gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
     }
 
     .tab-btn {
-        width: 100%;
+        flex: 1;
+        min-width: fit-content;
+        white-space: nowrap;
         padding: 12px 20px;
-        border-radius: 8px;
-        font-size: 15px;
+        border-radius: 35px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .tab-btn.active {
+        background-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--glass-border);
     }
 
     /* Project Grid - Single column */
@@ -317,7 +336,13 @@
     /* Tabs more compact */
     .tab-btn {
         padding: 10px 16px;
-        font-size: 14px;
+        font-size: 13px;
+        border-radius: 30px;
+    }
+
+    .tabs {
+        padding: 5px;
+        border-radius: 35px;
     }
 
     /* Modal title smaller */
