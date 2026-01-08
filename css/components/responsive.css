@@ -68,24 +68,25 @@
         font-size: 1rem;
     }
 
-    /* Navigation - Stack buttons */
+    /* Navigation - Stack buttons horizontally */
     header nav ul {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 10px;
         width: 100%;
+        justify-content: center;
     }
 
     header nav ul li {
         display: block;
         margin: 0;
-        width: 100%;
+        flex: 0 1 auto;
     }
 
     header nav ul li a {
         display: block;
         padding: 12px 20px;
-        width: 100%;
         box-sizing: border-box;
     }
 
