@@ -27,8 +27,6 @@ All animations have been consolidated into a single, maintainable component that
 - **Project Cards**: Lift + scale on hover, shimmer while loading
 - **Buttons**: Lift + scale on hover, press effect on click
 - **Tabs**: Scale effect on active tab, smooth transitions
-- **Modals**: Scale entrance, fade backdrop, slide content
-- **Gallery**: Thumbnail hover + scale effects
 - **Navigation**: Smooth hover transitions
 
 ## 🎯 Quick Usage
@@ -93,10 +91,7 @@ All animations are:
 
 ### User Interactions
 - **Hover cards**: Lift + scale effect
-- **Click project**: Modal scales in with backdrop fade
 - **Switch tabs**: Content fades between tabs
-- **Click thumbnail**: Featured image crossfades
-- **Open image viewer**: Modal scales in, navigation hovers
 
 ## 📊 Files Changed
 
@@ -110,11 +105,8 @@ All animations are:
 - `css/base.css` (removed duplicate keyframes)
 - `css/components/typewriter.css` (cleaned up)
 - `css/components/tabs.css` (enhanced)
-- `css/components/modal.css` (added entrance animations)
-- `css/components/project-modal.css` (added body animation)
 - `css/components/button.css` (enhanced hover)
 - `css/components/projects.css` (enhanced hover)
-- `css/components/gallery.css` (added animations)
 - `js/main.js` (integrated scroll animations)
 
 ## 🧪 Testing
@@ -129,11 +121,8 @@ All animations are:
 1. ✅ Page load animations
 2. ✅ Scroll down - sections animate in
 3. ✅ Hover over project cards
-4. ✅ Click a project - modal animates in
-5. ✅ Click thumbnails - smooth transitions
-6. ✅ Click featured image - viewer opens
-7. ✅ Switch tabs - content fades
-8. ✅ Hover buttons - lift effect
+4. ✅ Switch tabs - content fades
+5. ✅ Hover buttons - lift effect
 
 ## 💡 Tips
 

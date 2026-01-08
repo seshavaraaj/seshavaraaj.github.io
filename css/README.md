@@ -24,9 +24,7 @@ Each component is a self-contained CSS file that styles a specific UI element:
 | typewriter.css | Typewriter animation |
 | tabs.css | Tab navigation |
 | projects.css | Project card grid |
-| modal.css | Base modal styles |
-| project-modal.css | Project detail modal |
-| gallery.css | Steam-style gallery |
+<!-- modal.css/project-modal.css/gallery.css removed -->
 
 ## CSS Custom Properties
 

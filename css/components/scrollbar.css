@@ -40,52 +40,5 @@
     scrollbar-color: rgba(234, 224, 217, 0.3) rgba(255, 255, 255, 0.05);
 }
 
-/* Modal Info Section Scrollbar */
-.modal-info-section::-webkit-scrollbar {
-    width: 8px;
-}
-
-.modal-info-section::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-}
-
-.modal-info-section::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(234, 224, 217, 0.4), rgba(234, 224, 217, 0.25));
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: content-box;
-}
-
-.modal-info-section::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgba(234, 224, 217, 0.55), rgba(234, 224, 217, 0.35));
-    box-shadow: 0 0 4px rgba(234, 224, 217, 0.2);
-}
-
-/* Project Thumbs Scrollbar (Horizontal) */
-.steam-thumbs-scroll::-webkit-scrollbar {
-    height: 8px;
-}
-
-.steam-thumbs-scroll::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    margin: 0 8px;
-}
-
-.steam-thumbs-scroll::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(234, 224, 217, 0.3));
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: content-box;
-}
-
-.steam-thumbs-scroll::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(234, 224, 217, 0.5));
-    box-shadow: 0 0 6px rgba(234, 224, 217, 0.3);
-}
-
-.steam-thumbs-scroll::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(234, 224, 217, 0.6));
-}
+/* Removed modal and gallery-specific scrollbars */
 

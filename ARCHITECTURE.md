@@ -31,9 +31,7 @@ Portfolio/
 │       ├── typewriter.css         # Typewriter animation
 │       ├── tabs.css               # Tab navigation
 │       ├── projects.css           # Project cards
-│       ├── modal.css              # Base modal
-│       ├── project-modal.css      # Project detail modal
-│       └── gallery.css            # Steam-style gallery
+│       └── projects.css           # Project cards
 │
 ├── js/                             # 📁 JavaScript
 │   ├── main.js                    # App entry point & initialization
@@ -41,9 +39,7 @@ Portfolio/
 │   ├── README.md                  # JavaScript documentation
 │   └── modules/                   # 📁 Feature Modules
 │       ├── typewriter.js          # Typewriter effect (TypewriterEffect class)
-│       ├── imageViewer.js         # Image viewer modal (ImageViewer class)
 │       ├── projectCard.js         # Project card component (ProjectCard class)
-│       ├── projectModal.js        # Project details modal (ProjectModal class)
 │       ├── projectsManager.js     # Projects coordinator (ProjectsManager class)
 │       └── tabs.js                # Tab switching (TabManager class)
 │
@@ -90,24 +86,14 @@ Each module is self-contained with its own:
 
 ### Event-Driven Architecture
 ```javascript
-// ProjectCard dispatches event
-const event = new CustomEvent('openProjectDetails', {
-    detail: { title, description, link, images }
-});
-document.dispatchEvent(event);
-
-// ProjectModal listens for event
-document.addEventListener('openProjectDetails', (e) => {
-    this.open(e.detail);
-});
+// Cards now open external links directly (no modal)
+window.open(link, '_blank');
 ```
 
 ### Dependency Injection
 ```javascript
-// Dependencies passed through constructor
-const imageViewer = new ImageViewer('modal-id');
-const projectModal = new ProjectModal('modal-id', imageViewer);
-const projectsManager = new ProjectsManager(imageViewer);
+// Simplified dependencies
+const projectsManager = new ProjectsManager();
 ```
 
 ### Centralized Configuration
@@ -115,7 +101,7 @@ const projectsManager = new ProjectsManager(imageViewer);
 // config.js
 export const config = {
     typewriter: { titles: [...], speed: 150 },
-    modals: { imageViewer: 'id', projectDetail: 'id' }
+    // modals removed
 };
 
 // main.js
@@ -143,9 +129,8 @@ const typewriter = new TypewriterEffect(
    ↓
 7. Modules initialized in sequence:
    - TypewriterEffect.start()
-   - ImageViewer (ready)
-   - ProjectModal (listening)
    - ProjectsManager.initialize()
+    - ProjectsManager.initialize()
    - TabManager (global function)
    ↓
 8. Application ready

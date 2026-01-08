@@ -21,17 +21,14 @@ Portfolio/
 │       ├── typewriter.css    # Typewriter effect styling
 │       ├── tabs.css          # Tab navigation
 │       ├── projects.css      # Project card styling
-│       ├── modal.css         # Base modal styling
-│       ├── project-modal.css # Project detail modal
-│       └── gallery.css       # Steam-style gallery
 ├── js/                        # JavaScript modules
 │   ├── main.js               # Application entry point
 │   ├── config.js             # Configuration settings
 │   └── modules/              # Feature modules
 │       ├── typewriter.js     # Typewriter effect
-│       ├── imageViewer.js    # Full-screen image viewer
+│       ├── imageViewer.js    # (Removed)
 │       ├── projectCard.js    # Project card component
-│       ├── projectModal.js   # Project detail modal
+│       ├── projectModal.js   # (Removed)
 │       ├── projectsManager.js # Projects coordinator
 │       └── tabs.js           # Tab navigation
 ├── data/                      # Data files

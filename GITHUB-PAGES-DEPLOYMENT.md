@@ -64,12 +64,9 @@ Then follow steps 2-7 from Option 1.
 2. **Typewriter effect works** - Dynamic title animates
 3. **Tab switching works** - Games/Systems/Mechanics tabs function
 4. **Project cards display** - Images load from itch.io
-5. **Project modal opens** - Clicking a project shows details
-6. **Gallery navigation** - Thumbnail clicks change featured image
-7. **Image viewer works** - Click featured image for full-screen view
-8. **Keyboard navigation** - Arrow keys navigate images, ESC closes modal
-9. **Responsive design** - Test on mobile/tablet sizes
-10. **Smooth scrolling** - Navigation links scroll smoothly
+5. **External links open** - Clicking a project opens itch.io in new tab
+6. **Responsive design** - Test on mobile/tablet sizes
+7. **Smooth scrolling** - Navigation links scroll smoothly
 
 ### Browser Console Check
 Open DevTools (F12) and verify:
@@ -157,10 +154,8 @@ Already implemented:
 ## 📱 Mobile Responsiveness
 
 Verified:
-- ✅ Responsive grid layout
-- ✅ Touch-friendly targets
-- ✅ Mobile-optimized modals
-- ✅ Horizontal scroll for thumbnails
+✅ Responsive grid layout
+✅ Touch-friendly targets
 
 ## ✨ Features Working on GitHub Pages
 
@@ -168,13 +163,10 @@ All features confirmed working:
 1. ✅ Typewriter effect animation
 2. ✅ Tab navigation system
 3. ✅ Project card grid with hover effects
-4. ✅ Modal system (project details + image viewer)
-5. ✅ Steam-style gallery with thumbnails
-6. ✅ Keyboard navigation (arrows, ESC)
-7. ✅ Smooth scrolling navigation
-8. ✅ Glass-morphism UI effects
-9. ✅ Responsive design (desktop + mobile)
-10. ✅ External link integration (itch.io, Gmail)
+4. ✅ Smooth scrolling navigation
+5. ✅ Glass-morphism UI effects
+6. ✅ Responsive design (desktop + mobile)
+7. ✅ External link integration (itch.io, Gmail)
 
 ## 🎯 Next Steps After Deployment
 

@@ -14,21 +14,7 @@ export const config = {
         pauseBeforeNextWord: 500
     },
 
-    // Modal IDs
-    modals: {
-        imageViewer: 'image-viewer-modal'
-    },
-
-    // Element selectors
-    selectors: {
-        closeBtn: '.close-btn',
-        prevBtn: '.prev-btn',
-        nextBtn: '.next-btn',
-        projectCard: '.project',
-        steamFeaturedBg: '.steam-featured-bg',
-        steamFeaturedFg: '.steam-featured-fg',
-        steamThumb: '.steam-thumb'
-    },
+    // Modal IDs removed; selectors removed
 
     // CSS Classes
     classes: {
@@ -56,12 +42,7 @@ export const config = {
         // events removed
     },
 
-    // Keyboard keys
-    keys: {
-        arrowRight: 'ArrowRight',
-        arrowLeft: 'ArrowLeft',
-        escape: 'Escape'
-    },
+    // Keyboard keys removed (unused)
 
     // Display values
     display: {
@@ -75,17 +56,7 @@ export const config = {
  * Utility functions
  */
 export const utils = {
-    /**
-     * Create an element with className
-     */
-    createElement(tag, className = '', attributes = {}) {
-        const element = document.createElement(tag);
-        if (className) element.className = className;
-        Object.entries(attributes).forEach(([key, value]) => {
-            element.setAttribute(key, value);
-        });
-        return element;
-    },
+    // createElement removed (unused)
 
     /**
      * Preload images
@@ -108,26 +79,9 @@ export const utils = {
         return img;
     },
 
-    /**
-     * Dispatch custom event
-     */
-    dispatchEvent(eventName, detail) {
-        const event = new CustomEvent(eventName, { detail });
-        document.dispatchEvent(event);
-    },
+    // dispatchEvent removed (unused)
 
-    /**
-     * Set element opacity with optional transition
-     */
-    setOpacity(element, opacity) {
-        if (element) element.style.opacity = opacity;
-    },
+    // setOpacity removed (unused)
 
-    /**
-     * Toggle class on elements
-     */
-    toggleActiveClass(elements, activeElement, className) {
-        elements.forEach(el => el.classList.remove(className));
-        if (activeElement) activeElement.classList.add(className);
-    }
+    // toggleActiveClass removed (unused)
 };

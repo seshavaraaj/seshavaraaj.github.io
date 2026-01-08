@@ -5,7 +5,7 @@
 
 import { config } from './config.js';
 import { TypewriterEffect } from './modules/typewriter.js';
-import { ImageViewer } from './modules/imageViewer.js';
+// ImageViewer removed
 import { ProjectsManager } from './modules/projectsManager.js';
 import { TabManager } from './modules/tabs.js';
 import { ScrollAnimations } from './modules/scrollAnimations.js';
@@ -25,11 +25,8 @@ class Portfolio {
         );
         this.modules.typewriter.start();
 
-        // Initialize Image Viewer Modal
-        this.modules.imageViewer = new ImageViewer(config.modals.imageViewer);
-
-        // Initialize Projects Manager
-        this.modules.projectsManager = new ProjectsManager(this.modules.imageViewer);
+        // Initialize Projects Manager (no modal/gallery dependencies)
+        this.modules.projectsManager = new ProjectsManager();
         this.modules.projectsManager.initialize();
 
         // Initialize Tab Manager

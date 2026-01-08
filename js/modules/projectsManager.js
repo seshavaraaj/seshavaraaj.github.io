@@ -6,8 +6,7 @@
 import { ProjectCard } from './projectCard.js';
 
 export class ProjectsManager {
-    constructor(imageViewer) {
-        this.imageViewer = imageViewer;
+    constructor() {
         this.projectCards = [];
     }
 
@@ -15,7 +14,7 @@ export class ProjectsManager {
         const projectElements = document.querySelectorAll('.project');
         
         projectElements.forEach(element => {
-            const card = new ProjectCard(element, this.imageViewer);
+            const card = new ProjectCard(element);
             this.projectCards.push(card);
         });
     }

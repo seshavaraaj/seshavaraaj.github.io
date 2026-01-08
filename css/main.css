@@ -19,7 +19,7 @@
 @import './components/typewriter.css';
 @import './components/tabs.css';
 @import './components/projects.css';
-@import './components/modal.css';
+/* Modal styles removed */
 
 /* Responsive Design - Must be last to override */
-@import './components/responsive.css?v=3.1';
+@import './components/responsive.css';

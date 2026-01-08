@@ -21,7 +21,6 @@ Comprehensive animation system for the portfolio, featuring entrance animations,
 8. **shimmer** - Loading skeleton animation
 9. **pulse** - Subtle pulsing effect
 10. **blink-caret** - Typewriter cursor effect
-11. **slideInUp** - Modal entrance from bottom
 12. **slideInDown** - Dropdown entrance
 13. **bounceIn** - Playful bouncing entrance
 14. **rotateIn** - Rotating entrance effect
@@ -80,20 +79,7 @@ Comprehensive animation system for the portfolio, featuring entrance animations,
 - **Active**: Pressed effect with scale(0.98)
 - **Duration**: 0.3s
 
-### 6. Modals
-- **Entrance**: fadeIn (0.3s) for backdrop
-- **Content**: scaleIn (0.4s) for modal content
-- **Body**: fadeInUp (0.5s) for modal body
-- **Exit**: fadeOut (0.3s)
-
-### 7. Gallery Thumbnails
-- **Hover**: translateY(-3px) + scale(1.05)
-- **Active**: scale(1.05) + border glow
-- **Duration**: 0.2s
-
-### 8. Modal Navigation Buttons
-- **Hover**: scale(1.1) effect
-- **Duration**: 0.3s
+<!-- Modal and Gallery animations removed during cleanup -->
 
 ### 9. Typewriter Effect
 - **Animation**: Blinking cursor (0.75s infinite)
@@ -221,7 +207,7 @@ Elements with `.animate-on-scroll` class will:
 - [x] No layout shifts during animations
 - [x] Scroll animations trigger at correct viewport position
 - [x] Hover effects are responsive
-- [x] Modal animations don't cause flicker
+<!-- Modal animation checks removed -->
 - [x] Reduced motion preference respected
 - [x] Works on mobile devices
 - [x] No JavaScript errors
@@ -234,13 +220,10 @@ Elements with `.animate-on-scroll` class will:
 3. `css/base.css` - Removed duplicate keyframes
 4. `css/components/typewriter.css` - Removed duplicate keyframes
 5. `css/components/tabs.css` - Removed duplicate keyframes, enhanced
-6. `css/components/modal.css` - Added entrance/exit animations
-7. `css/components/project-modal.css` - Added body animation
-8. `css/components/button.css` - Enhanced hover effects
-9. `css/components/projects.css` - Enhanced hover animations
-10. `css/components/gallery.css` - Added thumbnail animations
-11. `js/modules/scrollAnimations.js` - NEW (Scroll animation handler)
-12. `js/main.js` - Integrated scroll animations module
+6. `css/components/button.css` - Enhanced hover effects
+7. `css/components/projects.css` - Enhanced hover animations
+8. `js/modules/scrollAnimations.js` - NEW (Scroll animation handler)
+9. `js/main.js` - Integrated scroll animations module
 
 ## Performance Metrics
 

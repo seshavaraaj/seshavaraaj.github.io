@@ -6,9 +6,8 @@
 import { config, utils } from '../config.js';
 
 export class ProjectCard {
-    constructor(projectElement, imageViewer) {
+    constructor(projectElement) {
         this.element = projectElement;
-        this.imageViewer = imageViewer;
         this.images = this.parseImages(projectElement.dataset.images);
         this.title = projectElement.querySelector('h3')?.innerText || '';
         this.description = projectElement.querySelector('p')?.innerText || '';

@@ -14,9 +14,7 @@ The JavaScript code is organized using ES6 modules with a clear separation of co
 | Module | Purpose | Exports |
 |--------|---------|---------|
 | typewriter.js | Animated text typing | TypewriterEffect class |
-| imageViewer.js | Full-screen image viewer | ImageViewer class |
 | projectCard.js | Project card component | ProjectCard class |
-| projectModal.js | Project detail modal | ProjectModal class |
 | projectsManager.js | Coordinates projects | ProjectsManager class |
 | tabs.js | Tab navigation | TabManager class |
 
@@ -35,50 +33,27 @@ Handles the animated typing effect in the header.
 - `start()`: Begin the animation
 - `type()`: Internal typing logic
 
-### ImageViewer
-Full-screen modal for viewing images with keyboard navigation.
-
-**Constructor Parameters:**
-- `modalId`: ID of the modal element
-
-**Methods:**
-- `open(images, index)`: Open viewer with image array
-- `close()`: Close the viewer
-- `showNext()`: Show next image
-- `showPrevious()`: Show previous image
+<!-- ImageViewer removed -->
 
 ### ProjectCard
 Individual project card with lazy loading and interactions.
 
 **Constructor Parameters:**
 - `projectElement`: DOM element for the card
-- `imageViewer`: ImageViewer instance
 
 **Methods:**
 - `setupBackgroundImage()`: Load card background
 - `setupPreloading()`: Preload images on hover
 - `setupClickHandler()`: Handle click events
-- `openDetails()`: Emit event to open details
+-- Opens external link directly
 
-### ProjectModal
-Detailed project view with Steam-style gallery.
-
-**Constructor Parameters:**
-- `modalId`: ID of the modal element
-- `imageViewer`: ImageViewer instance
-
-**Methods:**
-- `open(projectData)`: Open modal with project data
-- `close()`: Close the modal
-- `buildSteamGallery(images)`: Create gallery UI
-- `createFeaturedImage(src)`: Create featured image element
-- `createThumbnails(images, ...)`: Create thumbnail strip
+<!-- ProjectModal removed -->
 
 ### ProjectsManager
 Coordinates all project-related functionality.
 
 **Constructor Parameters:**
-- `imageViewer`: ImageViewer instance
+<!-- none -->
 
 **Methods:**
 - `initialize()`: Set up all project cards
@@ -92,29 +67,12 @@ Handles tab switching for different project categories.
 
 ## Communication Patterns
 
-### Custom Events
-Modules communicate using custom DOM events:
-
-```javascript
-// Dispatch event
-const event = new CustomEvent('openProjectDetails', {
-    detail: { title, description, link, images }
-});
-document.dispatchEvent(event);
-
-// Listen for event
-document.addEventListener('openProjectDetails', (e) => {
-    // Handle event
-});
-```
+<!-- Custom event flow removed -->
 
 ### Dependency Injection
 Dependencies are passed through constructors:
 
-```javascript
-const imageViewer = new ImageViewer('modal-id');
-const projectModal = new ProjectModal('modal-id', imageViewer);
-```
+<!-- Modal-related DI removed -->
 
 ## Configuration
 
@@ -123,9 +81,7 @@ All configuration is centralized in `config.js`:
 ```javascript
 export const config = {
     typewriter: { /* ... */ },
-    modals: { /* ... */ },
-    animations: { /* ... */ },
-    gallery: { /* ... */ }
+    animations: { /* ... */ }
 };
 ```
 
@@ -134,11 +90,9 @@ export const config = {
 1. DOM loads
 2. Portfolio class instantiates
 3. Modules initialized in order:
-   - TypewriterEffect
-   - ImageViewer
-   - ProjectModal
-   - ProjectsManager
-   - TabManager
+    - TypewriterEffect
+    - ProjectsManager
+    - TabManager
 4. Event listeners attached
 5. Application ready
 

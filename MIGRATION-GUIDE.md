@@ -36,18 +36,14 @@ This guide explains how the original monolithic code was transformed into a modu
 | Typewriter | `css/components/typewriter.css` |
 | Tabs | `css/components/tabs.css` |
 | Projects | `css/components/projects.css` |
-| Modal | `css/components/modal.css` |
-| Project modal | `css/components/project-modal.css` |
-| Gallery | `css/components/gallery.css` |
+<!-- modal.css, project-modal.css, and gallery.css were removed during cleanup -->
 
 #### script.js (273 lines) → Multiple JS files
 
 | Original Function | New Location | Class/Method |
 |------------------|--------------|--------------|
 | Typewriter effect (lines 1-38) | `js/modules/typewriter.js` | TypewriterEffect |
-| Image viewer modal (lines 40-104) | `js/modules/imageViewer.js` | ImageViewer |
 | Project cards (lines 106-144) | `js/modules/projectCard.js` | ProjectCard |
-| Project detail modal (lines 146-251) | `js/modules/projectModal.js` | ProjectModal |
 | Tab functionality (lines 253-273) | `js/modules/tabs.js` | TabManager |
 | Coordination logic | `js/modules/projectsManager.js` | ProjectsManager |
 | DOMContentLoaded handler | `js/main.js` | Portfolio class |
@@ -117,65 +113,7 @@ export class TypewriterEffect {
 - ✅ Can be tested independently
 - ✅ No global variables
 
-### Example 2: Image Viewer
-
-**Before (script.js, lines 40-104):**
-```javascript
-const modal = document.getElementById('image-viewer-modal');
-const modalImage = document.getElementById('modal-image');
-let currentImages = [];
-let currentIndex = 0;
-
-function openModal(images, index) {
-    currentImages = images;
-    currentIndex = index;
-    updateModalImage();
-    modal.style.display = 'flex';
-}
-
-function closeModal() {
-    modal.style.display = 'none';
-}
-
-// ... more functions
-```
-
-**After (js/modules/imageViewer.js):**
-```javascript
-export class ImageViewer {
-    constructor(modalId) {
-        this.modal = document.getElementById(modalId);
-        this.modalImage = document.getElementById('modal-image');
-        this.currentImages = [];
-        this.currentIndex = 0;
-        
-        this.setupEventListeners();
-    }
-
-    setupEventListeners() {
-        this.closeBtn.addEventListener('click', () => this.close());
-        // ... more listeners
-    }
-
-    open(images, index = 0) {
-        this.currentImages = images;
-        this.currentIndex = index;
-        this.updateImage();
-        this.modal.style.display = 'flex';
-    }
-
-    close() {
-        this.modal.style.display = 'none';
-    }
-}
-```
-
-**Benefits:**
-- ✅ All related code in one place
-- ✅ Private state management
-- ✅ Event listeners organized
-- ✅ Clear public API
-- ✅ Can instantiate multiple viewers
+<!-- Example 2: Image Viewer removed during cleanup; portfolio now opens external links directly from cards. -->
 
 ### Example 3: Project Cards
 
@@ -217,12 +155,9 @@ projects.forEach(project => {
 **After (js/modules/projectCard.js):**
 ```javascript
 export class ProjectCard {
-    constructor(projectElement, imageViewer) {
+    constructor(projectElement) {
         this.element = projectElement;
-        this.imageViewer = imageViewer;
-        this.images = JSON.parse(projectElement.dataset.images);
-        this.title = projectElement.querySelector('h3').innerText;
-        this.description = projectElement.querySelector('p').innerText;
+        this.images = JSON.parse(projectElement.dataset.images || '[]');
         this.link = projectElement.dataset.link;
 
         this.setupBackgroundImage();
@@ -231,28 +166,19 @@ export class ProjectCard {
     }
 
     setupBackgroundImage() {
-        // Separated method for background loading
+        // Background loading for first image (if present)
     }
 
     setupPreloading() {
-        // Separated method for preloading
+        // Preload images on hover/touch
     }
 
     setupClickHandler() {
-        // Separated method for click handling
+        this.element.addEventListener('click', () => this.openLink());
     }
 
-    openDetails() {
-        // Dispatches custom event
-        const event = new CustomEvent('openProjectDetails', {
-            detail: {
-                title: this.title,
-                description: this.description,
-                link: this.link,
-                images: this.images
-            }
-        });
-        document.dispatchEvent(event);
+    openLink() {
+        if (this.link) window.open(this.link, '_blank');
     }
 }
 ```
@@ -266,35 +192,13 @@ export class ProjectCard {
 
 ## 🔄 Communication Pattern Change
 
-### Before: Direct Function Calls
+### Current: Simple External Link
 ```javascript
-// Project card directly calls modal function
+// Project card opens external link
 project.addEventListener('click', () => {
-    openProjectDetails(title, desc, link, images);
+    const link = project.dataset.link;
+    if (link) window.open(link, '_blank');
 });
-
-// Modal function defined globally
-function openProjectDetails(title, desc, link, images) {
-    // Open modal
-}
-```
-
-### After: Event-Driven
-```javascript
-// ProjectCard dispatches event
-openDetails() {
-    const event = new CustomEvent('openProjectDetails', {
-        detail: { title, description, link, images }
-    });
-    document.dispatchEvent(event);
-}
-
-// ProjectModal listens for event
-constructor(modalId, imageViewer) {
-    document.addEventListener('openProjectDetails', (e) => {
-        this.open(e.detail);
-    });
-}
 ```
 
 **Benefits:**
@@ -377,9 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ### After
 ```javascript
 import { TypewriterEffect } from './modules/typewriter.js';
-import { ImageViewer } from './modules/imageViewer.js';
 import { ProjectsManager } from './modules/projectsManager.js';
-// ... more imports
 
 class Portfolio {
     constructor() {
@@ -388,7 +290,6 @@ class Portfolio {
 
     initialize() {
         this.modules.typewriter = new TypewriterEffect(...);
-        this.modules.imageViewer = new ImageViewer(...);
         this.modules.projectsManager = new ProjectsManager(...);
         
         // Initialize each module
@@ -416,9 +317,7 @@ After modularization, verify:
 - [ ] All features work as before
 - [ ] Typewriter animation plays
 - [ ] Project cards display correctly
-- [ ] Clicking cards opens modal
-- [ ] Gallery works with thumbnails
-- [ ] Image viewer opens on click
+- [ ] Clicking cards open external links
 - [ ] Keyboard navigation works
 - [ ] Tabs switch correctly
 - [ ] Styles are applied correctly

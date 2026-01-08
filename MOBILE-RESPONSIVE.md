@@ -36,20 +36,17 @@ Your portfolio is now fully responsive and mobile-friendly while maintaining the
 ## 🎯 Mobile-Specific Features
 
 ### 1. Touch Interactions
-✅ **Swipe Gestures**
-- Swipe left/right to navigate images in viewer
-- Natural touch scrolling for thumbnails
+✅ **Tap Gestures**
+- Tap cards to open external links in new tab
+- Native touch scrolling throughout
 - Momentum scrolling on iOS
 
 ✅ **Touch-Optimized Buttons**
 - 44px minimum touch target (Apple HIG standard)
-- Larger modal navigation (56px on mobile)
 - Clear tap feedback with active states
 
 ✅ **Project Cards**
-- Tap to view details (replaces hover)
-- Touch-friendly project modal
-- Smooth scroll in modals
+- Tap to open external project link (replaces hover)
 
 ### 2. Layout Adaptations
 
@@ -73,16 +70,9 @@ Your portfolio is now fully responsive and mobile-friendly while maintaining the
 - Full-width cards
 - Easier browsing
 
-**Modals**
-- Full screen on mobile (95% viewport)
-- Scrollable content
-- Larger close button
-- Easy-to-tap navigation
+<!-- Modals removed -->
 
-**Gallery**
-- Responsive image sizing
-- Touch-scrollable thumbnails
-- Optimized aspect ratios
+<!-- Gallery removed -->
 
 ### 3. Typography & Spacing
 
@@ -144,12 +134,8 @@ Body: 1rem → 0.95rem
 ✅ All features work on mobile:
 1. Navigation - Smooth scrolling
 2. Tabs - Easy switching
-3. Project cards - Tap to open
-4. Project modal - Full functionality
-5. Gallery - Swipe & tap thumbnails
-6. Image viewer - Swipe navigation
-7. Close buttons - Easy to tap
-8. External links - Open correctly
+3. Project cards - Tap to open external links
+4. External links - Open correctly
 
 ---
 
@@ -201,9 +187,7 @@ Body: 1rem → 0.95rem
 
 ### Enhanced Files
 1. **projectCard.js** - Added touch support
-2. **imageViewer.js** - Added swipe gestures
-3. **projectModal.js** - Improved touch scrolling
-4. **main.css** - Imported responsive styles
+2. **main.css** - Imported responsive styles
 
 ### Key Techniques
 - **Mobile-first approach** for critical features
@@ -324,23 +308,18 @@ https://yourusername.github.io/yourrepo
 **Issue**: Images too large on mobile
 **Solution**: Already handled with responsive images
 
-**Issue**: Modal not closing on mobile
-**Solution**: Added proper touch event handling
+<!-- Modal-related issue removed -->
 
 ---
 
 ## ✨ What's Different on Mobile
 
 ### Replaced Features
-- **Hover → Tap**: Project cards show details on tap
-- **Mouse wheel → Touch scroll**: Gallery navigation
-- **Keyboard → Swipe**: Image viewer navigation
+- **Hover → Tap**: Project cards open links on tap
 - **Cursor → Finger**: All interactions
 
 ### Enhanced Features
 - Larger buttons (easier tapping)
-- Swipe gestures (intuitive)
-- Full-screen modals (better focus)
 - Stacked layouts (easier reading)
 - Touch scrolling (native feel)
 
@@ -359,11 +338,9 @@ https://yourusername.github.io/yourrepo
 - Portrait mode works perfectly
 - Landscape mode adjusted
 - Touch interactions responsive
-- Swipe gestures smooth
 - Buttons easy to tap
 - Text readable
 - Images scale properly
-- Modals work correctly
 - Navigation smooth
 - Performance excellent
 

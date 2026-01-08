@@ -24,8 +24,7 @@ All ES6 modules properly configured:
 - ✅ `js/main.js` - Main entry point
 - ✅ `js/config.js` - Configuration module
 - ✅ `js/modules/typewriter.js` - Typewriter effect
-- ✅ `js/modules/imageViewer.js` - Image modal viewer
-- ✅ `js/modules/projectModal.js` - Project detail modal
+<!-- imageViewer.js and projectModal.js were removed in cleanup -->
 - ✅ `js/modules/projectCard.js` - Project card handler
 - ✅ `js/modules/projectsManager.js` - Projects coordinator
 - ✅ `js/modules/tabs.js` - Tab switching system
@@ -33,13 +32,7 @@ All ES6 modules properly configured:
 ### 4. HTML Element Verification
 All JavaScript DOM references validated:
 - ✅ `dynamic-title` - Typewriter target element
-- ✅ `project-detail-modal` - Project modal container
-- ✅ `project-modal-title` - Project title display
-- ✅ `project-modal-description` - Project description
-- ✅ `project-modal-link` - External link button
-- ✅ `project-modal-gallery` - Gallery container
-- ✅ `image-viewer-modal` - Full-screen image viewer
-- ✅ `modal-image` - Viewer image element
+<!-- project modal and image viewer elements removed in cleanup -->
 
 ### 5. CSS Architecture
 Modular CSS with proper import chain:
@@ -80,20 +73,9 @@ Features used are widely supported:
    - 3 game projects configured
    - Background images lazy-load from itch.io
    - Hover preloading for performance
-   - Click to open detailed view
+   - Click opens external project link (new tab)
 
-4. **Project Modal** ✅
-   - Steam-style gallery interface
-   - Featured image with background blur
-   - Thumbnail navigation strip
-   - Horizontal scroll for thumbnails
-   - Smooth image transitions
-
-5. **Image Viewer Modal** ✅
-   - Full-screen image viewing
-   - Previous/Next navigation buttons
-   - Keyboard controls (←/→/ESC)
-   - Click backdrop to close
+<!-- Project Modal and Image Viewer were removed as per recent scope change -->
 
 6. **Smooth Navigation** ✅
    - CSS scroll-behavior: smooth
@@ -144,10 +126,7 @@ https://USERNAME.github.io/REPO/test-modules.html  # Module test page
 - [x] Typewriter animation works
 - [x] Tab switching functional
 - [x] Project cards display correctly
-- [x] Project modal opens
-- [x] Gallery navigation works
-- [x] Image viewer opens
-- [x] Keyboard navigation responsive
+- [x] External links open correctly (new tab)
 
 ### Post-Deployment (After GitHub Pages Launch)
 - [ ] Access homepage URL
@@ -187,11 +166,9 @@ Already implemented:
 ## 📱 Responsive Design
 
 Verified responsive features:
-- ✅ Mobile-friendly navigation
-- ✅ Touch-optimized modals
-- ✅ Flexible grid layout
-- ✅ Readable typography on all screens
-- ✅ Horizontal thumbnail scroll
+✅ Mobile-friendly navigation
+✅ Flexible grid layout
+✅ Readable typography on all screens
 
 ---
 
