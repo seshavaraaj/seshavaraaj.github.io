@@ -16,8 +16,13 @@ export class ImageViewer {
         this.currentImages = [];
         this.currentIndex = 0;
         this.boundKeyboardHandler = this.handleKeyboard.bind(this);
+        
+        // Touch support
+        this.touchStartX = 0;
+        this.touchEndX = 0;
 
         this.setupEventListeners();
+        this.setupTouchSupport();
     }
 
     setupEventListeners() {
@@ -75,5 +80,32 @@ export class ImageViewer {
         };
 
         keyActions[e.key]?.();
+    }
+    
+    setupTouchSupport() {
+        // Swipe gestures for mobile
+        this.modalImage.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        this.modalImage.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe();
+        }, { passive: true });
+    }
+    
+    handleSwipe() {
+        const swipeThreshold = 50; // minimum distance for swipe
+        const diff = this.touchStartX - this.touchEndX;
+        
+        if (Math.abs(diff) < swipeThreshold) return;
+        
+        if (diff > 0) {
+            // Swiped left - show next
+            this.showNext();
+        } else {
+            // Swiped right - show previous
+            this.showPrevious();
+        }
     }
 }

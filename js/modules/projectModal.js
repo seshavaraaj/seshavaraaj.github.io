@@ -108,12 +108,17 @@ export class ProjectModal {
     }
 
     enableHorizontalScroll(container) {
+        // Mouse wheel scrolling for desktop
         container.addEventListener('wheel', (e) => {
             if (e.deltaY !== 0) {
                 e.preventDefault();
                 container.scrollLeft += e.deltaY;
             }
         }, { passive: false });
+        
+        // Touch scrolling for mobile is handled natively
+        // Add momentum scrolling for iOS
+        container.style.webkitOverflowScrolling = 'touch';
     }
 
     createThumbnail(imgSrc, isActive) {

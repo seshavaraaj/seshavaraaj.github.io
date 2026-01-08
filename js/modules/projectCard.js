@@ -58,13 +58,26 @@ export class ProjectCard {
     }
 
     setupPreloading() {
-        this.element.addEventListener('mouseenter', () => {
+        // Preload on hover (desktop) or touchstart (mobile)
+        const preloadHandler = () => {
             utils.preloadImages(this.images);
-        }, { once: true });
+        };
+        
+        this.element.addEventListener('mouseenter', preloadHandler, { once: true });
+        this.element.addEventListener('touchstart', preloadHandler, { once: true, passive: true });
     }
 
     setupClickHandler() {
-        this.element.addEventListener('click', () => this.openDetails());
+        this.element.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openDetails();
+        });
+        
+        // Better touch handling for mobile
+        this.element.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.openDetails();
+        }, { passive: false });
     }
 
     openDetails() {

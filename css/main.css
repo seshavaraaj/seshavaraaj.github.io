@@ -21,3 +21,6 @@
 @import './components/modal.css';
 @import './components/project-modal.css';
 @import './components/gallery.css';
+
+/* Responsive Design - Must be last to override */
+@import './components/responsive.css';

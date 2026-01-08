@@ -1,0 +1,448 @@
+/* ========================================
+   Responsive Design - Mobile Compatibility
+   Ensures full functionality on all devices
+   ======================================== */
+
+/* ==========================================
+   TABLET (768px - 1024px)
+   ========================================== */
+
+@media (max-width: 1024px) {
+    /* Adjust spacing for tablets */
+    :root {
+        --spacing-md: 18px;
+        --spacing-lg: 25px;
+    }
+
+    /* Slightly smaller fonts */
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================
+   MOBILE (max-width: 768px)
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* Adjust spacing for mobile */
+    :root {
+        --spacing-sm: 8px;
+        --spacing-md: 15px;
+        --spacing-lg: 20px;
+        --font-size-base: 0.95rem;
+        --font-size-lg: 1.1rem;
+        --font-size-xl: 1.6rem;
+        --font-size-xxl: 2rem;
+    }
+
+    /* Body adjustments */
+    body {
+        background-size: 150px 150px, 400% 400%, 400% 400%;
+    }
+
+    /* Header - Stack vertically */
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .brand {
+        text-align: center;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+
+    #dynamic-title {
+        font-size: 1rem;
+    }
+
+    /* Navigation - Stack buttons */
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 0;
+        width: 100%;
+    }
+
+    header nav ul li a {
+        display: block;
+        padding: 12px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Sections */
+    section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+
+    /* About section */
+    #about p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Tabs - Responsive */
+    .tabs {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 12px;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .tab-btn {
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    /* Project Grid - Single column */
+    .tab-content[style*="block"] {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    /* Project Cards */
+    .project {
+        height: 250px;
+    }
+
+    .project h3 {
+        font-size: 1.3rem;
+    }
+
+    .project p {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+
+    /* Touch-friendly: Show details on tap, not hover */
+    .project-details {
+        opacity: 0;
+    }
+
+    .project:active .project-details,
+    .project.show-details .project-details {
+        opacity: 1;
+    }
+
+    /* Contact Section */
+    #contact p {
+        font-size: 0.95rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* Modals - Full screen on mobile */
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+        width: 95%;
+    }
+
+    /* Image Viewer Modal */
+    #modal-image {
+        max-height: 85vh;
+    }
+
+    /* Modal Navigation Buttons - Larger for touch */
+    .prev-btn,
+    .next-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    /* Close button - Larger for touch */
+    .close-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        top: 8px;
+        right: 8px;
+    }
+
+    /* Project Detail Modal */
+    #project-detail-modal .modal-content {
+        width: 95%;
+        height: 95vh;
+        max-height: 95vh;
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    #project-detail-modal .close-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 26px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .modal-header {
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+    }
+
+    #project-modal-title {
+        font-size: 1.6rem;
+    }
+
+    .modal-body-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .modal-gallery-section {
+        width: 100%;
+    }
+
+    .modal-info-section {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    #project-modal-description {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    #project-modal-link {
+        width: 100%;
+        text-align: center;
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+
+    /* Gallery - Touch friendly */
+    .steam-featured {
+        aspect-ratio: 16 / 10;
+        border-radius: 8px;
+    }
+
+    .steam-thumbs-scroll {
+        height: 70px;
+        padding: 6px;
+        gap: 8px;
+    }
+
+    .steam-thumb {
+        height: 100%;
+    }
+
+    /* Footer */
+    footer {
+        margin: 10px;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================
+   SMALL MOBILE (max-width: 480px)
+   ========================================== */
+
+@media (max-width: 480px) {
+    /* Even smaller spacing */
+    :root {
+        --spacing-sm: 6px;
+        --spacing-md: 12px;
+        --spacing-lg: 18px;
+        --font-size-xxl: 1.6rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    /* Navigation buttons smaller */
+    header nav ul li a {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* Project cards more compact */
+    .project {
+        height: 220px;
+    }
+
+    .project h3 {
+        font-size: 1.2rem;
+    }
+
+    .project p {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+    }
+
+    /* Tabs more compact */
+    .tab-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    /* Modal title smaller */
+    #project-modal-title {
+        font-size: 1.4rem;
+    }
+
+    #project-modal-description {
+        font-size: 0.9rem;
+    }
+
+    /* Gallery thumbnails smaller */
+    .steam-thumbs-scroll {
+        height: 60px;
+    }
+
+    /* Navigation buttons */
+    .prev-btn,
+    .next-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+}
+
+/* ==========================================
+   LANDSCAPE MODE (Mobile in landscape)
+   ========================================== */
+
+@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+    /* Adjust modal height for landscape */
+    #project-detail-modal .modal-content {
+        height: 90vh;
+        max-height: 90vh;
+    }
+
+    .modal-body-layout {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .modal-gallery-section {
+        flex: 1.5;
+    }
+
+    .modal-info-section {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .steam-featured {
+        aspect-ratio: 16 / 9;
+    }
+
+    .steam-thumbs-scroll {
+        height: 60px;
+    }
+}
+
+/* ==========================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .tab-btn {
+        min-height: 44px;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+    header nav ul li a {
+        min-height: 44px;
+    }
+
+    /* Remove hover effects on touch devices */
+    .project:hover {
+        transform: none;
+    }
+
+    .project:hover .project-details {
+        opacity: 0;
+    }
+
+    /* Show details on tap */
+    .project:active {
+        transform: scale(0.98);
+    }
+
+    .project:active .project-details {
+        opacity: 1;
+    }
+
+    /* Button active states more pronounced */
+    .btn:active {
+        transform: scale(0.96);
+    }
+
+    .tab-btn:active {
+        transform: scale(0.97);
+    }
+}
+
+/* ==========================================
+   HIGH DPI DISPLAYS (Retina)
+   ========================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Sharper text rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
