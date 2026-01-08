@@ -4,6 +4,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -19,4 +20,6 @@ body {
     background-attachment: fixed;
     animation: gradientAnimation 15s ease infinite;
     color: var(--content-color);
+    overflow-x: hidden;
+    max-width: 100vw;
 }

@@ -68,24 +68,21 @@ export class ProjectCard {
     }
 
     setupClickHandler() {
+        // Direct link opening
         this.element.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.openDetails();
+            if (this.link && this.link !== '#') {
+                window.open(this.link, '_blank');
+            }
         });
         
         // Better touch handling for mobile
         this.element.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            this.openDetails();
-        }, { passive: false });
+            // Let the click event handle it, or simulate click if needed
+            // But usually touchend -> click
+            // Removing preventDefault to allow natural link behavior if we used <a> tag,
+            // but since it's a div, we keep the logic simple.
+        }, { passive: true });
     }
 
-    openDetails() {
-        utils.dispatchEvent(config.events.openProjectDetails, {
-            title: this.title,
-            description: this.description,
-            link: this.link,
-            images: this.images
-        });
-    }
+    /* openDetails removed */
 }

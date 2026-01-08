@@ -173,9 +173,9 @@
     }
 
     .modal-content {
-        max-width: 95vw;
+        max-width: calc(100vw - 20px);
         max-height: 95vh;
-        width: 95%;
+        width: calc(100% - 20px);
     }
 
     /* Image Viewer Modal */
@@ -210,19 +210,21 @@
 
     /* Project Detail Modal */
     #project-detail-modal .modal-content {
-        width: 95%;
+        width: calc(100% - 20px);
+        max-width: calc(100vw - 20px);
         height: 95vh;
         max-height: 95vh;
-        padding: 15px;
+        padding: 12px;
         overflow-y: auto;
+        margin: 0 auto;
     }
 
     #project-detail-modal .close-btn {
         width: 44px;
         height: 44px;
         font-size: 26px;
-        top: 10px;
-        right: 10px;
+        top: 8px;
+        right: 8px;
     }
 
     .modal-header {
@@ -260,21 +262,7 @@
         font-size: 1rem;
     }
 
-    /* Gallery - Touch friendly */
-    .steam-featured {
-        aspect-ratio: 16 / 10;
-        border-radius: 8px;
-    }
-
-    .steam-thumbs-scroll {
-        height: 70px;
-        padding: 6px;
-        gap: 8px;
-    }
-
-    .steam-thumb {
-        height: 100%;
-    }
+    /* Gallery - Touch friendly settings removed - Handled in gallery.css */
 
     /* Footer */
     footer {
@@ -341,10 +329,7 @@
         font-size: 0.9rem;
     }
 
-    /* Gallery thumbnails smaller */
-    .steam-thumbs-scroll {
-        height: 60px;
-    }
+    /* Gallery thumbnails smaller settings removed - Handled in gallery.css */
 
     /* Navigation buttons */
     .prev-btn,
@@ -380,13 +365,7 @@
         overflow-y: auto;
     }
 
-    .steam-featured {
-        aspect-ratio: 16 / 9;
-    }
-
-    .steam-thumbs-scroll {
-        height: 60px;
-    }
+    /* Gallery landscape settings removed - Handled in gallery.css */
 }
 
 /* ==========================================

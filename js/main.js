@@ -6,7 +6,6 @@
 import { config } from './config.js';
 import { TypewriterEffect } from './modules/typewriter.js';
 import { ImageViewer } from './modules/imageViewer.js';
-import { ProjectModal } from './modules/projectModal.js';
 import { ProjectsManager } from './modules/projectsManager.js';
 import { TabManager } from './modules/tabs.js';
 import { ScrollAnimations } from './modules/scrollAnimations.js';
@@ -28,12 +27,6 @@ class Portfolio {
 
         // Initialize Image Viewer Modal
         this.modules.imageViewer = new ImageViewer(config.modals.imageViewer);
-
-        // Initialize Project Modal
-        this.modules.projectModal = new ProjectModal(
-            config.modals.projectDetail,
-            this.modules.imageViewer
-        );
 
         // Initialize Projects Manager
         this.modules.projectsManager = new ProjectsManager(this.modules.imageViewer);

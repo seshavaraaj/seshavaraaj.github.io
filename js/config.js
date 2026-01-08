@@ -16,8 +16,7 @@ export const config = {
 
     // Modal IDs
     modals: {
-        imageViewer: 'image-viewer-modal',
-        projectDetail: 'project-detail-modal'
+        imageViewer: 'image-viewer-modal'
     },
 
     // Element selectors
@@ -34,11 +33,7 @@ export const config = {
     // CSS Classes
     classes: {
         loading: 'loading',
-        active: 'active',
-        steamGallery: 'steam-gallery',
-        steamFeatured: 'steam-featured',
-        steamThumbsScroll: 'steam-thumbs-scroll',
-        steamThumb: 'steam-thumb'
+        active: 'active'
     },
 
     // Animation settings
@@ -58,7 +53,7 @@ export const config = {
 
     // Event names
     events: {
-        openProjectDetails: 'openProjectDetails'
+        // events removed
     },
 
     // Keyboard keys

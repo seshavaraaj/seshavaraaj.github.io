@@ -1,6 +1,7 @@
 /* ========================================
    Main Stylesheet - Portfolio
    Imports all modular CSS components
+   Updated: 2026-01-08 v2.0 - Gallery system rebuilt
    ======================================== */
 
 /* Variables & Base */
@@ -19,8 +20,6 @@
 @import './components/tabs.css';
 @import './components/projects.css';
 @import './components/modal.css';
-@import './components/project-modal.css';
-@import './components/gallery.css';
 
 /* Responsive Design - Must be last to override */
-@import './components/responsive.css';
+@import './components/responsive.css?v=3.1';
