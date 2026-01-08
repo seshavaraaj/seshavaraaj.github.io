@@ -1,6 +1,6 @@
-# Portfolio Project - Modular Structure
+# Portfolio Project
 
-This portfolio has been fully modularized for better organization, maintainability, and scalability.
+A modern, modular portfolio website built with vanilla JavaScript and CSS, featuring a clean architecture with separation of concerns.
 
 ## 📁 Project Structure
 
@@ -10,8 +10,9 @@ Portfolio/
 ├── css/                       # Stylesheets
 │   ├── main.css              # Main CSS file (imports all modules)
 │   ├── variables.css         # CSS variables and theme configuration
-│   ├── base.css              # Base styles and animations
+│   ├── base.css              # Base styles
 │   └── components/           # Component-specific styles
+│       ├── animations.css    # Animation library
 │       ├── scrollbar.css     # Custom scrollbar styling
 │       ├── glass-panel.css   # Glass morphism effect
 │       ├── button.css        # Button component
@@ -21,47 +22,78 @@ Portfolio/
 │       ├── typewriter.css    # Typewriter effect styling
 │       ├── tabs.css          # Tab navigation
 │       ├── projects.css      # Project card styling
+│       └── responsive.css    # Responsive design
 ├── js/                        # JavaScript modules
 │   ├── main.js               # Application entry point
 │   ├── config.js             # Configuration settings
 │   └── modules/              # Feature modules
 │       ├── typewriter.js     # Typewriter effect
-│       ├── imageViewer.js    # (Removed)
 │       ├── projectCard.js    # Project card component
-│       ├── projectModal.js   # (Removed)
 │       ├── projectsManager.js # Projects coordinator
+│       ├── scrollAnimations.js # Scroll-triggered animations
 │       └── tabs.js           # Tab navigation
 ├── data/                      # Data files
-│   └── projects.json         # Project data (optional for future use)
-└── assets/                    # Static assets (images, fonts, etc.)
+│   └── projects.json         # Project data
+└── assets/                    # Static assets
 ```
 
-## 🎯 Key Features of This Architecture
+## 🎯 Key Features
 
-### CSS Modularization
-- **Variables**: Centralized theme configuration
-- **Component-based**: Each UI element has its own stylesheet
-- **Easy customization**: Change themes by modifying `variables.css`
-- **Better organization**: Find and update styles quickly
+### Modular Architecture
+- **Component-based CSS**: Each UI element has its own stylesheet
+- **ES6 Modules**: Modern JavaScript with import/export
+- **Centralized Configuration**: Theme and settings in dedicated files
+- **Responsive Design**: Mobile-first approach with proper breakpoints
 
-### JavaScript Modularization
-- **ES6 Modules**: Modern module system with import/export
-- **Encapsulation**: Each feature is self-contained
-- **Single Responsibility**: Each module handles one concern
-- **Easy testing**: Modules can be tested independently
-- **Scalability**: Add new features without touching existing code
+### Built-in Features
+- **Typewriter Effect**: Animated text in header
+- **Tab Navigation**: Organize projects by category
+- **Scroll Animations**: Elements fade in on scroll
+- **Dynamic Project Loading**: Projects loaded from JSON data
+- **Glass Morphism**: Modern glassmorphic UI elements
 
 ### Benefits
-1. **Maintainability**: Easy to find and fix bugs
-2. **Scalability**: Add new components without breaking existing ones
-3. **Reusability**: Components can be reused across projects
-4. **Collaboration**: Multiple developers can work on different modules
-5. **Performance**: Only load what you need
+1. **Maintainability**: Easy to find and update code
+2. **Scalability**: Add features without breaking existing ones
+3. **Reusability**: Components can be reused in other projects
+4. **Performance**: Optimized animations and efficient DOM queries
+5. **Clean Code**: DRY principles and single responsibility
 
 ## 🚀 How to Use
 
+### Running the Project
+Use a local server (ES6 modules require HTTP protocol):
+
+```bash
+# Python
+python -m http.server 8000
+
+# Node.js
+px http-server
+```
+
+Then open `http://localhost:8000` in your browser.
+
 ### Adding New Projects
-Edit the HTML directly or use the `data/projects.json` file (future enhancement).
+Edit `data/projects.json`:
+
+```json
+{
+  "projects": {
+    "games": [
+      {
+        "id": "my-project",
+        "title": "My Project",
+        "description": "Project description",
+        "link": "https://example.com",
+        "images": ["image-url-1.jpg", "image-url-2.jpg"]
+      }
+    ]
+  }
+}
+```
+
+Projects are automatically rendered when the page loads.
 
 ### Customizing Styles
 1. Edit `css/variables.css` for theme-wide changes
@@ -122,5 +154,14 @@ import { MyComponent } from './modules/myComponent.js';
 
 - All JavaScript uses ES6 module syntax (`type="module"`)
 - CSS uses `@import` for modular stylesheet loading
+- Projects are dynamically loaded from `data/projects.json`
+- Animations respect `prefers-reduced-motion` for accessibility
 - The structure follows separation of concerns principle
-- Each module has a single, well-defined purpose
+
+## 📚 Documentation
+
+- **README.md** (this file) - Project overview and structure
+- **QUICKSTART.md** - Getting started guide with examples
+- **css/README.md** - CSS documentation and guidelines
+- **js/README.md** - JavaScript module documentation
+- **data/README.md** - Data structure documentation

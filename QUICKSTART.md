@@ -1,18 +1,12 @@
 # Quick Start Guide
 
-Get started with your modularized portfolio in minutes!
+Get your portfolio running in minutes!
 
 ## 🚀 Getting Started
 
-### 1. Open the Project
-Simply open `index.html` in a modern web browser:
-- Double-click `index.html`, or
-- Right-click → Open with → Your browser, or
-- Use a local server (recommended for development)
+### 1. Run a Local Server
 
-### 2. Using a Local Server (Recommended)
-
-ES6 modules work best with a local server. Choose one:
+ES6 modules require a local server. Choose one:
 
 **Option A: VS Code Live Server**
 ```
@@ -23,18 +17,18 @@ ES6 modules work best with a local server. Choose one:
 
 **Option B: Python**
 ```bash
-# Python 3
 python -m http.server 8000
-
 # Then open: http://localhost:8000
 ```
 
 **Option C: Node.js**
 ```bash
-npx http-server
-
+px http-server
 # Then open: http://localhost:8080
 ```
+
+### 2. Open in Browser
+Navigate to `http://localhost:8000` (or the appropriate port) in a modern browser.
 
 ## 📝 Customization
 
@@ -44,8 +38,9 @@ Edit `css/variables.css`:
 :root {
     --header-color: #FFFFFF;        /* Header text */
     --content-color: #EAE0D9;       /* Body text */
-    --button-text-color: #FFFFFF;   /* Button text */
-    /* ... more variables */
+    --bg-primary: #6a8a8b;          /* Primary background */
+    --bg-gradient-1: #d8c4b8;       /* Gradient color 1 */
+    --bg-gradient-2: #7b4c48;       /* Gradient color 2 */
 }
 ```
 
@@ -54,157 +49,126 @@ Edit `js/config.js`:
 ```javascript
 export const config = {
     typewriter: {
-        elementId: 'dynamic-title',
         titles: ["Unity Developer", "Game Programmer"], // ← Edit here
         typingSpeed: 150,
         deletingSpeed: 75
-    },
-    // ...
+    }
 };
 ```
 
 ### Add New Projects
-Edit the HTML in `index.html` or create a data loader for `data/projects.json` (future enhancement).
+Edit `data/projects.json`:
+```json
+{
+  "projects": {
+    "games": [
+      {
+        "id": "my-game",
+        "title": "My Game Title",
+        "description": "Game description here...",
+        "link": "https://your-game-link.com",
+        "images": [
+          "https://image-url-1.jpg",
+          "https://image-url-2.jpg"
+        ]
+      }
+    ],
+    "systems": [],
+    "mechanics": []
+  }
+}
+```
 
-### Modify Styles
-Find the component you want to style in `css/components/` and edit it:
+### Modify Component Styles
+Find the component in `css/components/` and edit:
 - Button styles → `button.css`
 - Project cards → `projects.css`
 - Header → `header.css`
-- etc.
+- Animations → `animations.css`
+- Responsive → `responsive.css`
 
 ### Add New Features
-1. Create module in `js/modules/myFeature.js`
-2. Create styles in `css/components/my-feature.css`
-3. Import in `js/main.js` and `css/main.css`
+1. Create module file: `js/modules/myFeature.js`
+2. Create stylesheet: `css/components/my-feature.css`
+3. Import in `js/main.js` and add to `css/main.css`
 4. Initialize in Portfolio class
 
 ## 🗂️ Project Structure
 
 ```
 Portfolio/
-├── index.html           ← Main HTML file
+├── index.html           # Main HTML
 ├── css/
-│   ├── main.css        ← CSS entry (imports all)
-│   ├── variables.css   ← Edit colors/theme here
-│   └── components/     ← Individual component styles
+│   ├── main.css        # CSS entry point
+│   ├── variables.css   # Theme variables
+│   ├── base.css        # Base styles
+│   └── components/     # Component styles
 ├── js/
-│   ├── main.js         ← JS entry (imports all)
-│   ├── config.js       ← Edit settings here
-│   └── modules/        ← Feature modules
+│   ├── main.js         # JS entry point
+│   ├── config.js       # Configuration
+│   └── modules/        # Feature modules
 └── data/
-    └── projects.json   ← Project data (optional)
+    └── projects.json   # Project data
 ```
 
 ## 🔍 Common Tasks
 
-### Task: Change Background Gradient
+### Change Background Gradient
 **File:** `css/variables.css`
 ```css
 :root {
-    --bg-gradient-1: #d8c4b8;  /* Top right gradient */
-    --bg-gradient-2: #7b4c48;  /* Bottom left gradient */
+    --bg-gradient-1: #d8c4b8;  /* Top right */
+    --bg-gradient-2: #7b4c48;  /* Bottom left */
 }
 ```
 
-### Task: Adjust Animation Speed
-**File:** `js/config.js`
-```javascript
-typewriter: {
-    typingSpeed: 150,    // Lower = faster typing
-    deletingSpeed: 75    // Lower = faster deleting
+### Adjust Animation Timing
+**File:** `css/components/animations.css`
+```css
+.animate-on-scroll {
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 ```
 
-### Task: Change Tab Labels
-**File:** `index.html` (lines ~38-42)
-```html
-<button class="tab-btn active" onclick="openTab(event, 'Games')">Games</button>
-<button class="tab-btn" onclick="openTab(event, 'Systems')">Systems</button>
-<button class="tab-btn" onclick="openTab(event, 'Mechanics')">Mechanics</button>
-```
-
-### Task: Add Your Email
+### Change Contact Email
 **File:** `index.html` (Contact section)
 ```html
 <p>Email: your-email@example.com</p>
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=your-email@example.com">
 ```
 
-### Task: Disable a Feature
-**Example: Disable typewriter**
-1. Comment out in `js/main.js`:
-```javascript
-// this.modules.typewriter = new TypewriterEffect(...);
-// this.modules.typewriter.start();
-```
-
 ## 🐛 Troubleshooting
 
-### Nothing Shows Up
-- ✅ Check browser console (F12) for errors
-- ✅ Make sure you're using a local server (not file://)
-- ✅ Verify all CSS and JS files are in correct folders
+### Page Doesn't Load
+- Use a local server (not `file://` protocol)
+- Check browser console (F12) for errors
+- Verify all files are in correct locations
 
 ### Styles Look Wrong
-- ✅ Check that `css/main.css` is loading
-- ✅ Verify all @import statements in `main.css`
-- ✅ Clear browser cache (Ctrl+Shift+R)
+- Check that `css/main.css` is loading
+- Verify all `@import` statements in `main.css`
+- Clear browser cache (Ctrl+Shift+R)
 
-### JavaScript Not Working
-- ✅ Ensure script tag has `type="module"`
-- ✅ Check browser console for errors
-- ✅ Verify all imports have correct file paths
-- ✅ Use modern browser (Chrome, Firefox, Edge, Safari)
+### JavaScript Errors
+- Ensure script tag has `type="module"`
+- Verify all import paths are correct
+- Use a modern browser with ES6 module support
 
-### Images Not Loading
-- ✅ Check image URLs in project data attributes
-- ✅ Verify images are accessible
-- ✅ Check browser network tab (F12)
+### Projects Not Showing
+- Check `data/projects.json` format
+- Verify JSON is valid (use a JSON validator)
+- Check browser console for fetch errors
 
-## 📚 Documentation Files
-
-- `README.md` → Project overview & structure
-- `ARCHITECTURE.md` → Complete architecture guide
-- `SYSTEM-DIAGRAM.md` → Visual diagrams
-- `MIGRATION-GUIDE.md` → How code was transformed
-- `css/README.md` → CSS documentation
-- `js/README.md` → JavaScript documentation
-
-## 🎯 Next Steps
-
-1. **Customize** → Make it yours with your colors, text, and projects
-2. **Extend** → Add new features using the modular structure
-3. **Learn** → Study the code to understand the patterns
-4. **Share** → Deploy to GitHub Pages, Netlify, or Vercel
-
-## 💡 Tips
-
-- **Keep it modular**: When adding features, create new modules
-- **Use variables**: Define repeated values in `variables.css`
-- **Test often**: Check your changes in the browser frequently
-- **Read docs**: Check the README files in each folder
-- **Stay organized**: Follow the existing folder structure
-
-## 🆘 Need Help?
-
-Check these resources:
-- Read `ARCHITECTURE.md` for detailed explanations
-- Check `MIGRATION-GUIDE.md` for code examples
-- Look at existing modules for patterns
-- Review documentation in each folder
-
-## ✅ Quick Checklist
+## 🎯 Quick Checklist
 
 Before deploying:
-- [ ] Updated personal information
-- [ ] Changed colors to match your brand
-- [ ] Added your projects
-- [ ] Updated contact information
-- [ ] Tested on mobile devices
-- [ ] Checked all links work
-- [ ] Verified images load
-- [ ] Tested in different browsers
+- [ ] Update personal information in HTML
+- [ ] Change theme colors in `variables.css`
+- [ ] Add your projects to `projects.json`
+- [ ] Update contact email
+- [ ] Test on mobile devices
+- [ ] Verify all links work
+- [ ] Test in different browsers
 
 ## 🚢 Deployment
 
@@ -213,7 +177,7 @@ Before deploying:
 1. Push to GitHub repository
 2. Go to Settings → Pages
 3. Select main branch
-4. Click Save
+4. Save and wait for deployment
 ```
 
 ### Netlify
@@ -225,9 +189,8 @@ Before deploying:
 ### Vercel
 ```bash
 npx vercel
-# Follow prompts
 ```
 
 ---
 
-**Enjoy your modular portfolio! 🎉**
+**Happy coding! 🎉**
