@@ -10,13 +10,7 @@
 
 ::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
-}
-
-/* Only enable blur on desktop */
-@media (min-width: 769px) {
-    ::-webkit-scrollbar-track {
-        backdrop-filter: blur(5px);
-    }
+    backdrop-filter: blur(5px);
 }
 
 ::-webkit-scrollbar-thumb {
