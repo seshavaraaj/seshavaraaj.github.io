@@ -9,6 +9,7 @@ export class ProjectsManager {
     constructor() {
         this.projectCards = [];
         this.projectsData = null;
+        this.projectMap = new Map();
     }
 
     async initialize() {
@@ -16,6 +17,9 @@ export class ProjectsManager {
             // Fetch projects data
             const response = await fetch('data/projects.json');
             this.projectsData = await response.json();
+            
+            // Build project map for O(1) lookups
+            this.buildProjectMap();
             
             // Render projects for each category
             this.renderProjects('Games', this.projectsData.projects.games);
@@ -25,7 +29,7 @@ export class ProjectsManager {
             // Initialize project cards
             this.initializeProjectCards();
         } catch (error) {
-            console.error('Failed to load projects:', error);
+            // Silently handle error
         }
     }
 
@@ -51,7 +55,6 @@ export class ProjectsManager {
         const projectDiv = document.createElement('div');
         projectDiv.className = 'project';
         projectDiv.dataset.link = project.link || '#';
-        projectDiv.dataset.images = JSON.stringify(project.images || []);
         projectDiv.dataset.projectId = project.id || '';
         if (project.thumbnail) {
             projectDiv.dataset.thumbnail = project.thumbnail;
@@ -73,24 +76,28 @@ export class ProjectsManager {
         return projectDiv;
     }
 
+    buildProjectMap() {
+        // Build Map for O(1) project lookups
+        const categories = ['games', 'systems', 'mechanics'];
+        categories.forEach(category => {
+            const projects = this.projectsData.projects[category];
+            if (projects) {
+                projects.forEach(project => {
+                    if (project.id) {
+                        this.projectMap.set(project.id, project);
+                    }
+                });
+            }
+        });
+    }
+
     initializeProjectCards() {
         const projectElements = document.querySelectorAll('.project');
         
         projectElements.forEach(element => {
-            // Find matching project data
+            // Get project data using O(1) Map lookup
             const projectId = element.dataset.projectId;
-            let projectData = null;
-            
-            if (projectId && this.projectsData) {
-                // Search in all categories
-                for (const category of ['games', 'systems', 'mechanics']) {
-                    const found = this.projectsData.projects[category]?.find(p => p.id === projectId);
-                    if (found) {
-                        projectData = found;
-                        break;
-                    }
-                }
-            }
+            const projectData = projectId ? this.projectMap.get(projectId) : null;
             
             const card = new ProjectCard(element, projectData);
             this.projectCards.push(card);

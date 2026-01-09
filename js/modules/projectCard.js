@@ -10,8 +10,8 @@ export class ProjectCard {
     constructor(projectElement, projectData) {
         this.element = projectElement;
         this.projectData = projectData || {};
-        this.images = this.parseImages(projectElement.dataset.images);
-        this.thumbnail = projectElement.dataset.thumbnail || null;
+        this.images = this.projectData.images || [];
+        this.thumbnail = this.projectData.thumbnail || null;
         this.title = projectElement.querySelector('h3')?.innerText || '';
         this.description = projectElement.querySelector('p')?.innerText || '';
         this.link = projectElement.dataset.link || '#';
@@ -25,15 +25,6 @@ export class ProjectCard {
             this.setupPreloading();
         }
         this.setupClickHandler();
-    }
-
-    parseImages(imagesData) {
-        try {
-            return JSON.parse(imagesData) || [];
-        } catch (e) {
-            console.error('Failed to parse project images:', e);
-            return [];
-        }
     }
 
     setupBackgroundImage() {
@@ -57,7 +48,6 @@ export class ProjectCard {
     onImageError(imageUrl) {
         this.element.classList.remove(config.classes.loading);
         this.element.style.backgroundImage = 'none';
-        console.warn('Failed to load project card image:', imageUrl);
     }
 
     setupPreloading() {

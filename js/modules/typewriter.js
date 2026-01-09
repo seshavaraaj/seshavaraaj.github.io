@@ -9,7 +9,6 @@ export class TypewriterEffect {
     constructor(elementId, titles, typingSpeed = 150, deletingSpeed = 75) {
         this.element = document.getElementById(elementId);
         if (!this.element) {
-            console.error(`Element with id '${elementId}' not found`);
             return;
         }
         

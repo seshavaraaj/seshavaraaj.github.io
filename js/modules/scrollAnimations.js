@@ -24,21 +24,19 @@ export class ScrollAnimations {
     }
 
     addAnimationClasses() {
-        // Add animation classes to sections that should animate
-        const sections = document.querySelectorAll('.glass-panel');
-        sections.forEach((section, index) => {
-            // Add delay based on index for staggered effect
-            section.classList.add('animate-on-scroll');
-            if (index > 0) {
-                section.style.transitionDelay = `${index * 0.1}s`;
-            }
-        });
+        // Add animation classes to sections and projects
+        this.addAnimationToElements('.glass-panel', true);
+        this.addAnimationToElements('.project', false);
+    }
 
-        // Add animation to project cards
-        const projects = document.querySelectorAll('.project');
-        projects.forEach((project, index) => {
-            project.classList.add('animate-on-scroll');
-            project.style.transitionDelay = `${index * 0.1}s`;
+    addAnimationToElements(selector, skipFirstDelay) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            element.classList.add('animate-on-scroll');
+            const shouldSkip = skipFirstDelay && index === 0;
+            if (!shouldSkip) {
+                element.style.transitionDelay = `${index * 0.1}s`;
+            }
         });
     }
 

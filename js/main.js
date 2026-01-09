@@ -5,7 +5,6 @@
 
 import { config } from './config.js';
 import { TypewriterEffect } from './modules/typewriter.js';
-// ImageViewer removed
 import { ProjectsManager } from './modules/projectsManager.js';
 import { TabManager } from './modules/tabs.js';
 import { ScrollAnimations } from './modules/scrollAnimations.js';

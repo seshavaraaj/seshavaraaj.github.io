@@ -14,8 +14,6 @@ export const config = {
         pauseBeforeNextWord: 500
     },
 
-    // Modal IDs removed; selectors removed
-
     // CSS Classes
     classes: {
         loading: 'loading',

@@ -13,6 +13,9 @@ export class ProjectModal {
         this.currentImageIndex = 0;
         this.images = [];
         
+        // Bind event handlers for cleanup capability
+        this.handleEscapeKey = this.handleEscapeKey.bind(this);
+        
         this.createModal();
         this.setupEventListeners();
     }
@@ -56,6 +59,16 @@ export class ProjectModal {
         document.body.appendChild(this.overlay);
         
         this.modal = modalContent;
+        
+        // Cache frequently accessed DOM elements
+        this.modalTitle = this.modal.querySelector('.modal-title');
+        this.modalDescription = this.modal.querySelector('.modal-description');
+        this.steamGallery = this.modal.querySelector('.steam-gallery');
+        this.steamFeatured = this.modal.querySelector('.steam-featured');
+        this.steamFeaturedBg = this.modal.querySelector('.steam-featured-bg');
+        this.steamFeaturedFg = this.modal.querySelector('.steam-featured-fg');
+        this.steamThumbsContainer = this.modal.querySelector('.steam-thumbs-scroll');
+        this.visitBtn = this.modal.querySelector('.modal-visit-btn');
     }
 
     setupEventListeners() {
@@ -73,15 +86,10 @@ export class ProjectModal {
         });
         
         // Escape key to close
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
-                this.close();
-            }
-        });
+        document.addEventListener('keydown', this.handleEscapeKey);
         
         // Visit button
-        const visitBtn = this.modal.querySelector('.modal-visit-btn');
-        visitBtn.addEventListener('click', () => {
+        this.visitBtn.addEventListener('click', () => {
             if (this.currentProject && this.currentProject.link) {
                 window.open(this.currentProject.link, '_blank');
             }
@@ -99,15 +107,15 @@ export class ProjectModal {
         this.currentImageIndex = 0;
         
         // Set title and description
-        this.modal.querySelector('.modal-title').textContent = project.title;
-        this.modal.querySelector('.modal-description').textContent = project.description;
+        this.modalTitle.textContent = project.title;
+        this.modalDescription.textContent = project.description;
         
         // Setup gallery
         if (this.images.length > 0) {
             this.setupGallery();
         } else {
             // Hide gallery if no images
-            this.modal.querySelector('.steam-gallery').style.display = 'none';
+            this.steamGallery.style.display = 'none';
         }
         
         // Show modal and prevent body scroll
@@ -152,14 +160,10 @@ export class ProjectModal {
     }
 
     setupGallery() {
-        const gallery = this.modal.querySelector('.steam-gallery');
-        gallery.style.display = 'flex';
-        
-        const featured = gallery.querySelector('.steam-featured');
-        const thumbsContainer = gallery.querySelector('.steam-thumbs-scroll');
+        this.steamGallery.style.display = 'flex';
         
         // Clear previous thumbnails
-        thumbsContainer.innerHTML = '';
+        this.steamThumbsContainer.innerHTML = '';
         
         // Create thumbnails
         this.images.forEach((imageUrl, index) => {
@@ -178,7 +182,7 @@ export class ProjectModal {
             thumb.appendChild(img);
             thumb.addEventListener('click', () => this.showImage(index));
             
-            thumbsContainer.appendChild(thumb);
+            this.steamThumbsContainer.appendChild(thumb);
         });
         
         // Load first image
@@ -191,12 +195,8 @@ export class ProjectModal {
         this.currentImageIndex = index;
         const imageUrl = this.images[index];
         
-        const featured = this.modal.querySelector('.steam-featured');
-        const featuredBg = featured.querySelector('.steam-featured-bg');
-        const featuredFg = featured.querySelector('.steam-featured-fg');
-        
         // Show loading state
-        featured.classList.add('loading');
+        this.steamFeatured.classList.add('loading');
         
         // Update active thumbnail
         const thumbs = this.modal.querySelectorAll('.steam-thumb');
@@ -209,13 +209,13 @@ export class ProjectModal {
             imageUrl,
             () => {
                 // Success
-                featuredBg.src = imageUrl;
-                featuredFg.src = imageUrl;
-                featuredFg.alt = `${this.currentProject.title} - Image ${index + 1}`;
+                this.steamFeaturedBg.src = imageUrl;
+                this.steamFeaturedFg.src = imageUrl;
+                this.steamFeaturedFg.alt = `${this.currentProject.title} - Image ${index + 1}`;
                 
                 // Remove loading state
                 setTimeout(() => {
-                    featured.classList.remove('loading');
+                    this.steamFeatured.classList.remove('loading');
                 }, 100);
                 
                 // Scroll thumbnail into view
@@ -228,22 +228,23 @@ export class ProjectModal {
                 }
             },
             () => {
-                // Error
-                console.error('Failed to load image:', imageUrl);
-                featured.classList.remove('loading');
+                // Error - silently handle
+                this.steamFeatured.classList.remove('loading');
             }
         );
     }
 
-    nextImage() {
-        if (this.currentImageIndex < this.images.length - 1) {
-            this.showImage(this.currentImageIndex + 1);
+    handleEscapeKey(e) {
+        if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+            this.close();
         }
     }
 
-    previousImage() {
-        if (this.currentImageIndex > 0) {
-            this.showImage(this.currentImageIndex - 1);
+    destroy() {
+        // Cleanup event listeners
+        document.removeEventListener('keydown', this.handleEscapeKey);
+        if (this.observer) {
+            this.observer.disconnect();
         }
     }
 }
