@@ -7,18 +7,16 @@
    KEYFRAME DEFINITIONS
    ========================================== */
 
-/* Background Gradient Animation */
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
+/* Background Gradient Animation - GPU Accelerated */
+@keyframes gradientMove {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
     }
-
-    50% {
-        background-position: 100% 50%;
+    33% {
+        transform: translate(5%, 5%) rotate(1deg);
     }
-
-    100% {
-        background-position: 0% 50%;
+    66% {
+        transform: translate(-5%, 3%) rotate(-1deg);
     }
 }
 
@@ -144,11 +142,13 @@
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
 }
 
 .animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
 }
 
 /* ==========================================
