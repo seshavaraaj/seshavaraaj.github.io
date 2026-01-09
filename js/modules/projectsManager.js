@@ -10,27 +10,47 @@ export class ProjectsManager {
         this.projectCards = [];
         this.projectsData = null;
         this.projectMap = new Map();
+        
+        // Category configuration
+        this.categories = {
+            display: ['Games', 'Systems', 'Mechanics'],
+            data: ['games', 'systems', 'mechanics']
+        };
     }
 
     async initialize() {
         try {
             // Fetch projects data
             const response = await fetch('data/projects.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             this.projectsData = await response.json();
             
             // Build project map for O(1) lookups
             this.buildProjectMap();
             
             // Render projects for each category
-            this.renderProjects('Games', this.projectsData.projects.games);
-            this.renderProjects('Systems', this.projectsData.projects.systems);
-            this.renderProjects('Mechanics', this.projectsData.projects.mechanics);
+            this.categories.display.forEach((displayName, index) => {
+                const dataKey = this.categories.data[index];
+                this.renderProjects(displayName, this.projectsData.projects[dataKey]);
+            });
             
             // Initialize project cards
             this.initializeProjectCards();
         } catch (error) {
-            // Silently handle error
+            // Gracefully handle error by showing fallback message
+            this.handleLoadError();
         }
+    }
+
+    handleLoadError() {
+        this.categories.display.forEach(category => {
+            const container = document.getElementById(category);
+            if (container) {
+                container.innerHTML = '<p>Unable to load projects. Please try again later.</p>';
+            }
+        });
     }
 
     renderProjects(category, projects) {
@@ -78,8 +98,7 @@ export class ProjectsManager {
 
     buildProjectMap() {
         // Build Map for O(1) project lookups
-        const categories = ['games', 'systems', 'mechanics'];
-        categories.forEach(category => {
+        this.categories.data.forEach(category => {
             const projects = this.projectsData.projects[category];
             if (projects) {
                 projects.forEach(project => {

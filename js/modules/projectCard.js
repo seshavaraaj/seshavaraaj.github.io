@@ -12,8 +12,12 @@ export class ProjectCard {
         this.projectData = projectData || {};
         this.images = this.projectData.images || [];
         this.thumbnail = this.projectData.thumbnail || null;
-        this.title = projectElement.querySelector('h3')?.innerText || '';
-        this.description = projectElement.querySelector('p')?.innerText || '';
+        
+        // Cache DOM queries
+        const titleEl = projectElement.querySelector('h3');
+        const descEl = projectElement.querySelector('p');
+        this.title = titleEl?.innerText || '';
+        this.description = descEl?.innerText || '';
         this.link = projectElement.dataset.link || '#';
 
         this.initialize();
@@ -66,11 +70,6 @@ export class ProjectCard {
             e.preventDefault();
             this.openProject();
         });
-        
-        // Better touch handling for mobile
-        this.element.addEventListener('touchend', (e) => {
-            // Touch events will trigger click event
-        }, { passive: true });
     }
 
     isMobileDevice() {

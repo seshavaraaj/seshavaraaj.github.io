@@ -4,14 +4,15 @@
  */
 
 import { utils } from '../config.js';
+import { GalleryManager } from './galleryManager.js';
 
 export class ProjectModal {
     constructor() {
         this.modal = null;
         this.overlay = null;
         this.currentProject = null;
-        this.currentImageIndex = 0;
-        this.images = [];
+        this.galleryManager = null;
+        this.cachedThumbs = [];
         
         // Bind event handlers for cleanup capability
         this.handleEscapeKey = this.handleEscapeKey.bind(this);
@@ -103,16 +104,15 @@ export class ProjectModal {
 
     open(project) {
         this.currentProject = project;
-        this.images = project.images || [];
-        this.currentImageIndex = 0;
+        const images = project.images || [];
         
         // Set title and description
         this.modalTitle.textContent = project.title;
         this.modalDescription.textContent = project.description;
         
-        // Setup gallery
-        if (this.images.length > 0) {
-            this.setupGallery();
+        // Setup gallery using GalleryManager
+        if (images.length > 0) {
+            this.setupGallery(images, project.title);
         } else {
             // Hide gallery if no images
             this.steamGallery.style.display = 'none';
@@ -154,19 +154,19 @@ export class ProjectModal {
         // Clean up after animation
         setTimeout(() => {
             this.currentProject = null;
-            this.images = [];
-            this.currentImageIndex = 0;
+            this.galleryManager = null;
         }, 300);
     }
 
-    setupGallery() {
+    setupGallery(images, projectTitle) {
         this.steamGallery.style.display = 'flex';
         
         // Clear previous thumbnails
         this.steamThumbsContainer.innerHTML = '';
+        this.cachedThumbs = [];
         
-        // Create thumbnails
-        this.images.forEach((imageUrl, index) => {
+        // Create Steam-style thumbnails
+        images.forEach((imageUrl, index) => {
             const thumb = document.createElement('div');
             thumb.className = 'steam-thumb';
             if (index === 0) thumb.classList.add('active');
@@ -176,31 +176,30 @@ export class ProjectModal {
             
             const img = document.createElement('img');
             img.src = imageUrl;
-            img.alt = `${this.currentProject.title} screenshot ${index + 1}`;
+            img.alt = `${projectTitle} screenshot ${index + 1}`;
             img.loading = 'lazy';
             
             thumb.appendChild(img);
-            thumb.addEventListener('click', () => this.showImage(index));
+            thumb.addEventListener('click', () => this.showImage(index, images, projectTitle));
             
             this.steamThumbsContainer.appendChild(thumb);
+            this.cachedThumbs.push(thumb);
         });
         
         // Load first image
-        this.showImage(0);
+        this.showImage(0, images, projectTitle);
     }
 
-    showImage(index) {
-        if (index < 0 || index >= this.images.length) return;
+    showImage(index, images, projectTitle) {
+        if (index < 0 || index >= images.length) return;
         
-        this.currentImageIndex = index;
-        const imageUrl = this.images[index];
+        const imageUrl = images[index];
         
         // Show loading state
         this.steamFeatured.classList.add('loading');
         
-        // Update active thumbnail
-        const thumbs = this.modal.querySelectorAll('.steam-thumb');
-        thumbs.forEach((thumb, i) => {
+        // Update active thumbnail using cached elements
+        this.cachedThumbs.forEach((thumb, i) => {
             thumb.classList.toggle('active', i === index);
         });
         
@@ -211,7 +210,7 @@ export class ProjectModal {
                 // Success
                 this.steamFeaturedBg.src = imageUrl;
                 this.steamFeaturedFg.src = imageUrl;
-                this.steamFeaturedFg.alt = `${this.currentProject.title} - Image ${index + 1}`;
+                this.steamFeaturedFg.alt = `${projectTitle} - Image ${index + 1}`;
                 
                 // Remove loading state
                 setTimeout(() => {
@@ -219,8 +218,8 @@ export class ProjectModal {
                 }, 100);
                 
                 // Scroll thumbnail into view
-                if (thumbs[index]) {
-                    thumbs[index].scrollIntoView({
+                if (this.cachedThumbs[index]) {
+                    this.cachedThumbs[index].scrollIntoView({
                         behavior: 'smooth',
                         block: 'nearest',
                         inline: 'center'
@@ -243,9 +242,6 @@ export class ProjectModal {
     destroy() {
         // Cleanup event listeners
         document.removeEventListener('keydown', this.handleEscapeKey);
-        if (this.observer) {
-            this.observer.disconnect();
-        }
     }
 }
 

@@ -3,11 +3,12 @@
  * Handles loading and displaying project details on a separate page
  */
 
+import { GalleryManager } from './modules/galleryManager.js';
+
 class ProjectDetailsPage {
     constructor() {
         this.projectData = null;
-        this.currentImageIndex = 0;
-        this.images = [];
+        this.galleryManager = null;
         
         this.init();
     }
@@ -31,7 +32,7 @@ class ProjectDetailsPage {
                 this.projectData = JSON.parse(storedData);
                 return;
             } catch (e) {
-                console.error('Error parsing stored project data:', e);
+                // Failed to parse stored data, fallback to URL params
             }
         }
 
@@ -62,7 +63,7 @@ class ProjectDetailsPage {
             
             this.showError();
         } catch (error) {
-            console.error('Error loading projects:', error);
+            // Failed to load projects data
             this.showError();
         }
     }
@@ -77,14 +78,14 @@ class ProjectDetailsPage {
         // Set description
         document.getElementById('project-description').textContent = this.projectData.description;
         
-        // Setup gallery
-        this.images = this.projectData.images || [];
+        // Setup gallery using GalleryManager
+        const images = this.projectData.images || [];
         if (this.projectData.thumbnail) {
-            this.images = [this.projectData.thumbnail, ...this.images];
+            images.unshift(this.projectData.thumbnail);
         }
         
-        if (this.images.length > 0) {
-            this.setupGallery();
+        if (images.length > 0) {
+            this.setupGallery(images);
         } else {
             document.getElementById('gallery-section').style.display = 'none';
         }
@@ -100,83 +101,24 @@ class ProjectDetailsPage {
         }
     }
 
-    setupGallery() {
+    setupGallery(images) {
         const mainImage = document.getElementById('main-image');
         const thumbnailsContainer = document.getElementById('thumbnails-container');
         
-        // Set initial image
-        if (this.images.length > 0) {
-            mainImage.src = this.images[0];
-            mainImage.alt = `${this.projectData.title} screenshot 1`;
-        }
+        // Initialize GalleryManager
+        this.galleryManager = new GalleryManager({
+            mainImageElement: mainImage,
+            thumbnailsContainer: images.length > 1 ? thumbnailsContainer : null,
+            images: images,
+            projectTitle: this.projectData.title
+        });
         
-        // Create thumbnails
-        if (this.images.length > 1) {
-            this.images.forEach((imageUrl, index) => {
-                const thumbnail = document.createElement('button');
-                thumbnail.className = 'gallery-thumbnail';
-                if (index === 0) thumbnail.classList.add('active');
-                
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.alt = `${this.projectData.title} thumbnail ${index + 1}`;
-                img.loading = 'lazy';
-                
-                thumbnail.appendChild(img);
-                thumbnail.addEventListener('click', () => this.changeImage(index));
-                
-                thumbnailsContainer.appendChild(thumbnail);
-            });
-        } else {
+        this.galleryManager.initialize();
+        
+        // Hide thumbnails container if only one image
+        if (images.length <= 1) {
             thumbnailsContainer.style.display = 'none';
         }
-        
-        // Add swipe support for main image
-        this.setupSwipeGestures(mainImage);
-    }
-
-    changeImage(index) {
-        if (index < 0 || index >= this.images.length) return;
-        
-        this.currentImageIndex = index;
-        const mainImage = document.getElementById('main-image');
-        mainImage.src = this.images[index];
-        mainImage.alt = `${this.projectData.title} screenshot ${index + 1}`;
-        
-        // Update active thumbnail
-        const thumbnails = document.querySelectorAll('.gallery-thumbnail');
-        thumbnails.forEach((thumb, i) => {
-            thumb.classList.toggle('active', i === index);
-        });
-    }
-
-    setupSwipeGestures(element) {
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        element.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        element.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            
-            // Handle swipe
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swipe left - next image
-                    const nextIndex = (this.currentImageIndex + 1) % this.images.length;
-                    this.changeImage(nextIndex);
-                } else {
-                    // Swipe right - previous image
-                    const prevIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
-                    this.changeImage(prevIndex);
-                }
-            }
-        }, { passive: true });
     }
 
     showError() {

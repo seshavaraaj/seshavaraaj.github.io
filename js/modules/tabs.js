@@ -7,7 +7,16 @@ import { config } from '../config.js';
 
 export class TabManager {
     constructor() {
+        this.tabContents = null;
+        this.tabButtons = null;
+        this.cacheElements();
         this.setupGlobalFunction();
+    }
+
+    cacheElements() {
+        // Cache DOM elements for O(1) access
+        this.tabContents = document.querySelectorAll(".tab-content");
+        this.tabButtons = document.querySelectorAll(".tab-btn");
     }
 
     setupGlobalFunction() {
@@ -22,15 +31,13 @@ export class TabManager {
     }
 
     hideAllTabs() {
-        const tabContents = document.querySelectorAll(".tab-content");
-        tabContents.forEach(tab => {
+        this.tabContents.forEach(tab => {
             tab.style.display = config.display.none;
         });
     }
 
     removeActiveClasses() {
-        const tabButtons = document.querySelectorAll(".tab-btn");
-        tabButtons.forEach(btn => {
+        this.tabButtons.forEach(btn => {
             btn.classList.remove(config.classes.active);
         });
     }
