@@ -7,8 +7,8 @@ export class ScrollAnimations {
     constructor() {
         this.observerOptions = {
             root: null,
-            rootMargin: '50px',
-            threshold: 0.05
+            rootMargin: '0px',
+            threshold: 0.1
         };
         
         this.observer = null;
@@ -33,6 +33,10 @@ export class ScrollAnimations {
         const elements = document.querySelectorAll(selector);
         elements.forEach((element, index) => {
             element.classList.add('animate-on-scroll');
+            const shouldSkip = skipFirstDelay && index === 0;
+            if (!shouldSkip) {
+                element.style.transitionDelay = `${index * 0.1}s`;
+            }
         });
     }
 
