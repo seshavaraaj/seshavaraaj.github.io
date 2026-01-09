@@ -7,7 +7,7 @@ export class ScrollAnimations {
     constructor() {
         this.observerOptions = {
             root: null,
-            rootMargin: '0px',
+            rootMargin: '50px', // Start loading 50px before entering viewport
             threshold: 0.1
         };
         
@@ -24,7 +24,7 @@ export class ScrollAnimations {
     }
 
     addAnimationClasses() {
-        // Add animation classes to sections and projects
+        // Apply animation classes immediately for reliable visibility
         this.addAnimationToElements('.glass-panel', true);
         this.addAnimationToElements('.project', false);
     }

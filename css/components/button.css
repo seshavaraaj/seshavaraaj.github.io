@@ -12,7 +12,8 @@
     color: var(--button-text-color);
     text-decoration: none;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
 }
 
 .btn:hover {

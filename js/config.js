@@ -37,13 +37,25 @@ export const config = {
  */
 export const utils = {
     /**
-     * Preload images
+     * Preload images (used for hover preloading)
      */
     preloadImages(imageSources) {
-        imageSources.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                imageSources.forEach(src => {
+                    const link = document.createElement('link');
+                    link.rel = 'prefetch';
+                    link.as = 'image';
+                    link.href = src;
+                    document.head.appendChild(link);
+                });
+            });
+        } else {
+            imageSources.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
     },
 
     /**
@@ -51,6 +63,8 @@ export const utils = {
      */
     loadImage(src, onLoad, onError) {
         const img = new Image();
+        img.loading = 'lazy'; // Native lazy loading
+        img.decoding = 'async'; // Async image decode
         if (onLoad) img.onload = onLoad;
         if (onError) img.onerror = onError;
         img.src = src;

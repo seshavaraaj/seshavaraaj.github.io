@@ -1,6 +1,7 @@
 /**
  * Typewriter Effect Module
  * Handles animated text typing effect in the header
+ * Optimized with requestAnimationFrame and visibility detection
  */
 
 import { config } from '../config.js';
@@ -21,14 +22,40 @@ export class TypewriterEffect {
         this.titleIndex = 0;
         this.charIndex = 0;
         this.isDeleting = false;
+        this.timeoutId = null;
+        this.isVisible = true;
+        
+        // Pause animation when tab is not visible
+        this.setupVisibilityListener();
+    }
+    
+    setupVisibilityListener() {
+        document.addEventListener('visibilitychange', () => {
+            this.isVisible = !document.hidden;
+            if (this.isVisible && this.timeoutId === null) {
+                this.type();
+            }
+        });
     }
 
     start() {
         if (!this.element) return;
         this.type();
     }
+    
+    stop() {
+        if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+            this.timeoutId = null;
+        }
+    }
 
     type() {
+        if (!this.isVisible) {
+            this.stop();
+            return;
+        }
+        
         const currentTitle = this.titles[this.titleIndex];
         let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
 
@@ -43,7 +70,10 @@ export class TypewriterEffect {
             speed = this.pauseBeforeNextWord;
         }
 
-        setTimeout(() => this.type(), speed);
+        this.timeoutId = setTimeout(() => {
+            this.timeoutId = null;
+            this.type();
+        }, speed);
     }
 
     updateText(currentTitle) {

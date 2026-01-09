@@ -50,7 +50,8 @@ export class GalleryManager {
             const img = document.createElement('img');
             img.src = imageUrl;
             img.alt = `${this.projectTitle} thumbnail ${index + 1}`;
-            img.loading = 'lazy';
+            img.loading = 'lazy'; // Lazy load thumbnails
+            img.decoding = 'async'; // Async decode for better performance
             
             thumbnail.appendChild(img);
             thumbnail.addEventListener('click', () => this.changeImage(index));
@@ -68,6 +69,15 @@ export class GalleryManager {
         
         this.mainImageElement.src = this.images[index];
         this.mainImageElement.alt = `${this.projectTitle} screenshot ${index + 1}`;
+        // First image should be prioritized for LCP
+        if (index === 0) {
+            this.mainImageElement.fetchPriority = 'high';
+            this.mainImageElement.loading = 'eager';
+        } else {
+            this.mainImageElement.fetchPriority = 'auto';
+            this.mainImageElement.loading = 'lazy';
+        }
+        this.mainImageElement.decoding = 'async';
     }
 
     /**

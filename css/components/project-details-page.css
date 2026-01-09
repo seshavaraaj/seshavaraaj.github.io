@@ -37,10 +37,11 @@
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     font-family: var(--font-primary);
     font-weight: bold;
     box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+    will-change: transform;
 }
 
 .back-button:hover,
@@ -75,6 +76,7 @@
 /* Gallery Section */
 .details-gallery {
     margin-bottom: 1.5rem;
+    contain: layout style;
 }
 
 .gallery-main-image {
@@ -117,11 +119,12 @@
     border-radius: var(--radius-sm);
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     background: rgba(50, 50, 50, 0.6);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     padding: 0;
+    will-change: transform;
 }
 
 .gallery-thumbnail img {
@@ -187,8 +190,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     font-family: var(--font-primary);
+    will-change: transform;
 }
 
 .action-button.primary {
