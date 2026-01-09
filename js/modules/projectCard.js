@@ -4,10 +4,12 @@
  */
 
 import { config, utils } from '../config.js';
+import { getModalInstance } from './projectModal.js';
 
 export class ProjectCard {
-    constructor(projectElement) {
+    constructor(projectElement, projectData) {
         this.element = projectElement;
+        this.projectData = projectData || {};
         this.images = this.parseImages(projectElement.dataset.images);
         this.thumbnail = projectElement.dataset.thumbnail || null;
         this.title = projectElement.querySelector('h3')?.innerText || '';
@@ -69,21 +71,27 @@ export class ProjectCard {
     }
 
     setupClickHandler() {
-        // Direct link opening
+        // Open modal instead of direct link
         this.element.addEventListener('click', (e) => {
-            if (this.link && this.link !== '#') {
-                window.open(this.link, '_blank');
-            }
+            e.preventDefault();
+            this.openModal();
         });
         
         // Better touch handling for mobile
         this.element.addEventListener('touchend', (e) => {
-            // Let the click event handle it, or simulate click if needed
-            // But usually touchend -> click
-            // Removing preventDefault to allow natural link behavior if we used <a> tag,
-            // but since it's a div, we keep the logic simple.
+            // Touch events will trigger click event
         }, { passive: true });
     }
 
-    /* openDetails removed */
+    openModal() {
+        const modal = getModalInstance();
+        modal.open({
+            title: this.title,
+            description: this.description,
+            link: this.link,
+            thumbnail: this.thumbnail,
+            images: this.images,
+            ...this.projectData
+        });
+    }
 }

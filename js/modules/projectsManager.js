@@ -52,6 +52,7 @@ export class ProjectsManager {
         projectDiv.className = 'project';
         projectDiv.dataset.link = project.link || '#';
         projectDiv.dataset.images = JSON.stringify(project.images || []);
+        projectDiv.dataset.projectId = project.id || '';
         if (project.thumbnail) {
             projectDiv.dataset.thumbnail = project.thumbnail;
         }
@@ -76,7 +77,22 @@ export class ProjectsManager {
         const projectElements = document.querySelectorAll('.project');
         
         projectElements.forEach(element => {
-            const card = new ProjectCard(element);
+            // Find matching project data
+            const projectId = element.dataset.projectId;
+            let projectData = null;
+            
+            if (projectId && this.projectsData) {
+                // Search in all categories
+                for (const category of ['games', 'systems', 'mechanics']) {
+                    const found = this.projectsData.projects[category]?.find(p => p.id === projectId);
+                    if (found) {
+                        projectData = found;
+                        break;
+                    }
+                }
+            }
+            
+            const card = new ProjectCard(element, projectData);
             this.projectCards.push(card);
         });
     }

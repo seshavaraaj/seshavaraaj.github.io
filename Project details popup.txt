@@ -1,0 +1,173 @@
+/* filepath: gallery-component-docs.txt */
+
+PROJECT COMPONENT DOCUMENTATION: STEAM-STYLE GALLERY
+Version: 3.0 (Rebuilt 2026-01-08)
+File: css/components/gallery.css
+
+================================================================================
+1. OVERVIEW
+================================================================================
+This component implements a "Steam-Store" style media viewer. It features a 
+cinematic main display that handles various aspect ratios gracefully by using 
+a blurred background fill ("Blur Bar") behind a contained foreground image. 
+Below main display is a horizontal scrollable strip of thumbnails.
+
+================================================================================
+2. DOM STRUCTURE & LAYOUT ARCHITECTURE
+================================================================================
+
+Parent Container: .steam-gallery
+- Layout: Flex Column
+- Purpose: Stacks the featured image area on top of the thumbnail strip.
+
+Region A: Featured Image Area (.steam-featured)
+- Default Aspect Ratio: 16/9 (Cinematic)
+- Positioning: Relative
+- Background: Deep black (#0c0c0c)
+- Contents:
+  1. Loading Spinner (pseudo-element ::after)
+  2. Background Blur Layer (.steam-featured-bg)
+  3. Foreground Content Layer (.steam-featured-fg)
+
+Region B: Thumbnail Strip (.steam-thumbs-scroll)
+- Layout: Flex Row
+- Scrolling: Horizontal (overflow-x: auto)
+- Height: Fixed height (80px desktop, 60px mobile)
+- Contents: List of .steam-thumb elements
+
+================================================================================
+3. VISUAL & INTERACTIVE LOGIC
+================================================================================
+
+A. The "Blur Bar" Effect
+   To handle images that do not match the 16:9 container ratio without black bars:
+   1. .steam-featured-bg is absolute, inset 0.
+   2. It renders the same image as the foreground.
+   3. Filters applied: blur(25px), brightness(0.4), saturate(1.2).
+   4. Transform: scale(1.1) is used to prevent blurred edges from bleeding inward.
+
+B. Foreground Presentation
+   1. .steam-featured-fg limits max dimensions to 100%.
+   2. Object-fit: 'contain' ensures the image is never cropped.
+   3. Centered via Flexbox properties on the parent.
+   4. Cursor set to 'zoom-in' for modal expansion cues.
+
+C. Loading States
+   1. When .steam-featured has class .loading:
+      - A CSS spinner appears (border-radius animation).
+      - Foreground and background images are set to opacity: 0.
+   2. This prevents "jumping" content while high-res assets load.
+
+D. Thumbnails
+   1. Styling: 16/9 aspect ratio, starting opacity 0.7.
+   2. Hover: Opacity 1.0, slight lift (transform: translateY(-2px)).
+   3. Active State (.active): White border, outer glow box-shadow.
+   4. Scrollbars: Custom styled webkit-scrollbar (thin, semi-transparent).
+
+================================================================================
+4. RESPONSIVE BEHAVIOR
+================================================================================
+
+Standard Desktop (> 768px):
+- Ratio: 16/9
+- Thumb Height: 80px
+- Borders: Rounded (4px)
+
+Tablet / Mobile Portrait (< 768px):
+- Ratio: Switches to 4/3 (Taller square) to accommodate vertical screen real estate.
+- Thumb Height: Reduced to 60px.
+- Spacing: Gaps reduced from 12px/8px to 8px/6px.
+
+Small Mobile (< 480px):
+- Ratio: 4/3
+- "Bleed" Effect: Uses negative margins (-15px) to pull the gallery 
+  edge-to-edge, overriding modal padding.
+- Borders: Left/Right borders removed, radius removed.
+
+Mobile Landscape (< 900/* filepath: gallery-component-docs.txt */
+
+PROJECT COMPONENT DOCUMENTATION: STEAM-STYLE GALLERY
+Version: 3.0 (Rebuilt 2026-01-08)
+File: css/components/gallery.css
+
+================================================================================
+1. OVERVIEW
+================================================================================
+This component implements a "Steam-Store" style media viewer. It features a 
+cinematic main display that handles various aspect ratios gracefully by using 
+a blurred background fill ("Blur Bar") behind a contained foreground image. 
+Below main display is a horizontal scrollable strip of thumbnails.
+
+================================================================================
+2. DOM STRUCTURE & LAYOUT ARCHITECTURE
+================================================================================
+
+Parent Container: .steam-gallery
+- Layout: Flex Column
+- Purpose: Stacks the featured image area on top of the thumbnail strip.
+
+Region A: Featured Image Area (.steam-featured)
+- Default Aspect Ratio: 16/9 (Cinematic)
+- Positioning: Relative
+- Background: Deep black (#0c0c0c)
+- Contents:
+  1. Loading Spinner (pseudo-element ::after)
+  2. Background Blur Layer (.steam-featured-bg)
+  3. Foreground Content Layer (.steam-featured-fg)
+
+Region B: Thumbnail Strip (.steam-thumbs-scroll)
+- Layout: Flex Row
+- Scrolling: Horizontal (overflow-x: auto)
+- Height: Fixed height (80px desktop, 60px mobile)
+- Contents: List of .steam-thumb elements
+
+================================================================================
+3. VISUAL & INTERACTIVE LOGIC
+================================================================================
+
+A. The "Blur Bar" Effect
+   To handle images that do not match the 16:9 container ratio without black bars:
+   1. .steam-featured-bg is absolute, inset 0.
+   2. It renders the same image as the foreground.
+   3. Filters applied: blur(25px), brightness(0.4), saturate(1.2).
+   4. Transform: scale(1.1) is used to prevent blurred edges from bleeding inward.
+
+B. Foreground Presentation
+   1. .steam-featured-fg limits max dimensions to 100%.
+   2. Object-fit: 'contain' ensures the image is never cropped.
+   3. Centered via Flexbox properties on the parent.
+   4. Cursor set to 'zoom-in' for modal expansion cues.
+
+C. Loading States
+   1. When .steam-featured has class .loading:
+      - A CSS spinner appears (border-radius animation).
+      - Foreground and background images are set to opacity: 0.
+   2. This prevents "jumping" content while high-res assets load.
+
+D. Thumbnails
+   1. Styling: 16/9 aspect ratio, starting opacity 0.7.
+   2. Hover: Opacity 1.0, slight lift (transform: translateY(-2px)).
+   3. Active State (.active): White border, outer glow box-shadow.
+   4. Scrollbars: Custom styled webkit-scrollbar (thin, semi-transparent).
+
+================================================================================
+4. RESPONSIVE BEHAVIOR
+================================================================================
+
+Standard Desktop (> 768px):
+- Ratio: 16/9
+- Thumb Height: 80px
+- Borders: Rounded (4px)
+
+Tablet / Mobile Portrait (< 768px):
+- Ratio: Switches to 4/3 (Taller square) to accommodate vertical screen real estate.
+- Thumb Height: Reduced to 60px.
+- Spacing: Gaps reduced from 12px/8px to 8px/6px.
+
+Small Mobile (< 480px):
+- Ratio: 4/3
+- "Bleed" Effect: Uses negative margins (-15px) to pull the gallery 
+  edge-to-edge, overriding modal padding.
+- Borders: Left/Right borders removed, radius removed.
+
+Mobile Landscape (< 900

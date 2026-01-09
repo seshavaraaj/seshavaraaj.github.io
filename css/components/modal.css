@@ -1,0 +1,433 @@
+/* ========================================
+   Project Modal Component
+   ======================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(40, 40, 40, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(50, 50, 50, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.active .modal-content {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Custom scrollbar for modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-header {
+    padding: 24px 30px;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: rgba(50, 50, 50, 0.5);
+    z-index: 10;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.modal-title {
+    font-size: var(--font-size-xl);
+    color: var(--header-color);
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: var(--font-primary);
+}
+
+.modal-close {
+    display: none;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-description {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    color: var(--content-color);
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(60, 60, 60, 0.3);
+    border-radius: var(--radius-md);
+    border-left: 3px solid rgba(234, 224, 217, 0.5);
+    font-family: var(--font-primary);
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background: rgba(50, 50, 50, 0.5);
+}
+
+.modal-button {
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-primary);
+}
+
+.modal-button.primary {
+    background: rgba(234, 224, 217, 0.3);
+    color: var(--button-text-color);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-button.primary:hover {
+    background: rgba(250, 92, 92, 0.5);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 20px rgba(250, 92, 92, 0.6), 0 0 30px rgba(250, 92, 92, 0.4);
+    border-color: rgba(250, 92, 92, 0.6);
+}
+
+.modal-button.secondary {
+    background: rgba(220, 53, 69, 0.3);
+    color: var(--button-text-color);
+    border: 1px solid rgba(220, 53, 69, 0.5);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+.modal-button.secondary:hover {
+    background: rgba(220, 53, 69, 0.5);
+    border-color: rgba(220, 53, 69, 0.7);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.modal-button:active {
+    transform: translateY(0) scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+/* ========================================
+   Steam-Style Gallery Component
+   ======================================== */
+
+.steam-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Featured Image Area */
+.steam-featured {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Loading Spinner */
+.steam-featured.loading::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    z-index: 5;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Background Blur Layer */
+.steam-featured-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(25px) brightness(0.4) saturate(1.2);
+    transform: scale(1.1);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.steam-featured.loading .steam-featured-bg {
+    opacity: 0;
+}
+
+/* Foreground Content Layer */
+.steam-featured-fg {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.steam-featured.loading .steam-featured-fg {
+    opacity: 0;
+}
+
+.steam-featured-fg:hover {
+    transform: scale(1.02);
+}
+
+/* Thumbnail Strip */
+.steam-thumbs-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0;
+    scroll-behavior: smooth;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar-thumb {
+    background: rgba(234, 224, 217, 0.3);
+    border-radius: 3px;
+}
+
+.steam-thumbs-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(234, 224, 217, 0.5);
+}
+
+/* Individual Thumbnails */
+.steam-thumb {
+    flex: 0 0 auto;
+    width: 120px;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Thumbnail background blur layer */
+.steam-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--thumb-bg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(0.4) saturate(1.2);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+.steam-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.steam-thumb:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.steam-thumb.active {
+    opacity: 1;
+    border-color: var(--content-color);
+    box-shadow: 0 0 15px rgba(234, 224, 217, 0.5);
+}
+
+/* ========================================
+   Responsive Behavior
+   ======================================== */
+
+/* Tablet / Mobile Portrait */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 95vh;
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        padding: 18px 20px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        padding: 15px 20px;
+        flex-direction: column;
+    }
+
+    .modal-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Gallery adjustments */
+    .steam-featured {
+        aspect-ratio: 4/3;
+    }
+
+    .steam-thumb {
+        width: 80px;
+    }
+
+    .steam-thumbs-scroll {
+        gap: 6px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .modal-header {
+        padding: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.3rem;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .modal-description {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+
+    .steam-gallery {
+        margin-left: -15px;
+        margin-right: -15px;
+        border-radius: 0;
+    }
+
+    .steam-featured {
+        border-radius: 0;
+    }
+
+    .steam-thumb {
+        width: 60px;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-height: 600px) and (orientation: landscape) {
+    .modal-content {
+        max-height: 98vh;
+    }
+
+    .modal-header {
+        padding: 12px 20px;
+    }
+
+    .modal-body {
+        padding: 15px 20px;
+    }
+
+    .steam-featured {
+        aspect-ratio: 21/9;
+    }
+}
