@@ -51,6 +51,9 @@ Portfolio/
 - **Scroll Animations**: Elements fade in on scroll
 - **Dynamic Project Loading**: Projects loaded from JSON data
 - **Glass Morphism**: Modern glassmorphic UI elements
+- **Mobile-Friendly Project Details**: Separate page for project details on mobile devices
+  - Desktop: Opens projects in modal overlay
+  - Mobile: Navigates to dedicated details page with swipe gestures
 
 ### Benefits
 1. **Maintainability**: Easy to find and update code

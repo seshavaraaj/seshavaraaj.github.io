@@ -64,7 +64,7 @@ export class ProjectCard {
         // Open modal instead of direct link
         this.element.addEventListener('click', (e) => {
             e.preventDefault();
-            this.openModal();
+            this.openProject();
         });
         
         // Better touch handling for mobile
@@ -73,15 +73,39 @@ export class ProjectCard {
         }, { passive: true });
     }
 
-    openModal() {
-        const modal = getModalInstance();
-        modal.open({
+    isMobileDevice() {
+        // Check if device is mobile based on screen width and touch capability
+        const isMobileWidth = window.innerWidth <= 768;
+        const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        return isMobileWidth && hasTouchScreen;
+    }
+
+    openProject() {
+        const projectData = {
             title: this.title,
             description: this.description,
             link: this.link,
             thumbnail: this.thumbnail,
             images: this.images,
             ...this.projectData
-        });
+        };
+
+        // For mobile devices, navigate to separate page
+        if (this.isMobileDevice()) {
+            // Store project data in localStorage for the details page
+            localStorage.setItem('currentProject', JSON.stringify(projectData));
+            
+            // Navigate to details page
+            const projectId = this.projectData.id || '';
+            window.location.href = `project-details.html${projectId ? '?id=' + projectId : ''}`;
+        } else {
+            // For desktop, open modal as usual
+            this.openModal(projectData);
+        }
+    }
+
+    openModal(projectData) {
+        const modal = getModalInstance();
+        modal.open(projectData);
     }
 }
