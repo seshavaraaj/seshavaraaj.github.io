@@ -140,15 +140,13 @@
 
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    will-change: opacity, transform;
+    transform: translateY(30px) translateZ(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .animate-on-scroll.in-view {
     opacity: 1;
-    transform: translateY(0);
-    will-change: auto;
+    transform: translateY(0) translateZ(0);
 }
 
 /* ==========================================
