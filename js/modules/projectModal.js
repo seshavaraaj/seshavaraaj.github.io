@@ -3,7 +3,6 @@
  * Handles project detail popup with Steam-style gallery
  */
 
-import { utils } from '../config.js';
 import { GalleryManager } from './galleryManager.js';
 
 export class ProjectModal {
@@ -204,33 +203,23 @@ export class ProjectModal {
         });
         
         // Load image
-        utils.loadImage(
-            imageUrl,
-            () => {
-                // Success
-                this.steamFeaturedBg.src = imageUrl;
-                this.steamFeaturedFg.src = imageUrl;
-                this.steamFeaturedFg.alt = `${projectTitle} - Image ${index + 1}`;
-                
-                // Remove loading state
-                setTimeout(() => {
-                    this.steamFeatured.classList.remove('loading');
-                }, 100);
-                
-                // Scroll thumbnail into view
-                if (this.cachedThumbs[index]) {
-                    this.cachedThumbs[index].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'center'
-                    });
-                }
-            },
-            () => {
-                // Error - silently handle
-                this.steamFeatured.classList.remove('loading');
-            }
-        );
+        this.steamFeaturedBg.src = imageUrl;
+        this.steamFeaturedFg.src = imageUrl;
+        this.steamFeaturedFg.alt = `${projectTitle} - Image ${index + 1}`;
+        
+        // Remove loading state
+        setTimeout(() => {
+            this.steamFeatured.classList.remove('loading');
+        }, 100);
+        
+        // Scroll thumbnail into view
+        if (this.cachedThumbs[index]) {
+            this.cachedThumbs[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
     }
 
     handleEscapeKey(e) {

@@ -6,7 +6,7 @@
         "title": "Fuse Gambit",
         "description": "A high-tension, turn-based party strategy game where players weaponize ability cards, outsmart rivals, and hot-potato a ticking bomb until only one survives. Fast rounds, big mind-games, endless chaos.",
         "link": "https://hektphanthom.itch.io/fuse-gambit/download/siMxi0tPe6RfheC_tC_siQOgZhcZtyXfIv2WPl0t",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvNDEwNjAwMi8yNDkxNzMxMy5wbmc=/original/%2FgWaeW.png",
+        "thumbnail": "data/Images/fuse-gambit/thumbnail/_gWaeW.png",
         "images": []
       },
       {
@@ -14,15 +14,15 @@
         "title": "A Cube",
         "description": "Developed my first 3D game featuring a self-built physics system inspired by Edge. Focused on understanding and implementing physics principles, collision handling, and time complexity within a 3D environment. Experimented with custom movement logic and physics calculations to achieve smooth, responsive gameplay and a unique control feel.",
         "link": "https://hektphanthom.itch.io/a-cube",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yNDkxNjc3Ni5wbmc=/original/01U9%2Bj.png",
+        "thumbnail": "data/Images/a-cube/thumbnail/01U9+j.png",
         "images": [
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1MC5wbmc=/original/AYs45U.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1MS5wbmc=/original/4z7obs.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0Ny5wbmc=/original/whulrk.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY1Mi5wbmc=/original/D1tj%2B8.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0OC5wbmc=/original/psmbI3.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY0OS5wbmc=/original/rQgd4C.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEwNy8yMzg2MTY4NC5wbmc=/original/nTt7%2B7.png"
+          "data/Images/a-cube/screenshots/AYs45U.png",
+          "data/Images/a-cube/screenshots/4z7obs.png",
+          "data/Images/a-cube/screenshots/whulrk.png",
+          "data/Images/a-cube/screenshots/D1tj+8.png",
+          "data/Images/a-cube/screenshots/psmbI3.png",
+          "data/Images/a-cube/screenshots/rQgd4C.png",
+          "data/Images/a-cube/screenshots/nTt7+7.png"
         ]
       },
       {
@@ -30,13 +30,13 @@
         "title": "Survive The Waves",
         "description": "Completed as a one-hour personal challenge to test rapid development capabilities under extreme time constraints. Gained valuable insight into the realities of time-limited game development, learning that creating even simple games within short timeframes presents significant challenges. Helped establish a realistic understanding of my development capabilities and the importance of efficient scope management in rapid prototyping.",
         "link": "https://hektphanthom.itch.io/survive-the-waves",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk3My5wbmc=/original/sTwD7G.png",
+        "thumbnail": "data/Images/survive-the-waves/thumbnail/sTwD7G.png",
         "images": [
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MC5wbmc=/original/4YAROa.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1Mi5wbmc=/original/UFHgJo.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1My5wbmc=/original/dy7sx%2F.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk0OS5wbmc=/original/0UXO4g.png",
-          "https://img.itch.zone/aW1hZ2UvNDE4MDY1Ny8yNDkxNjk1MS5wbmc=/original/ZciENk.png"
+          "data/Images/survive-the-waves/screenshots/4YAROa.png",
+          "data/Images/survive-the-waves/screenshots/UFHgJo.png",
+          "data/Images/survive-the-waves/screenshots/dy7sx_.png",
+          "data/Images/survive-the-waves/screenshots/0UXO4g.png",
+          "data/Images/survive-the-waves/screenshots/ZciENk.png"
         ]
       },
       {
@@ -44,13 +44,13 @@
         "title": "Stone vs Lava",
         "description": "Participated in my first game jam, focusing on understanding and adapting to time constraints in rapid game development. Designed and implemented physics-based gameplay mechanics inspired by titles like Angry Birds and Whirly Bird. Gained experience in iterative prototyping, feature prioritization, and delivering a functional, polished gameplay loop within a limited timeframe.",
         "link": "https://hektphanthom.itch.io/stone-vs-lava",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8yNDkxNjY2Ni5wbmc=/original/1Ncuit.png",
+        "thumbnail": "data/Images/stone-vs-lava/thumbnail/1Ncuit.png",
         "images": [
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OS5wbmc=/original/5KFtd1.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3OC5wbmc=/original/SWe%2Fty.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ny5wbmc=/original/jcioOT.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA3Ni5wbmc=/original/rr8RbT.png",
-          "https://img.itch.zone/aW1hZ2UvMjcyMDE5Mi8xNjIxOTA4MC5wbmc=/original/ZO0PRV.png"
+          "data/Images/stone-vs-lava/screenshots/5KFtd1.png",
+          "data/Images/stone-vs-lava/screenshots/SWe_ty.png",
+          "data/Images/stone-vs-lava/screenshots/jcioOT.png",
+          "data/Images/stone-vs-lava/screenshots/rr8RbT.png",
+          "data/Images/stone-vs-lava/screenshots/ZO0PRV.png"
         ]
       },
       {
@@ -58,14 +58,14 @@
         "title": "Bwoom!!",
         "description": "Designed and implemented a unique approach to player input and movement systems, exploring alternative control schemes to enhance player engagement. Focused on analyzing which movement mechanics feel intuitive and appealing versus those that don't. Concept and implementation fully based on my own original idea, emphasizing experimentation and player experience refinement.",
         "link": "https://hektphanthom.itch.io/bwoom",
-        "thumbnail": "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yNDkxNjgwNS5wbmc=/original/QFxifr.png",
+        "thumbnail": "data/Images/bwoom/thumbnail/QFxifr.png",
         "images": [
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0My5wbmc=/original/w5gR1G.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0MS5wbmc=/original/NRDAwT.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0Mi5wbmc=/original/xExwYW.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTc0MC5wbmc=/original/d%2Bqxzt.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOC5wbmc=/original/tisROB.png",
-          "https://img.itch.zone/aW1hZ2UvMzUxMzEyNy8yMzg2MTczOS5wbmc=/original/tqUrv3.png"
+          "data/Images/bwoom/screenshots/w5gR1G.png",
+          "data/Images/bwoom/screenshots/NRDAwT.png",
+          "data/Images/bwoom/screenshots/xExwYW.png",
+          "data/Images/bwoom/screenshots/d+qxzt.png",
+          "data/Images/bwoom/screenshots/tisROB.png",
+          "data/Images/bwoom/screenshots/tqUrv3.png"
         ]
       }
     ],

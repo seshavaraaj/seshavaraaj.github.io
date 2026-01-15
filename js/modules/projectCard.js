@@ -3,7 +3,7 @@
  * Handles project card rendering and interactions
  */
 
-import { config, utils } from '../config.js';
+import { config } from '../config.js';
 import { getModalInstance } from './projectModal.js';
 
 export class ProjectCard {
@@ -25,9 +25,6 @@ export class ProjectCard {
 
     initialize() {
         this.setupBackgroundImage();
-        if (config.gallery.preloadOnHover) {
-            this.setupPreloading();
-        }
         this.setupClickHandler();
     }
 
@@ -35,33 +32,7 @@ export class ProjectCard {
         const imageUrl = this.thumbnail || (this.images.length > 0 ? this.images[0] : null);
         if (!imageUrl) return;
 
-        this.element.classList.add(config.classes.loading);
-
-        utils.loadImage(
-            imageUrl,
-            () => this.onImageLoad(imageUrl),
-            () => this.onImageError(imageUrl)
-        );
-    }
-
-    onImageLoad(imageUrl) {
         this.element.style.backgroundImage = `url('${imageUrl}')`;
-        this.element.classList.remove(config.classes.loading);
-    }
-
-    onImageError(imageUrl) {
-        this.element.classList.remove(config.classes.loading);
-        this.element.style.backgroundImage = 'none';
-    }
-
-    setupPreloading() {
-        // Preload on hover (desktop) or touchstart (mobile)
-        const preloadHandler = () => {
-            utils.preloadImages(this.images);
-        };
-        
-        this.element.addEventListener('mouseenter', preloadHandler, { once: true });
-        this.element.addEventListener('touchstart', preloadHandler, { once: true, passive: true });
     }
 
     setupClickHandler() {

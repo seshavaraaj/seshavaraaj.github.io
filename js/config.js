@@ -20,54 +20,9 @@ export const config = {
         active: 'active'
     },
 
-    // Gallery settings
-    gallery: {
-        preloadOnHover: true
-    },
-
     // Display values
     display: {
         none: 'none',
         block: 'block'
-    }
-};
-
-/**
- * Utility functions
- */
-export const utils = {
-    /**
-     * Preload images (used for hover preloading)
-     */
-    preloadImages(imageSources) {
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => {
-                imageSources.forEach(src => {
-                    const link = document.createElement('link');
-                    link.rel = 'prefetch';
-                    link.as = 'image';
-                    link.href = src;
-                    document.head.appendChild(link);
-                });
-            });
-        } else {
-            imageSources.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
-    },
-
-    /**
-     * Load single image with callbacks
-     */
-    loadImage(src, onLoad, onError) {
-        const img = new Image();
-        img.loading = 'lazy'; // Native lazy loading
-        img.decoding = 'async'; // Async image decode
-        if (onLoad) img.onload = onLoad;
-        if (onError) img.onerror = onError;
-        img.src = src;
-        return img;
     }
 };
