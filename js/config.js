@@ -1,8 +1,3 @@
-/**
- * Configuration Module
- * Central configuration for the portfolio application
- */
-
 export const config = {
     // Typewriter settings
     typewriter: {
@@ -14,13 +9,11 @@ export const config = {
         pauseBeforeNextWord: 500
     },
 
-    // CSS Classes
     classes: {
         loading: 'loading',
         active: 'active'
     },
 
-    // Display values
     display: {
         none: 'none',
         block: 'block'

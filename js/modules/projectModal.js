@@ -1,8 +1,3 @@
-/**
- * Project Modal Module
- * Handles project detail popup with Steam-style gallery
- */
-
 import { GalleryManager } from './galleryManager.js';
 
 export class ProjectModal {
@@ -13,7 +8,6 @@ export class ProjectModal {
         this.galleryManager = null;
         this.cachedThumbs = [];
         
-        // Bind event handlers for cleanup capability
         this.handleEscapeKey = this.handleEscapeKey.bind(this);
         
         this.createModal();
@@ -21,11 +15,9 @@ export class ProjectModal {
     }
 
     createModal() {
-        // Create overlay
         this.overlay = document.createElement('div');
         this.overlay.className = 'modal-overlay';
         
-        // Create modal content
         const modalContent = document.createElement('div');
         modalContent.className = 'modal-content';
         
@@ -60,7 +52,6 @@ export class ProjectModal {
         
         this.modal = modalContent;
         
-        // Cache frequently accessed DOM elements
         this.modalTitle = this.modal.querySelector('.modal-title');
         this.modalDescription = this.modal.querySelector('.modal-description');
         this.steamGallery = this.modal.querySelector('.steam-gallery');
@@ -72,30 +63,25 @@ export class ProjectModal {
     }
 
     setupEventListeners() {
-        // Close button
         const closeButtons = this.overlay.querySelectorAll('.modal-close, .modal-close-btn');
         closeButtons.forEach(btn => {
             btn.addEventListener('click', () => this.close());
         });
         
-        // Click outside to close
         this.overlay.addEventListener('click', (e) => {
             if (e.target === this.overlay) {
                 this.close();
             }
         });
         
-        // Escape key to close
         document.addEventListener('keydown', this.handleEscapeKey);
         
-        // Visit button
         this.visitBtn.addEventListener('click', () => {
             if (this.currentProject && this.currentProject.link) {
                 window.open(this.currentProject.link, '_blank');
             }
         });
         
-        // Prevent modal content click from closing
         this.modal.addEventListener('click', (e) => {
             e.stopPropagation();
         });
@@ -105,52 +91,40 @@ export class ProjectModal {
         this.currentProject = project;
         const images = project.images || [];
         
-        // Set title and description
         this.modalTitle.textContent = project.title;
         this.modalDescription.textContent = project.description;
         
-        // Setup gallery using GalleryManager
         if (images.length > 0) {
             this.setupGallery(images, project.title);
         } else {
-            // Hide gallery if no images
             this.steamGallery.style.display = 'none';
         }
         
         // Show modal and prevent body scroll
-        // Save current scroll position
         this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Prevent scrolling using overflow only (no position fixed)
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
         
-        // First set display to flex
         this.overlay.style.display = 'flex';
         
-        // Force reflow to ensure display change is applied
         this.overlay.offsetHeight;
         
-        // Then trigger animation by adding active class
         requestAnimationFrame(() => {
             this.overlay.classList.add('active');
         });
     }
 
     close() {
-        // Remove active class to trigger fade out
         this.overlay.classList.remove('active');
         
-        // Wait for animation to complete before hiding
         setTimeout(() => {
             this.overlay.style.display = 'none';
         }, 400);
         
-        // Simply restore overflow - scroll position is preserved
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
         
-        // Clean up after animation
         setTimeout(() => {
             this.currentProject = null;
             this.galleryManager = null;
@@ -160,17 +134,14 @@ export class ProjectModal {
     setupGallery(images, projectTitle) {
         this.steamGallery.style.display = 'flex';
         
-        // Clear previous thumbnails
         this.steamThumbsContainer.innerHTML = '';
         this.cachedThumbs = [];
         
-        // Create Steam-style thumbnails
         images.forEach((imageUrl, index) => {
             const thumb = document.createElement('div');
             thumb.className = 'steam-thumb';
             if (index === 0) thumb.classList.add('active');
             
-            // Set background image for blur effect
             thumb.style.setProperty('--thumb-bg', `url('${imageUrl}')`);
             
             const img = document.createElement('img');
@@ -185,7 +156,6 @@ export class ProjectModal {
             this.cachedThumbs.push(thumb);
         });
         
-        // Load first image
         this.showImage(0, images, projectTitle);
     }
 
@@ -194,25 +164,20 @@ export class ProjectModal {
         
         const imageUrl = images[index];
         
-        // Show loading state
         this.steamFeatured.classList.add('loading');
         
-        // Update active thumbnail using cached elements
         this.cachedThumbs.forEach((thumb, i) => {
             thumb.classList.toggle('active', i === index);
         });
         
-        // Load image
         this.steamFeaturedBg.src = imageUrl;
         this.steamFeaturedFg.src = imageUrl;
         this.steamFeaturedFg.alt = `${projectTitle} - Image ${index + 1}`;
         
-        // Remove loading state
         setTimeout(() => {
             this.steamFeatured.classList.remove('loading');
         }, 100);
         
-        // Scroll thumbnail into view
         if (this.cachedThumbs[index]) {
             this.cachedThumbs[index].scrollIntoView({
                 behavior: 'smooth',
@@ -228,10 +193,7 @@ export class ProjectModal {
         }
     }
 
-    destroy() {
-        // Cleanup event listeners
-        document.removeEventListener('keydown', this.handleEscapeKey);
-    }
+    // Removed unused destroy method
 }
 
 // Create singleton instance

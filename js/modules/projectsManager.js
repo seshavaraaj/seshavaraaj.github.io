@@ -1,8 +1,3 @@
-/**
- * Projects Manager Module
- * Coordinates all project-related functionality
- */
-
 import { ProjectCard } from './projectCard.js';
 
 export class ProjectsManager {
@@ -20,26 +15,21 @@ export class ProjectsManager {
 
     async initialize() {
         try {
-            // Fetch projects data
             const response = await fetch('data/projects.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             this.projectsData = await response.json();
             
-            // Build project map for O(1) lookups
             this.buildProjectMap();
             
-            // Render projects for each category
             this.categories.display.forEach((displayName, index) => {
                 const dataKey = this.categories.data[index];
                 this.renderProjects(displayName, this.projectsData.projects[dataKey]);
             });
             
-            // Initialize project cards
             this.initializeProjectCards();
         } catch (error) {
-            // Gracefully handle error by showing fallback message
             this.handleLoadError();
         }
     }
@@ -97,7 +87,6 @@ export class ProjectsManager {
     }
 
     buildProjectMap() {
-        // Build Map for O(1) project lookups
         this.categories.data.forEach(category => {
             const projects = this.projectsData.projects[category];
             if (projects) {
@@ -114,7 +103,6 @@ export class ProjectsManager {
         const projectElements = document.querySelectorAll('.project');
         
         projectElements.forEach(element => {
-            // Get project data using O(1) Map lookup
             const projectId = element.dataset.projectId;
             const projectData = projectId ? this.projectMap.get(projectId) : null;
             

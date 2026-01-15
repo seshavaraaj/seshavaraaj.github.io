@@ -1,8 +1,3 @@
-/**
- * Scroll Animations Module
- * Handles element animations on scroll
- */
-
 export class ScrollAnimations {
     constructor() {
         this.observerOptions = {
@@ -24,7 +19,6 @@ export class ScrollAnimations {
     }
 
     addAnimationClasses() {
-        // Apply animation classes immediately for reliable visibility
         this.addAnimationToElements('.glass-panel', true);
         this.addAnimationToElements('.project', false);
     }
@@ -34,9 +28,7 @@ export class ScrollAnimations {
         elements.forEach((element, index) => {
             element.classList.add('animate-on-scroll');
             const shouldSkip = skipFirstDelay && index === 0;
-            if (!shouldSkip) {
-                element.style.transitionDelay = `${index * 0.1}s`;
-            }
+            if (!shouldSkip) { element.style.transitionDelay = `${index * 0.1}s`; }
         });
     }
 
@@ -48,7 +40,6 @@ export class ScrollAnimations {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                    // Unobserve after animation to improve performance
                     this.observer.unobserve(entry.target);
                 }
             });
@@ -57,9 +48,5 @@ export class ScrollAnimations {
         animatedElements.forEach(el => this.observer.observe(el));
     }
 
-    destroy() {
-        if (this.observer) {
-            this.observer.disconnect();
-        }
-    }
+    // Removed unused destroy method
 }

@@ -1,8 +1,3 @@
-/**
- * Project Card Module
- * Handles project card rendering and interactions
- */
-
 import { config } from '../config.js';
 import { getModalInstance } from './projectModal.js';
 
@@ -13,7 +8,6 @@ export class ProjectCard {
         this.images = this.projectData.images || [];
         this.thumbnail = this.projectData.thumbnail || null;
         
-        // Cache DOM queries
         const titleEl = projectElement.querySelector('h3');
         const descEl = projectElement.querySelector('p');
         this.title = titleEl?.innerText || '';
@@ -36,7 +30,6 @@ export class ProjectCard {
     }
 
     setupClickHandler() {
-        // Open modal instead of direct link
         this.element.addEventListener('click', (e) => {
             e.preventDefault();
             this.openProject();
@@ -44,7 +37,6 @@ export class ProjectCard {
     }
 
     isMobileDevice() {
-        // Check if device is mobile based on screen width and touch capability
         const isMobileWidth = window.innerWidth <= 768;
         const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         return isMobileWidth && hasTouchScreen;
@@ -60,16 +52,12 @@ export class ProjectCard {
             ...this.projectData
         };
 
-        // For mobile devices, navigate to separate page
         if (this.isMobileDevice()) {
-            // Store project data in localStorage for the details page
             localStorage.setItem('currentProject', JSON.stringify(projectData));
             
-            // Navigate to details page
             const projectId = this.projectData.id || '';
             window.location.href = `project-details.html${projectId ? '?id=' + projectId : ''}`;
         } else {
-            // For desktop, open modal as usual
             this.openModal(projectData);
         }
     }

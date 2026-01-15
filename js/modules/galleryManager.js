@@ -1,8 +1,3 @@
-/**
- * Gallery Manager Module
- * Shared gallery functionality for both modal and details page
- */
-
 export class GalleryManager {
     constructor(config) {
         this.mainImageElement = config.mainImageElement;
@@ -15,29 +10,21 @@ export class GalleryManager {
         this.thumbnails = [];
     }
 
-    /**
-     * Initialize gallery with images
-     */
     initialize() {
         if (this.images.length === 0) return;
         
         // Set initial image
         this.setMainImage(0);
         
-        // Create thumbnails if container exists and multiple images
         if (this.thumbnailsContainer && this.images.length > 1) {
             this.createThumbnails();
         }
         
-        // Setup swipe gestures if main image element exists
         if (this.mainImageElement) {
             this.setupSwipeGestures();
         }
     }
 
-    /**
-     * Create thumbnail elements
-     */
     createThumbnails() {
         this.thumbnailsContainer.innerHTML = '';
         this.thumbnails = [];
@@ -59,9 +46,6 @@ export class GalleryManager {
         });
     }
 
-    /**
-     * Set main image
-     */
     setMainImage(index) {
         if (!this.mainImageElement || index < 0 || index >= this.images.length) return;
         
@@ -69,45 +53,31 @@ export class GalleryManager {
         this.mainImageElement.alt = `${this.projectTitle} screenshot ${index + 1}`;
     }
 
-    /**
-     * Change to specific image
-     */
     changeImage(index) {
         if (index < 0 || index >= this.images.length) return;
         
         this.currentImageIndex = index;
         this.setMainImage(index);
         
-        // Update active thumbnail
         this.thumbnails.forEach((thumb, i) => {
             thumb.classList.toggle('active', i === index);
         });
         
-        // Callback for custom behavior
         if (this.onImageChange) {
             this.onImageChange(index);
         }
     }
 
-    /**
-     * Navigate to next image
-     */
     nextImage() {
         const nextIndex = (this.currentImageIndex + 1) % this.images.length;
         this.changeImage(nextIndex);
     }
 
-    /**
-     * Navigate to previous image
-     */
     previousImage() {
         const prevIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
         this.changeImage(prevIndex);
     }
 
-    /**
-     * Setup swipe gestures for touch devices
-     */
     setupSwipeGestures() {
         let touchStartX = 0;
         let touchEndX = 0;
@@ -132,9 +102,6 @@ export class GalleryManager {
         }, { passive: true });
     }
 
-    /**
-     * Update images array and reinitialize
-     */
     updateImages(images, projectTitle) {
         this.images = images || [];
         this.projectTitle = projectTitle || this.projectTitle;
@@ -142,9 +109,6 @@ export class GalleryManager {
         this.initialize();
     }
 
-    /**
-     * Get current image index
-     */
     getCurrentIndex() {
         return this.currentImageIndex;
     }

@@ -1,8 +1,3 @@
-/**
- * Tabs Module
- * Handles tab switching functionality
- */
-
 import { config } from '../config.js';
 
 export class TabManager {
@@ -14,7 +9,6 @@ export class TabManager {
     }
 
     cacheElements() {
-        // Cache DOM elements for O(1) access
         this.tabContents = document.querySelectorAll(".tab-content");
         this.tabButtons = document.querySelectorAll(".tab-btn");
     }
@@ -31,15 +25,11 @@ export class TabManager {
     }
 
     hideAllTabs() {
-        this.tabContents.forEach(tab => {
-            tab.style.display = config.display.none;
-        });
+        this.tabContents.forEach(tab => { tab.style.display = config.display.none; });
     }
 
     removeActiveClasses() {
-        this.tabButtons.forEach(btn => {
-            btn.classList.remove(config.classes.active);
-        });
+        this.tabButtons.forEach(btn => { btn.classList.remove(config.classes.active); });
     }
 
     showTab(tabName) {

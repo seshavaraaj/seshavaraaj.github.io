@@ -1,8 +1,3 @@
-/**
- * Project Details Page Module
- * Handles loading and displaying project details on a separate page
- */
-
 import { GalleryManager } from './modules/galleryManager.js';
 
 class ProjectDetailsPage {
@@ -14,7 +9,6 @@ class ProjectDetailsPage {
     }
 
     init() {
-        // Get project data from URL parameters or localStorage
         this.loadProjectData();
         
         if (this.projectData) {
@@ -25,23 +19,19 @@ class ProjectDetailsPage {
     }
 
     loadProjectData() {
-        // Try to get from localStorage first (most reliable for mobile)
         const storedData = localStorage.getItem('currentProject');
         if (storedData) {
             try {
                 this.projectData = JSON.parse(storedData);
                 return;
             } catch (e) {
-                // Failed to parse stored data, fallback to URL params
             }
         }
 
-        // Fallback: Try to get from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const projectId = urlParams.get('id');
         
         if (projectId) {
-            // Load from projects.json
             this.loadFromProjectsJson(projectId);
         }
     }
@@ -51,7 +41,6 @@ class ProjectDetailsPage {
             const response = await fetch('data/projects.json');
             const data = await response.json();
             
-            // Search through all categories
             for (const category in data.projects) {
                 const project = data.projects[category].find(p => p.id === projectId);
                 if (project) {
@@ -63,7 +52,6 @@ class ProjectDetailsPage {
             
             this.showError();
         } catch (error) {
-            // Failed to load projects data
             this.showError();
         }
     }
@@ -71,14 +59,11 @@ class ProjectDetailsPage {
     renderProjectDetails() {
         if (!this.projectData) return;
 
-        // Set title
         document.title = `${this.projectData.title} - Seshavaraaj Y`;
         document.getElementById('project-title').textContent = this.projectData.title;
         
-        // Set description
         document.getElementById('project-description').textContent = this.projectData.description;
         
-        // Setup gallery using GalleryManager
         const images = this.projectData.images || [];
         if (this.projectData.thumbnail) {
             images.unshift(this.projectData.thumbnail);
@@ -90,7 +75,6 @@ class ProjectDetailsPage {
             document.getElementById('gallery-section').style.display = 'none';
         }
         
-        // Setup visit button
         const visitButton = document.getElementById('visit-button');
         if (this.projectData.link) {
             visitButton.addEventListener('click', () => {
@@ -105,7 +89,6 @@ class ProjectDetailsPage {
         const mainImage = document.getElementById('main-image');
         const thumbnailsContainer = document.getElementById('thumbnails-container');
         
-        // Initialize GalleryManager
         this.galleryManager = new GalleryManager({
             mainImageElement: mainImage,
             thumbnailsContainer: images.length > 1 ? thumbnailsContainer : null,
@@ -115,7 +98,6 @@ class ProjectDetailsPage {
         
         this.galleryManager.initialize();
         
-        // Hide thumbnails container if only one image
         if (images.length <= 1) {
             thumbnailsContainer.style.display = 'none';
         }
@@ -129,7 +111,6 @@ class ProjectDetailsPage {
     }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         new ProjectDetailsPage();
