@@ -7,7 +7,19 @@
         "description": "A high-tension, turn-based party strategy game where players weaponize ability cards, outsmart rivals, and hot-potato a ticking bomb until only one survives. Fast rounds, big mind-games, endless chaos.",
         "link": "https://hektphanthom.itch.io/fuse-gambit/download/siMxi0tPe6RfheC_tC_siQOgZhcZtyXfIv2WPl0t",
         "thumbnail": "data/Images/fuse-gambit/thumbnail/_gWaeW.png",
-        "images": []
+        "images": [
+          "data/Images/fuse-gambit/screenshots/Screenshot (54).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (55).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (56).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (58).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (59).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (60).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (61).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (62).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (63).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (64).png",
+          "data/Images/fuse-gambit/screenshots/Screenshot (65).png"
+        ]
       },
       {
         "id": "a-cube",
