@@ -1,3 +1,5 @@
+import { resolveAssetPath } from '../config.js';
+
 export class GalleryManager {
     constructor(config) {
         this.mainImageElement = config.mainImageElement;
@@ -35,7 +37,8 @@ export class GalleryManager {
             if (index === 0) thumbnail.classList.add('active');
             
             const img = document.createElement('img');
-            img.src = imageUrl;
+            const absolutePath = resolveAssetPath(imageUrl);
+            img.src = absolutePath;
             img.alt = `${this.projectTitle} thumbnail ${index + 1}`;
             
             thumbnail.appendChild(img);
@@ -49,7 +52,8 @@ export class GalleryManager {
     setMainImage(index) {
         if (!this.mainImageElement || index < 0 || index >= this.images.length) return;
         
-        this.mainImageElement.src = this.images[index];
+        const absolutePath = resolveAssetPath(this.images[index]);
+        this.mainImageElement.src = absolutePath;
         this.mainImageElement.alt = `${this.projectTitle} screenshot ${index + 1}`;
     }
 

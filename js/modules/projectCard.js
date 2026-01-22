@@ -1,4 +1,4 @@
-import { config } from '../config.js';
+import { config, resolveAssetPath } from '../config.js';
 import { getModalInstance } from './projectModal.js';
 
 export class ProjectCard {
@@ -26,8 +26,11 @@ export class ProjectCard {
         const imageUrl = this.thumbnail || (this.images.length > 0 ? this.images[0] : null);
         if (!imageUrl) return;
 
-        this.element.style.backgroundImage = `url('${imageUrl}')`;
+        // Use absolute path for backgroundImage URL
+        const absolutePath = resolveAssetPath(imageUrl);
+        this.element.style.backgroundImage = `url('${absolutePath}')`;
     }
+
 
     setupClickHandler() {
         this.element.addEventListener('click', (e) => {

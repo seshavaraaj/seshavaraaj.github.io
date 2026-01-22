@@ -1,4 +1,5 @@
 import { GalleryManager } from './galleryManager.js';
+import { resolveAssetPath } from '../config.js';
 
 export class ProjectModal {
     constructor() {
@@ -142,10 +143,11 @@ export class ProjectModal {
             thumb.className = 'steam-thumb';
             if (index === 0) thumb.classList.add('active');
             
-            thumb.style.setProperty('--thumb-bg', `url('${imageUrl}')`);
+            const absolutePath = resolveAssetPath(imageUrl);
+            thumb.style.setProperty('--thumb-bg', `url('${absolutePath}')`);
             
             const img = document.createElement('img');
-            img.src = imageUrl;
+            img.src = absolutePath;
             img.alt = `${projectTitle} screenshot ${index + 1}`;
             img.loading = 'lazy';
             
@@ -162,7 +164,7 @@ export class ProjectModal {
     showImage(index, images, projectTitle) {
         if (index < 0 || index >= images.length) return;
         
-        const imageUrl = images[index];
+        const imageUrl = resolveAssetPath(images[index]);
         
         this.steamFeatured.classList.add('loading');
         
