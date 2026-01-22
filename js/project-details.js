@@ -1,4 +1,5 @@
 import { GalleryManager } from './modules/galleryManager.js';
+import { resolveAssetPath } from './config.js';
 
 class ProjectDetailsPage {
     constructor() {
@@ -69,6 +70,8 @@ class ProjectDetailsPage {
             images.unshift(this.projectData.thumbnail);
         }
         
+        this.preloadCriticalImages(images);
+        
         if (images.length > 0) {
             this.setupGallery(images);
         } else {
@@ -100,6 +103,20 @@ class ProjectDetailsPage {
         
         if (images.length <= 1) {
             thumbnailsContainer.style.display = 'none';
+        }
+    }
+
+    preloadCriticalImages(images) {
+        const head = document.head;
+        const preloadCount = Math.min(images.length, 2);
+        for (let i = 0; i < preloadCount; i++) {
+            const href = resolveAssetPath(images[i]);
+            if (!href) continue;
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = href;
+            head.appendChild(link);
         }
     }
 

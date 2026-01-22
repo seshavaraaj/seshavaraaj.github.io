@@ -26,7 +26,7 @@
         <!-- Gallery Section -->
         <section class="details-gallery" id="gallery-section">
             <div class="gallery-main-image">
-                <img id="main-image" src="" alt="Project screenshot">
+                <img id="main-image" src="" alt="Project screenshot" fetchpriority="high" loading="eager" decoding="async">
             </div>
             <div class="gallery-thumbnails" id="thumbnails-container">
                 <!-- Thumbnails will be generated here -->
@@ -50,7 +50,7 @@
         </section>
     </main>
 
-    <script type="module" src="js/project-details.js"></script>
+    <script type="module" src="js/project-details.js" defer></script>
 </body>
 
 </html>

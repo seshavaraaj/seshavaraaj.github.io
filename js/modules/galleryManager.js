@@ -40,6 +40,7 @@ export class GalleryManager {
             const absolutePath = resolveAssetPath(imageUrl);
             img.src = absolutePath;
             img.alt = `${this.projectTitle} thumbnail ${index + 1}`;
+            img.loading = 'lazy';
             
             thumbnail.appendChild(img);
             thumbnail.addEventListener('click', () => this.changeImage(index));
