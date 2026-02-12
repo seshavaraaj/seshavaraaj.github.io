@@ -107,6 +107,17 @@
         line-height: 1.6;
     }
 
+    /* Education & Experience */
+    .edu-exp-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .edu-exp-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     /* Tabs - Maintain desktop aesthetic on mobile */
     .tabs {
         flex-direction: row;
