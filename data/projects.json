@@ -66,6 +66,21 @@
         ]
       },
       {
+        "id": "marshmallow-jump",
+        "title": "Marshmallow Jump",
+        "description": "A fast-paced 3D arcade platformer where players leap across floating platforms, race against a countdown, and collect stars for score. Built to emphasize responsive movement, readable UI feedback, and replay-focused level flow.",
+        "link": "https://hektphanthom.itch.io/marshmallow-jump",
+        "thumbnail": "data/Images/marshmallow-jump/thumbnail/thumbnail_01.png",
+        "images": [
+          "data/Images/marshmallow-jump/screenshots/screenshots_01.png",
+          "data/Images/marshmallow-jump/screenshots/screenshots_02.png",
+          "data/Images/marshmallow-jump/screenshots/screenshots_03.png",
+          "data/Images/marshmallow-jump/screenshots/screenshots_04.png",
+          "data/Images/marshmallow-jump/screenshots/screenshots_05.png",
+          "data/Images/marshmallow-jump/screenshots/screenshots_06.png"
+        ]
+      },
+      {
         "id": "bwoom",
         "title": "Bwoom!!",
         "description": "Designed and implemented a unique approach to player input and movement systems, exploring alternative control schemes to enhance player engagement. Focused on analyzing which movement mechanics feel intuitive and appealing versus those that don't. Concept and implementation fully based on my own original idea, emphasizing experimentation and player experience refinement.",
